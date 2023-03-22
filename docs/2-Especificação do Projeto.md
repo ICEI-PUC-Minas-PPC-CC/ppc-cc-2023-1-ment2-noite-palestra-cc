@@ -8,12 +8,12 @@ Esse documento tem o objetivo de especificar requisitos, que contemplação da a
 _UM BREVE HISTÓRICO_ 
 <br>
 A aplicação gerenciamento será implementado na  instituição sem fins lucrativos intitulada de GAAPO - Grupo de Assistência e Apoio ao Paciente Oncológico. 
-<br>
+<br><br>
 
 "O objetivo do GAAPO além do acolhimento e amparo aos doentes e parcerias com diversas ONGs é também realizar palestras e desenvolver campanhas de prevenção e atenção ao câncer masculino, feminino e infantil, unindo a população de Poços De Caldas em prol do cuidado com o próximo. "
-<br>
+<br><br>
 "Assim, distribui-se cerca de perucas e lenços mensalmente, além de fraldas geriátricas, próteses de mama, e cestas básicas. No momento a única fonte de renda tem sido poucas doações espontâneas, alguns eventos com parceria privada e o bazar de roupas usadas."
-<br>
+<br><br>
 O contato com associação foi realizado através da professora Luciana De'Nardini, via virtual, pelo aplicativo  Microsoft Teams no dia 17/03/2023 - Sexta-feira, assim a equipe composta pelos alunos Gabriel Coetti, João Eduardo Lino, João Pedro Barbosa, Lucas Florentino, Marcelle Andrade e Mateus Boletta, poderão entrar em contado com a presidente Claudia  afim de realizar a coleta dos pré-requisitos, identificando dores, anseios e objetos. 
 <br>
 
@@ -48,8 +48,6 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 |Rebeca Laura Monteiro | Desejo organizar e ter fácil acesso aos relatórios de doações, alimentos, cabelos, empréstimo de equipamentos médico, beneficiados e receita da ONG.  | Melhor gerencia e administração, otimizando o meu trabalho e forncecendo dados reais para maior credibilidade.  |
 |Fernanda Antonella Rocha | Desejo organizar e ter fácil acesso aos pacientes, para as consultas e auxilio social.  | Ter melhor controle dos pacientes e gerenciamento das sessões de acompanhamento.  |
 |Sophia Bruna Assis | Desejo que o fluxo de caixa seja mais organizado e automatizado. Visto que toda essas tarefas atualmente são realizadas em papel.   | A melhor maneira de armazenar dados, otimizando o precesso. E ter maior controle sobre os movimentos de entrada e saida de dinheiro.   |
-
-Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução ou para execução da sua prática extensionista/curso. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação e também para identificar as dores que sua prática extensionista irá minimizar/sanar. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
 
 ### Requisitos Funcionais
 
