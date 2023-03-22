@@ -1,19 +1,22 @@
-# TÍTULO DO PROJETO
+# APP GAAPO
 
 `PPC-CC: PUC Poços de Caldas - Ciência da Computação`
-`Disciplina: NOME DA DISCIPLINA`
-`20XX - Semestre XX`
+`Disciplina: MENTORING II`
+`2023 - Semestre 02`
 
 ## Integrantes
 
-- Jeff Bezos
-- Bill Gates
-- Larry Ellison
-- Mark Zuckerberg
+- Gabriel Coetti
+- João Pedro Barbosa
+- João Eduardo
+- Lucas Florentino
+- Marcelle
+- Matheus Boletta
 
-## Professor
+## Professores
 
-- Mestre Yoda
+- Luciana De'Nardin
+- Luis Gustavo Fogarolli
 
 # Documentação
 
@@ -24,9 +27,8 @@
 | ETAPA 3 | 05/04/2023 - 25/04/2023 |<a href="docs/4-Sprint 1.md"> Artefatos da Sprint 1</a> |
 | ETAPA 4 | 26/04/2023 - 13/06/2023 |<a href="docs/5-Sprint 2.md"> Artefatos da Sprint 2</a> |
 | ETAPA 5 | 14/06/2023 - 27/06/2023 |<a href="docs/6-Apresentação do Projeto.md"> Apresentação do Projeto</a> |
-| ETAPA 6 | 28/06/2023 - 07/07/2023 |Preenchimento dos formulários referentes a prática extensionista no sistema GDE <br> Atualização/entrega do porftólio| 
+| ETAPA 6 | 28/06/2023 - 07/07/2023 |Preenchimento dos formulários referentes a prática extensionista no sistema GDE <br> Atualização/entrega do porftólio|
 
 # Código
 
 <li><a href="src/README.md"> Código Fonte</a></li>
-
