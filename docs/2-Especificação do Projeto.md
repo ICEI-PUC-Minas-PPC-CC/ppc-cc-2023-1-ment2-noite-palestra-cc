@@ -45,8 +45,9 @@ Exemplo:
 
 |EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
 |--------------------|------------------------------------|----------------------------------------|
-|Camila Fiães | Otimizar meu tempo e esforço | Conciliar os diferentes papéis que exerço. |
-|Camila Fiães | Ter acesso rápido e completo às informações sobre a doença de seu filho | Passar os detalhes para os médicos. |
+|Rebeca Laura Monteiro | Desejo organizar e ter fácil acesso aos relatórios de doações, alimentos, cabelos, empréstimo de equipamentos médico, beneficiados e receita da ONG.  | Melhor gerencia e administração, otimizando o meu trabalho e forncecendo dados reais para maior credibilidade.  |
+|Fernanda Antonella Rocha | Desejo organizar e ter fácil acesso aos pacientes, para as consultas e auxilio social.  | Ter melhor controle dos pacientes e gerenciamento das sessões de acompanhamento.  |
+|Sophia Bruna Assis | Desejo que o fluxo de caixa seja mais organizado e automatizado. Visto que toda essas tarefas atualmente são realizadas em papel.   | A melhor maneira de armazenar dados, otimizando o precesso. E ter maior controle sobre os movimentos de entrada e saida de dinheiro.   |
 
 Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução ou para execução da sua prática extensionista/curso. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação e também para identificar as dores que sua prática extensionista irá minimizar/sanar. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
 
@@ -66,16 +67,40 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| O sistema deverá permitir o gerenciamento dos pacientes | ALTA | 
-|RF-002| O sistema deverá exibir todo histórico de atendimento do paciente   | ALTA |
+|RF-01| O sistema deverá permitir cadastro de alimento: nome, validade,quatidade, data de entrada, data de saida.  | ALTA | 
+|RF-02| O sitema deverá permitir a criação de cestas básicas a partir dos alimento pré-cadastrados.   | ALTA |
+|RF-03| O sistema deverá mostrar guia de montagem da cesta básica.    | ALTA |
+|RF-04| O sistemá deverá permitir o controle de estoque: produto, quantidade mínima. Sendo o produto existente na tabela.    | ALTA |
+|RF-05| O sistema devará exisitr desmostradtivo de saída apresentando o benificiario, item de estoque (cabelo/alimeto) e data de entrega.     | ALTA |
+|RF-06| O sistema deverá conter cadastro de doador ( nome, telefone e mail).   | MÉDIA |
+|RF-07| O sistema deverá conter cadastro de beneficiario (nome, enderço, telefone,C.P.F.)   | ALTA |
+|RF-08| O sistema deverá conter cadastro de paciente oncologicos ( nome, endereço, telefone, C.P.F e N.I.S.)  | BAIXA |
+|RF-09| O sistema deverá aparesentar cadastro de voluntario/ usuário (nome , user ,senha e restrições)   | ALTA |
+|RF-10| O sistema deverá conter entrada de doações em dinheiro    | BAIXA |
+|RF-11| O sistema deverá conter gestão de empreentimos de equipamentos hospitalares.    | BAIXA |
+|RF-12| O sistemas deverá conter aviso de controle de custos.  | MÉDIA |
+|RF-13| O sistemas deverá conter entrada e saida de custos   | BAIXA |
+|RF-14| O sistemas deverá ter relatórios sobre as receitas   | BAIXA |
 
 
 ### Requisitos não Funcionais
 
-|ID     | Descrição do Requisito  |Prioridade |
+|ID     | Descrição do Requisito  | Prioridade |
 |-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo | MÉDIA | 
-|RNF-002| o sistema deve processar requisições do usuário em, no máximo, 3s |  BAIXA | 
+|RNF-01| O sistema ultilizará liguagem TypeScript  com os frameworks NodeJs, AdonisJs e ReactJs   | ALTA | 
+|RNF-02| O sistema se comunicara com o banco de dados non-SQL MongoDB para armazenar os dados    | ALTA |
+|RNF-03| O sistema deverá ter conexao com internet     | ALTA |
+|RNF-04| O sistema devera ser responsivo    | ALTA |
+|RNF-05| O sistema devera ser coberto por testes automatizados utilizando o framework jest       | ALTA |
+|RNF-06| O sistema deve processar requisições do usuário em no máximo 3 segundos    | BAIXA |
+|RNF-07| O sistema sera hospedado em uma instancia Azuere/ou na plataforma heroku  | ALTA |
+|RNF-08| O sistema sera acompanhado via arquivos de LOG mensalmente  | MÉDIA |
+|RNF-09| Sera criado um aplicativo via powerApps como reserva   | BAIXA |
+|RNF-10| O sistema deverá conter entrada de doações de dinheiro    | BAIXA |
+|RNF-11| O desenvolvimento do sistema sera acompnhado via spints utilizando o github     | ALTA |
+|RNF-12| O sistemas sera feito utilizando o paradigma POO  | MÉDIA |
+|RNF-13| O sistemas deverá atender as normas legais sobre LGPD    | ALTA |
+|RNF-14| O sistemas deverá ser integrado via banco de dados com o powerapps   | ALTA | 
 
 Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
 
