@@ -1,8 +1,21 @@
 # Especificações do Projeto
 
 <span style="color:red">Pré-requisitos: <a href="1-Documentação de Contexto.md"> Documentação de Contexto</a></span>
+## Introdução 
+Esse documento tem o objetivo de especificar requisitos, que contemplação da aplicação do solução adequada para o desenvolvimento do aplicativo a partir perspectiva do  usuário apresentando a definição do problema a parte de histórias do futuro usuário, requisitos funcionais da proposta, requisitos não funcionais e  o levantamento de dados a respeito da discussão. 
+<br>
 
-Definição do problema e ideia de solução a partir da perspectiva do usuário. É composta pela definição do diagrama de personas (identifiquem, no mínimo, 2 personas), histórias de usuários (identifiquem, no mínimo, 3 histórias de usuários por persona), requisitos funcionais, requisitos não funcionais e artefatos produzidos para levantamento de dados).
+_UM BREVE HISTÓRICO_ 
+<br>
+A aplicação gerenciamento será implementado na  instituição sem fins lucrativos intitulada de GAAPO - Grupo de Assistência e Apoio ao Paciente Oncológico. 
+<br>
+
+"O objetivo do GAAPO além do acolhimento e amparo aos doentes e parcerias com diversas ONGs é também realizar palestras e desenvolver campanhas de prevenção e atenção ao câncer masculino, feminino e infantil, unindo a população de Poços De Caldas em prol do cuidado com o próximo. "
+<br>
+"Assim, distribui-se cerca de perucas e lenços mensalmente, além de fraldas geriátricas, próteses de mama, e cestas básicas. No momento a única fonte de renda tem sido poucas doações espontâneas, alguns eventos com parceria privada e o bazar de roupas usadas."
+<br>
+O contato com associação foi realizado através da professora Luciana De'Nardini, via virtual, pelo aplicativo  Microsoft Teams no dia 17/03/2023 - Sexta-feira, assim a equipe composta pelos alunos Gabriel Coetti, João Eduardo Lino, João Pedro Barbosa, Lucas Florentino, Marcelle Andrade e Mateus Boletta, poderão entrar em contado com a presidente Claudia  afim de realizar a coleta dos pré-requisitos, identificando dores, anseios e objetos. 
+<br>
 
 ## Personas
 
@@ -23,25 +36,12 @@ Exemplo:
 <img src="https://github.com/ICEI-PUC-Minas-PPC-CC/Template-MentoringII/blob/main/docs/img/camilafiaes.png" width="200" height="200"/>|**Idade:** 54 anos. **Naturalidade:** Poços de Caldas - Minas Gerais. **Ocupação:** Voluntaria - Contadora       |**Atribuições:** No GAAPO , compete a ela organizar de forma precisa os fluxos e as finanças da instituição de caridade.  
 |**Motivações:** Deseja que o fluxo de caixa seja mais organizado e automatizado. Visto que toda essas tarefas atualmente são realizadas em papel.    |**Frustações:** Dificuldade para gerenciar a receita ONG de forma clara e concisa , pois, trabalha paralelamente ao GAAPO e também dificuldade em gerenciar todos os dados gerado referente as doações em dinheiro e fluxo de caixa, principalmente pela forma arcaica como essa tarefa é executada.    |**Hobbies, história:** Gosta de passear com os seus cachorros e divide seu tempo assentindo Netflix e viajando com sua família. 
 
-Enumere e detalhe as personas da sua solução. Para isso, se necessário, leia um pouco mais sobre o assunto nos seguintes links:
 
-> **Links Úteis**:
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Mapa de Stalkeholders](https://www.racecomunicacao.com.br/blog/como-fazer-o-mapeamento-de-stakeholders/)
->
-Lembre-se que você deve ser enumerar e descrever precisamente e personalizada todos os clientes/beneficiários ideais que sua solução almeja.
-
-Para selecionar as imagens de suas personas, utilize o site: https://this-person-does-not-exist.com/pt
 
 ## Histórias de Usuários
 
 Com base na análise das personas, foram identificadas as seguintes histórias de usuários:
 
-Exemplo:
 
 |EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
 |--------------------|------------------------------------|----------------------------------------|
@@ -50,18 +50,6 @@ Exemplo:
 |Sophia Bruna Assis | Desejo que o fluxo de caixa seja mais organizado e automatizado. Visto que toda essas tarefas atualmente são realizadas em papel.   | A melhor maneira de armazenar dados, otimizando o precesso. E ter maior controle sobre os movimentos de entrada e saida de dinheiro.   |
 
 Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução ou para execução da sua prática extensionista/curso. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação e também para identificar as dores que sua prática extensionista irá minimizar/sanar. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
-
-> **Links Úteis**:
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
-> - [User Stories: requisitos que humanos entendem](https://www.luiztools.com.br/post/user-stories-descricao-de-requisitos-que-humanos-entendem/)
-> - [Histórias de Usuários: mais exemplos](https://www.reqview.com/doc/user-stories-example.html)
-> - [9 Common User Story Mistakes](https://airfocus.com/blog/user-story-mistakes/)
-
-## Obs.1: Caso seu grupo não vá desenvolver uma solução de software, as seções "requisitos funcionais", "requisitos não funcionais" e "restrições" DEVERÃO ser REMOVIDAS.
-## Obs.2: Caso seu grupo não vá desenvolver algum atividade que demande, uma pesquisa de campo através de questinários, a seção "artefatos para levantamento de dados" DEVERÁ ser REMOVIDA.
-
-As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto.
 
 ### Requisitos Funcionais
 
@@ -102,27 +90,3 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RNF-13| O sistemas deverá atender as normas legais sobre LGPD    | ALTA |
 |RNF-14| O sistemas deverá ser integrado via banco de dados com o powerapps   | ALTA | 
 
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
-
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
-
-### Artefatos para levantamento de dados
-
-Nesta seção, caso seu grupo vá realizar algum tipo de levantamento de dados/entrevistas, descreva o(s) artefato(s) produzidos para tal. Também deverá ser descrita qual estratégia será utilizada para este levantamento. Por exemplo: como os questionários serão aplicados? (_in loco_, via disponibilização pela _web_ etc), qual material/estratégia de divulgação será utilizado? 
-
-Não se preocupe em descrever os resultados agora, eles deverão ser descritos apenas na seção "Detalhamento preliminar" (Etapa 03).
