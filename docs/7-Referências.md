@@ -17,6 +17,8 @@ Como a tecnologia pode ajudar as ONGs. Disponível em: <https://www.portaldoimpa
 [6] COSTA, L. Gestão de ongs: entenda suas funções e impactos. MGN Consultoria, 11 mar. 2020. Disponível em: <https://mgnconsultoria.com.br/gestao-de-ongs-entenda-suas-funcoes-e-impactos/>. Acesso em: 19 mar. 2023
 <br>
 
+Decreto, Decreto-Lei, Emenda Constitucional, Emenda à Lei Orgânica, Lei Com- plementar, Lei Delegada, Lei Ordinária, Lei Orgânica e Medida Provisória, entre outros.
+
 [7] DISSE, O. DE S. Requisitos funcionais e não funcionais. entenda os 2 tipos. , 7 mar. 2018. Disponível em: <https://analisederequisitos.com.br/requisitos-funcionais-e-nao-funcionais/>. Acesso em: 21 mar. 2023
 <br>
 
@@ -29,11 +31,13 @@ Como a tecnologia pode ajudar as ONGs. Disponível em: <https://www.portaldoimpa
 [10] Organização Não Governamental (ONG). Disponível em: <https://www.todamateria.com.br/organizacao-nao-governamental/>. Acesso em: 19 mar. 2023.
 <br>
 
-[11] Requisito funcional. , 27 abr. 2021. (Nota técnica).
+[11]PRESIDÊNCIA DA REPÚBLICA SECRETARIA-GERAL. Subchefia para Assuntos Jurídicos nº LEI Nº 13.019, de 31 de julho de 2014. Lei. Subchefia para Assuntos Jurídicos, [S. l.], 2014. Disponível em: Subchefia para Assuntos Jurídicos. Acesso em: 21 mar. 2023.
+
+[12] Requisito funcional. , 27 abr. 2021. (Nota técnica).
 <br>
 
-[12] Requisito não funcional. , 21 nov. 2019. (Nota técnica).
+[13] Requisito não funcional. , 21 nov. 2019. (Nota técnica).
 <br>
 
-[13] Requisitos funcionais e requisitos não funcionais, o que são? Disponível em: <https://codificar.com.br/requisitos-funcionais-nao-funcionais/>. Acesso em: 21 mar. 2023
+[14] Requisitos funcionais e requisitos não funcionais, o que são? Disponível em: <https://codificar.com.br/requisitos-funcionais-nao-funcionais/>. Acesso em: 21 mar. 2023
 <br>
