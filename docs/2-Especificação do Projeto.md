@@ -10,9 +10,9 @@ _UM BREVE HISTÓRICO_
 A aplicação gerenciamento será implementado na  instituição sem fins lucrativos intitulada de GAAPO - Grupo de Assistência e Apoio ao Paciente Oncológico. 
 <br><br>
 
-"O objetivo do GAAPO além do acolhimento e amparo aos doentes e parcerias com diversas ONGs é também realizar palestras e desenvolver campanhas de prevenção e atenção ao câncer masculino, feminino e infantil, unindo a população de Poços De Caldas em prol do cuidado com o próximo. "
+"O objetivo do GAAPO além do acolhimento e amparo aos doentes e parcerias com diversas ONGs é também realizar palestras e desenvolver campanhas de prevenção e atenção ao câncer masculino, feminino e infantil, unindo a população de Poços De Caldas em prol do cuidado com o próximo. "(HELEVASOCIAL[8]).
 <br><br>
-"Assim, distribui-se cerca de perucas e lenços mensalmente, além de fraldas geriátricas, próteses de mama, e cestas básicas. No momento a única fonte de renda tem sido poucas doações espontâneas, alguns eventos com parceria privada e o bazar de roupas usadas."
+"Assim, distribui-se cerca de perucas e lenços mensalmente, além de fraldas geriátricas, próteses de mama, e cestas básicas. No momento a única fonte de renda tem sido poucas doações espontâneas, alguns eventos com parceria privada e o bazar de roupas usadas." (HELEVASOCIAL[8]).
 <br><br>
 O contato com associação foi realizado através da professora Luciana De'Nardini, via virtual, pelo aplicativo  Microsoft Teams no dia 17/03/2023 - Sexta-feira, assim a equipe composta pelos alunos Gabriel Coetti, João Eduardo Lino, João Pedro Barbosa, Lucas Florentino, Marcelle Andrade e Mateus Boletta, poderão entrar em contado com a presidente Claudia  afim de realizar a coleta dos pré-requisitos, identificando dores, anseios e objetos. 
 <br>
