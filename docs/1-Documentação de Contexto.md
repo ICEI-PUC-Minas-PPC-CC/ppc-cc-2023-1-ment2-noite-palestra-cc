@@ -42,5 +42,5 @@ Dessa maneira as ONG's estão configuradas no Terceiro Setor, sendo o mesmo de t
 ### A aplicação pode alcançar varias ONG'S
 Há softwares e aplicações de gerenciamento, porém não há algum destinado exclusivamente para essas entidades e de cunho gratuito. 
 ### A transformação tecnológica
-O mundo se transformou e junto com ele a forma de relacionamento e comunicação entre as pessoas, e como as organizações entregam valor para a sociedade. Nesse contexto, as ONGs que até então vinham caminhando de forma mais lenta em seus processos de inovação, agora precisam evoluir, com uso de tecnologias de comunicação para reuniões online e plataformas digitais para transmissão de conhecimento, e reduzindo as tecnologias em uma perspectiva meramente instrumental (Schlemmer et al., 2020).
+O mundo se transformou e junto com ele a forma de relacionamento e comunicação entre as pessoas, e como as organizações entregam valor para a sociedade. Nesse contexto, as ONGs que até então vinham caminhando de forma mais lenta em seus processos de inovação, agora precisam evoluir, com uso de tecnologias de comunicação para reuniões online e plataformas digitais para transmissão de conhecimento, e reduzindo as tecnologias em uma perspectiva meramente instrumental (Cesorio, et al., 2022 [5]).
 
