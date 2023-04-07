@@ -10,7 +10,6 @@ Apresente as principais interfaces da plataforma. Discuta como ela foi elaborada
 
 ## User Flow
 
-(img/User flow Telas GAAPO.jpg)
 
 > **Link**:
 Para melhor visualização no User Flow 
