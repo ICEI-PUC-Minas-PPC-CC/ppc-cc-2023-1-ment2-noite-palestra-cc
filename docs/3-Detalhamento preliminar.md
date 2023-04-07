@@ -1,7 +1,5 @@
 # Detalhamento preliminar
 
-## Obs.1: Caso seu grupo não vá desenvolver uma solução de software, as seções "projeto de interface" e "_user flow_" DEVERÃO ser REMOVIDAS.
-
 ## Projeto de Interface
 
 <span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a></span>
