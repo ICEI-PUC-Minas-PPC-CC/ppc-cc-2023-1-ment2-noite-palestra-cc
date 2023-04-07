@@ -9,12 +9,16 @@ Visão geral da interação do usuário pelas telas do sistema e protótipo inte
 Apresente as principais interfaces da plataforma. Discuta como ela foi elaborada de forma a atender os requisitos funcionais, não funcionais e histórias de usuário abordados nas <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a>.
 
 ## User Flow
-
+<img src="https://github.com/ICEI-PUC-Minas-PPC-CC/ppc-cc-2023-1-ment2-noite-palestra-cc/blob/main/docs/img/User%20flow%20Telas%20GAAPO.png"/>
 
 > **Link**:
 Para melhor visualização no User Flow 
 https://www.figma.com/file/HoaRk8k8rvVYMjjEpSczpq/User-flow-Telas-GAAPO?node-id=0%3A1&t=i4akHjrxtLroz6qV-1
 <br>
+
+> **Link**:
+Para protótipo navegável
+https://www.figma.com/proto/c92Yqm29xmgf8LGI8uPChH/Telas-aplica%C3%A7%C3%A3o-Web?page-id=0%3A1&node-id=65-108&viewport=-139%2C505%2C0.08&scaling=contain&starting-point-node-id=65%3A108
 
 ## Cronograma preliminar
 
