@@ -23,13 +23,12 @@ Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapea
 
 ## Cronograma preliminar
 
-Neta seção, deverá ser proposto o cronograma de execução das atividades/encontros ou então, de desenvolvimento das demais etapas do projeto.
-Ainda não é necessário incluir, neste momento, o material de apoio a ser utilizado em cada um dos encontros.
+O cronograma preliminar se dividirá em: 
 
-|Aula   | Descrição do conteúdo a ser abordado  | Tempo necessário |
-|------|-----------------------------------------|----|
-|1| Introdução à lógica de programação | 30 minutos | 
-|2| Introdução ao funcionamento de um compilador   | 20 minutos |
+|  Data |Conograma para o desenvolvimento                          | Tempo necessário |
+|-------|----------------------------------------------------------|------------------|
+|   1   | Introdução à lógica de programação                       |    30 minutos    | 
+|   2   | Introdução ao funcionamento de um compilador             |    20 minutos    |
 
 
 
