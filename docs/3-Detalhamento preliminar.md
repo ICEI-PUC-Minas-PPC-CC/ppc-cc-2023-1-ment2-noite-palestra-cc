@@ -25,7 +25,7 @@ Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapea
 
 O cronograma preliminar se dividirá em: 
 
-|     _Data_     |         _Conograma para o desenvolvimento_               |_Data de Términio_|
+|  _DATA ÍNICIO_ |         _CRONOGRAMA PARA DESENVOLVIMENTO_                | _DATA DE TÉRMINO_|
 |----------------|----------------------------------------------------------|------------------|
 |`Primeira Etapa* - ETAPA 1`                                                                   |
 |   07/03/2023   | Documentação de Contexto                                 |    19/03/2023    | 
@@ -46,7 +46,7 @@ O cronograma preliminar se dividirá em:
 |   02/06/2023   | Ajustes da Aplicação                                     |    06/06/2023    |
 |   06/06/2023   | Postagem de Código fonte no Github                       |    06/06/2023    |
 |   07/06/2023   | Feedback - GAAPO (Aplicação)                             |    13/06/2023    |
-|`Apresentação do Projeto* - ETAPA 5`                                                          | 
+|`Apresentação do Projeto - ETAPA 5`                                                          | 
 |   14/06/2023   | Definição de Título                                      |    14/06/2023    |
 |   14/06/2023   | Identidade Visual                                        |    19/06/2023    |
 |   20/06/2023   | Pitch de Apresentação                                    |    27/06/2023    |
