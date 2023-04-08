@@ -2,22 +2,19 @@
 
 ## Projeto de Interface
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a></span>
+As principais interfaces da plataforma encontram-se disponiveis no link do protótipo navegável. No protópipo pode-se encontrar os respectivos comentários a respeito de como ela foi elebaora para atender os requisitos funcionais, não funcionais e a história de usuário abordado na <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a>.
 
-Visão geral da interação do usuário pelas telas do sistema e protótipo interativo das telas com as funcionalidades que fazem parte do sistema (wireframes).
-
-Apresente as principais interfaces da plataforma. Discuta como ela foi elaborada de forma a atender os requisitos funcionais, não funcionais e histórias de usuário abordados nas <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a>.
+> **Link**:
+Para protótipo navegável
+https://www.figma.com/proto/c92Yqm29xmgf8LGI8uPChH/Telas-aplica%C3%A7%C3%A3o-Web?page-id=0%3A1&node-id=65-108&viewport=-139%2C505%2C0.08&scaling=contain&starting-point-node-id=65%3A108
 
 ## User Flow
+<img src="https://github.com/ICEI-PUC-Minas-PPC-CC/ppc-cc-2023-1-ment2-noite-palestra-cc/blob/main/docs/img/User%20flow%20Telas%20GAAPO.png"/>
 
-![Exemplo de UserFlow](img/userflow.jpg)
-
-Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapear todo fluxo de telas do site ou app. Essa técnica funciona para alinhar os caminhos e as possíveis ações que o usuário pode fazer junto com os membros de sua equipe.
-
-> **Links Úteis**:
-> - [User Flow: O Quê É e Como Fazer?](https://medium.com/7bits/fluxo-de-usu%C3%A1rio-user-flow-o-que-%C3%A9-como-fazer-79d965872534)
-> - [User Flow vs Site Maps](http://designr.com.br/sitemap-e-user-flow-quais-as-diferencas-e-quando-usar-cada-um/)
-> - [Top 25 User Flow Tools & Templates for Smooth](https://www.mockplus.com/blog/post/user-flow-tools)
+> **Link**:
+Para melhor visualização no User Flow 
+https://www.figma.com/file/HoaRk8k8rvVYMjjEpSczpq/User-flow-Telas-GAAPO?node-id=0%3A1&t=i4akHjrxtLroz6qV-1
+<br>
 
 ## Cronograma preliminar
 
@@ -33,8 +30,8 @@ O cronograma preliminar se dividirá em:
 |`Segunda Etapa - ETAPA 2`                                                                     |
 |   22/03/2023   | Detalhamento Preliminar                                  |    07/04/2023    |
 |`Artefatos da Sprint 1 - ETAPA 3`                                                             | 
-|   07/04/2023   | Definição da Tecnologia - Estudos                        |    07/05/2023    |
-|   10/04/2023   | Desenvolvimento no Wordpress - Front End                 |    25/04/2023    |
+|   07/04/2023   | Definição da Tecnologia - Estudos                        |    07/04/2023    |
+|   07/04/2023   | Desenvolvimento no Wordpress - Front End                 |    25/04/2023    |
 |   10/04/2023   | Postagem de Código fonte no Github                       |    25/04/2023    |
 |   14/04/2023   | Apresentação das telas para o GAAPO realizada no detalhamento preliminar                                                                                                                                                         |    14/04/2023    |
 |`Artefatos da Sprint 2 - ETAPA 4`                                                             |

@@ -57,6 +57,7 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
+|RF-01| O sistema deverá permitir login com os campos: nome, senha e atualização de senha caso haja esquecimento.Para restrição de acesso de usuários| ALTA |
 |RF-01| O sistema deverá permitir cadastro de alimento: nome, validade,quatidade, data de entrada, data de saida.  | ALTA |
 |RF-02| O sitema deverá permitir a criação de cestas básicas a partir dos alimento pré-cadastrados.   | ALTA |
 |RF-03| O sistema deverá mostrar guia de montagem da cesta básica.    | ALTA |
@@ -66,7 +67,7 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 |RF-07| O sistema deverá conter cadastro de beneficiario (nome, enderço, telefone,C.P.F.)   | ALTA |
 |RF-08| O sistema deverá conter cadastro de paciente oncologicos ( nome, endereço, telefone, C.P.F e N.I.S.)  | BAIXA |
 |RF-09| O sistema deverá aparesentar cadastro de voluntario/ usuário (nome , user ,senha e restrições)   | ALTA |
-|RF-10| O sistema deverá conter entrada de doações em dinheiro    | BAIXA |
+|RF-10| O sistema deverá conter CRUD de gerenciamento em dinheiro   | BAIXA |
 |RF-11| O sistema deverá conter gestão de empreentimos de equipamentos hospitalares.    | BAIXA |
 |RF-12| O sistemas deverá conter aviso de controle de custos.  | MÉDIA |
 |RF-13| O sistemas deverá conter entrada e saida de custos   | BAIXA |
