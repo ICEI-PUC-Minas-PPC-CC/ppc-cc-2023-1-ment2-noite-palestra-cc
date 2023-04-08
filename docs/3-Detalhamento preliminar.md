@@ -6,30 +6,31 @@ As principais interfaces da plataforma encontram-se disponiveis no link do prot�
 
 > **Link**:
 Para protótipo navegável
-https://www.figma.com/proto/c92Yqm29xmgf8LGI8uPChH/Telas-aplica%C3%A7%C3%A3o-Web?page-id=0%3A1&node-id=65-108&viewport=-139%2C505%2C0.08&scaling=contain&starting-point-node-id=65%3A108
+<https://www.figma.com/proto/c92Yqm29xmgf8LGI8uPChH/Telas-aplica%C3%A7%C3%A3o-Web?page-id=0%3A1&node-id=65-108&viewport=-139%2C505%2C0.08&scaling=contain&starting-point-node-id=65%3A108>
 
 ## User Flow
+
 <img src="https://github.com/ICEI-PUC-Minas-PPC-CC/ppc-cc-2023-1-ment2-noite-palestra-cc/blob/main/docs/img/User%20flow%20Telas%20GAAPO.png"/>
 
 > **Link**:
-Para melhor visualização no User Flow 
-https://www.figma.com/file/HoaRk8k8rvVYMjjEpSczpq/User-flow-Telas-GAAPO?node-id=0%3A1&t=i4akHjrxtLroz6qV-1
+Para melhor visualização no User Flow
+<https://www.figma.com/file/HoaRk8k8rvVYMjjEpSczpq/User-flow-Telas-GAAPO?node-id=0%3A1&t=i4akHjrxtLroz6qV-1>
 <br>
 
 ## Cronograma preliminar
 
-O cronograma preliminar se dividirá em: 
+O cronograma preliminar se dividirá em:
 
 |  _DATA ÍNICIO_ |         _CRONOGRAMA PARA DESENVOLVIMENTO_                | _DATA DE TÉRMINO_|
 |--------------- |----------------------------------------------------------|------------------|
 |`Primeira Etapa - ETAPA 1`                                                                    |
-|   07/03/2023   | Documentação de Contexto                                 |    19/03/2023    | 
+|   07/03/2023   | Documentação de Contexto                                 |    19/03/2023    |
 |   19/03/2023   | Especificação do Projeto                                 |    19/03/2023    |
 |   19/03/2023   | Rerências Bibliogramas                                   |    19/03/2023    |
 |   21/03/2023   | Entrega Primeira Etapa                                   |    21/03/2023    |
 |`Segunda Etapa - ETAPA 2`                                                                     |
 |   22/03/2023   | Detalhamento Preliminar                                  |    07/04/2023    |
-|`Artefatos da Sprint 1 - ETAPA 3`                                                             | 
+|`Artefatos da Sprint 1 - ETAPA 3`                                                             |
 |   07/04/2023   | Definição da Tecnologia - Estudos                        |    07/04/2023    |
 |   07/04/2023   | Desenvolvimento no Wordpress - Front End                 |    25/04/2023    |
 |   10/04/2023   | Postagem de Código fonte no Github                       |    25/04/2023    |
@@ -44,15 +45,10 @@ O cronograma preliminar se dividirá em:
 |   02/06/2023   | Ajustes da Aplicação                                     |    06/06/2023    |
 |   02/06/2023   | Postagem de Código fonte no Github                       |    06/06/2023    |
 |   07/06/2023   | Feedback - GAAPO (Aplicação)                             |    13/06/2023    |
-|`Apresentação do Projeto - ETAPA 5`                                                           | 
+|`Apresentação do Projeto - ETAPA 5`                                                           |
 |   14/06/2023   | Definição de Título                                      |    14/06/2023    |
 |   14/06/2023   | Identidade Visual                                        |    19/06/2023    |
 |   20/06/2023   | Pitch de Apresentação                                    |    27/06/2023    |
-|`Relatórios - ETAPA 6`                                                                        | 
+|`Relatórios - ETAPA 6`                                                                        |
 |   28/06/2023   | Preenchimento dos formulários referentes a prática extensionista no sistema GDE                                                                                                                                                 |    01/07/2023    |
 |   02/07/2023   | Atualização/entrega do porftólio                         |    07/07/2023    |
-
-
-
-
-
