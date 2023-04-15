@@ -7,11 +7,12 @@ import { UsersModule } from './users/users.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://admin:SRUTTUK3nblT0kaP@cluster.dwigyxm.mongodb.net/?retryWrites=true&w=majority',
+      'mongodb+srv://admin:SRUTTUK3nblT0kaP@cluster.dwigyxm.mongodb.net/?retryWrites=true&w=majorit',
     ),
     UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
+
 export class AppModule {}
