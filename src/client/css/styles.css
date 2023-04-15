@@ -1,0 +1,111 @@
+/*label {
+    display: flex;
+    flex-direction: row;
+  }*/
+  
+
+  /* Geral */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #323232;
+  }
+
+  body{
+    background-image: url('../img/Login.png');
+    background-size: cover;
+  }
+
+  textarea:focus, input:focus {
+    outline: none;
+  }
+
+  a, label {
+    font-size: .8rem; /* 16 * .8 = x */
+  }
+
+  a:hover {
+    color: #08558b;
+  }
+
+  /* Container login */
+
+  #login-container {
+    background-color: #fefefe;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 30px;
+    margin-top: 30vh;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  /* Formulário */
+
+  form{
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+
+  label, input {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input {
+    border: none;
+    border-bottom: 2px solid #6b6a6a;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  input:focus {
+    border-bottom: 2px solid #EB268F;
+  }
+
+  #forgot-pass {
+    text-align: right;
+    display: block;
+  }
+
+  
+  input[type="checkbox"] {
+    order: -1;
+    margin-right: 5px;
+  }
+
+  #manter-logado {
+    text-align: left;
+    display: block;
+  }
+
+
+  input[type="submit"] {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    height: 40px;
+    border-radius: 20px;
+    margin-top: 30px;
+    color: #fff;
+    background-color: #EB268F;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #743a59;
+    transition: .5s;
+  }
+
