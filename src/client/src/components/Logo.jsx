@@ -1,4 +1,4 @@
-import styles from '../components/css/Logo.module.css'
+import styles from '../css/Logo.module.css'
 import logo from "../assets/logo.png"
 
 export function Logo() {
