@@ -1,9 +1,9 @@
-import styles from '../components/css/Formulario.module.css'
+import { useState } from 'react';
+import styles from '../css/Formulario.module.css'
 import { Logo } from './Logo';
 
-
-
 export function Formulario() {
+    
     return (
         
         <>
@@ -17,7 +17,7 @@ export function Formulario() {
                     <label className={styles.userPassword}>Senha</label>
                     <input className={styles.password} type="password" name="password" id="pasword" placeholder="Digite a sua senha" />
                     <input className={styles.login} type="submit" value="Entrar"></input>
-                    <a className={styles.forgotPassword} href='#' >Esqueceu sua senha?</a>
+                    <a className={styles.forgotPassword} href='/forgot-password' >Esqueceu sua senha?</a>
                 </form>
             </div>
         </>

@@ -1,19 +1,16 @@
-import "./global.css"
-import styles from './App.module.css'
-import { Footer } from "./components/footer"
-import { Header } from './components/Header'
-import { Formulario } from "./components/formulario"
+import "./css/global.css"
+import styles from './css/App.module.css'
+import { BrowserRouter } from "react-router-dom"
+import { Router } from "../Routes"
 
 export function App() {
   return (
-
-      <div id="login-container">
-        <Header />
-        <Formulario />
-        <Footer />
-      </div>
-      
-  )
+    <div>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </div>
+  );
    
 }
 
