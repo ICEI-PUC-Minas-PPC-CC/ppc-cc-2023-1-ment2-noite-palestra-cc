@@ -32,7 +32,7 @@ O cronograma preliminar se dividirá em:
 |   22/03/2023   | Detalhamento Preliminar                                  |    07/04/2023    |
 |`Artefatos da Sprint 1 - ETAPA 3`                                                             |
 |   07/04/2023   | Definição da Tecnologia - Estudos                        |    07/04/2023    |
-|   07/04/2023   | Desenvolvimento em HTML, CSS e JavaScript- Front End     |    25/04/2023    |
+|   07/04/2023   | Desenvolvimento em React - Front End     |    25/04/2023    |
 |   10/04/2023   | Postagem de Código fonte no Github                       |    25/04/2023    |
 |   14/04/2023   | Apresentação das telas para o GAAPO realizada no detalhamento preliminar                                                                                                                                                         |    14/04/2023    |
 |`Artefatos da Sprint 2 - ETAPA 4`                                                             |
