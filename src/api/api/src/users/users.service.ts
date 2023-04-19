@@ -37,11 +37,15 @@ export class UsersService {
     return user;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  update(id: string, updateUserDto: UpdateUserDto) {
+    const { name, username } = updateUserDto;
+    return this.userModel
+      .updateOne({ _id: id }, { $set: { name, username } })
+      .exec();
   }
 
-  remove(id: number) {
+  async remove(id: string) {
+    await this.userModel.deleteOne({ _id: id }).exec();
     return `This action removes a #${id} user`;
   }
 }
