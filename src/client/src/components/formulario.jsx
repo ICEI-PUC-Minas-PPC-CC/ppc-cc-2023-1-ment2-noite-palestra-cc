@@ -2,11 +2,13 @@ import { useState } from "react";
 import styles from "../css/Formulario.module.css";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Logo } from "./Logo";
+import { InputAdornment } from "@mui/material";
 
-export function Formulario({user, setUser, password, setPassword, signIn}) {
+
+
+export function Formulario({ user, setUser, password, setPassword, signIn }) {
   const estilo = {
     display: "flex",
     flexDirection: "column",
@@ -19,17 +21,18 @@ export function Formulario({user, setUser, password, setPassword, signIn}) {
 
   return (
     <>
+      <FontAwesomeIcon icon="fa-regular fa-user" />
       <Logo />
       <div className={styles.formDiv}>
         <form>
           <h1 className={styles.titleH1}>LOGIN</h1>
           <TextField
-            required
-            id="standard-basic"
-            label="Usuário"
-            variant="standard"
-            sx={estilo} value={user} onChange={(v) => setUser(v.target.value)}
-          />
+              label='Usuário'
+              variant='standard'
+              sx={{ ...estilo }}
+              onChange={(v) => setUser(v.target.value)}
+              value={user}
+            />
           <TextField
             required
             type="password"
@@ -37,7 +40,8 @@ export function Formulario({user, setUser, password, setPassword, signIn}) {
             label="Senha"
             variant="standard"
             sx={{ ...estilo }}
-            value={password} onChange={(v) => setPassword(v.target.value)}
+            value={password}
+            onChange={(v) => setPassword(v.target.value)}
           />
           <Button
             sx={{
