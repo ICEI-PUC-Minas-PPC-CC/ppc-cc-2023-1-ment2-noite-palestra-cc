@@ -19,7 +19,7 @@ export function Login() {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.message == "Usuário autenticado!") {
+        if (data.response == "Usuário autenticado!") {
           navigation("/home");
         }
         else {

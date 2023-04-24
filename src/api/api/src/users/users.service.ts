@@ -5,6 +5,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './schemas/user.schema';
 import { LoginDTO } from './dto/login.dto';
+import { UpdatePasswordDto } from './dto/update-password.dto';
 
 @Injectable()
 export class UsersService {
@@ -37,11 +38,20 @@ export class UsersService {
     return user;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  update(id: string, updateUserDto: UpdateUserDto) {
+    const { name, username } = updateUserDto;
+    return this.userModel
+      .updateOne({ _id: id }, { $set: { name, username } })
+      .exec();
   }
 
-  remove(id: number) {
+  updatePassword(id: string, updatePasswordDto: UpdatePasswordDto) {
+    const { password } = updatePasswordDto;
+    return this.userModel.updateOne({ _id: id }, { $set: { password } }).exec();
+  }
+
+  async remove(id: string) {
+    await this.userModel.deleteOne({ _id: id }).exec();
     return `This action removes a #${id} user`;
   }
 }
