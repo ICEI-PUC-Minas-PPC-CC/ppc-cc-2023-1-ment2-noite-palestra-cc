@@ -1,4 +1,4 @@
-import { Injectable, HttpStatus } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -14,18 +14,18 @@ export class UsersService {
     private readonly userModel: Model<User>,
   ) {}
 
-  create(createUserDto: CreateUserDto) {
+  createUser(createUserDto: CreateUserDto) {
     const newUser = new this.userModel(createUserDto);
     newUser.save();
     return newUser;
   }
 
-  findAll() {
+  findAllUsers() {
     const allUsers = this.userModel.find();
     return allUsers;
   }
 
-  findOne(id: string) {
+  findOneUser(id: string) {
     const userId = this.userModel.findById(id);
     return userId;
   }
@@ -38,21 +38,19 @@ export class UsersService {
     return user;
   }
 
-  async verifyEmail(emailUser: string): Promise<boolean> {
-    const email_user = await this.userModel.findOne({
-      email: emailUser,
-    });
-    return !!email_user;
+  async verifyEmail(emailUser: string): Promise<string | null> {
+    const user = await this.userModel.findOne({ email: emailUser });
+    return user ? user._id.toString() : null;
   }
 
-  update(id: string, updateUserDto: UpdateUserDto) {
+  updateUserData(id: string, updateUserDto: UpdateUserDto) {
     const { name, username } = updateUserDto;
     return this.userModel
       .updateOne({ _id: id }, { $set: { name, username } })
       .exec();
   }
 
-  async remove(id: string) {
+  async removeUser(id: string) {
     await this.userModel.deleteOne({ _id: id }).exec();
     return `This action removes a #${id} user`;
   }
