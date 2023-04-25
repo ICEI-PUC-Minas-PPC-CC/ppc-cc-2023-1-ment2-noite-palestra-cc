@@ -5,6 +5,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './schemas/user.schema';
 import { LoginDTO } from './dto/login.dto';
+import { UpdatePasswordDto } from './dto/update-password.dto';
 
 @Injectable()
 export class UsersService {
@@ -37,10 +38,6 @@ export class UsersService {
     return user;
   }
 
-<<<<<<< Updated upstream
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-=======
   async verifyEmail(emailUser: string): Promise<boolean> {
     const email_user = await this.userModel.findOne({
       email: emailUser,
@@ -53,10 +50,10 @@ export class UsersService {
     return this.userModel
       .updateOne({ _id: id }, { $set: { name, username } })
       .exec();
->>>>>>> Stashed changes
   }
 
-  remove(id: number) {
+  async remove(id: string) {
+    await this.userModel.deleteOne({ _id: id }).exec();
     return `This action removes a #${id} user`;
   }
 }
