@@ -66,13 +66,13 @@ export class UsersController {
     return this.usersService.update(id, updateUserDto);
   }
 
-  // @Patch(':id/change-password')
-  // updatePassword(
-  //   @Param('id') id: string,
-  //   @Body() updatePasswordDto: UpdatePasswordDto,
-  // ) {
-  //   return this.usersService.updatePassword(id, updatePasswordDto);
-  // }
+  @Patch(':id/change-password')
+  updatePassword(
+    @Param('id') id: string,
+    @Body() updatePasswordDto: UpdatePasswordDto,
+  ) {
+    return this.usersService.updatePassword(id, updatePasswordDto);
+  }
 
   @Delete(':id')
   remove(@Param('id') id: string) {

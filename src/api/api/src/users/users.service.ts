@@ -56,4 +56,9 @@ export class UsersService {
     await this.userModel.deleteOne({ _id: id }).exec();
     return `This action removes a #${id} user`;
   }
+
+  updatePassword(id: string, updatePasswordDto: UpdatePasswordDto) {
+    const { password } = updatePasswordDto;
+    return this.userModel.updateOne({ _id: id }, { $set: { password } }).exec();
+  }
 }
