@@ -21,8 +21,8 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  createUser(@Body() createUserDto: CreateUserDto) {
+    return this.usersService.createUser(createUserDto);
   }
 
   @Post('/login')
@@ -42,28 +42,31 @@ export class UsersController {
   @Post('/verify-email')
   @HttpCode(200)
   async verifyEmail(@Body('email') email: string, @Res() res) {
-    const user = await this.usersService.verifyEmail(email);
+    const userID = await this.usersService.verifyEmail(email);
 
-    if (user) {
-      return res.json({ message: 'Email valido' });
+    if (userID) {
+      return res.status(200).json({ message: userID });
     }
 
-    return res.status(401).json({ message: 'Email invalido' });
+    return res.status(401).json({ message: 'Email inválido' });
   }
 
   @Get()
-  findAll() {
-    return this.usersService.findAll();
+  findAllUsers() {
+    return this.usersService.findAllUsers();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(id);
+  findOneUser(@Param('id') id: string) {
+    return this.usersService.findOneUser(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(id, updateUserDto);
+  updateUserData(
+    @Param('id') id: string,
+    @Body() updateUserDto: UpdateUserDto,
+  ) {
+    return this.usersService.updateUserData(id, updateUserDto);
   }
 
   @Patch(':id/change-password')
@@ -75,7 +78,7 @@ export class UsersController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(id);
+  removeUser(@Param('id') id: string) {
+    return this.usersService.removeUser(id);
   }
 }
