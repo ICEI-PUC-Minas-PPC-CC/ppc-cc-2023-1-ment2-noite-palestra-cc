@@ -8,11 +8,13 @@ import {
   Delete,
   HttpStatus,
   Res,
+  HttpCode,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { LoginDTO } from './dto/login.dto';
+import { UpdatePasswordDto } from './dto/update-password.dto';
 
 @Controller('users')
 export class UsersController {
@@ -37,6 +39,18 @@ export class UsersController {
       .json({ message: 'Credenciais inválidas!' });
   }
 
+  @Post('/verify-email')
+  @HttpCode(200)
+  async verifyEmail(@Body('email') email: string, @Res() res) {
+    const user = await this.usersService.verifyEmail(email);
+
+    if (user) {
+      return res.json({ message: 'Email valido' });
+    }
+
+    return res.status(401).json({ message: 'Email invalido' });
+  }
+
   @Get()
   findAll() {
     return this.usersService.findAll();
@@ -49,11 +63,19 @@ export class UsersController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+    return this.usersService.update(id, updateUserDto);
+  }
+
+  @Patch(':id/change-password')
+  updatePassword(
+    @Param('id') id: string,
+    @Body() updatePasswordDto: UpdatePasswordDto,
+  ) {
+    return this.usersService.updatePassword(id, updatePasswordDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
+    return this.usersService.remove(id);
   }
 }
