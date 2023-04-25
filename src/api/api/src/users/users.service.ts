@@ -37,8 +37,23 @@ export class UsersService {
     return user;
   }
 
+<<<<<<< Updated upstream
   update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
+=======
+  async verifyEmail(emailUser: string): Promise<boolean> {
+    const email_user = await this.userModel.findOne({
+      email: emailUser,
+    });
+    return !!email_user;
+  }
+
+  update(id: string, updateUserDto: UpdateUserDto) {
+    const { name, username } = updateUserDto;
+    return this.userModel
+      .updateOne({ _id: id }, { $set: { name, username } })
+      .exec();
+>>>>>>> Stashed changes
   }
 
   remove(id: number) {

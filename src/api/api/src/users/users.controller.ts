@@ -8,6 +8,7 @@ import {
   Delete,
   HttpStatus,
   Res,
+  HttpCode,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -35,6 +36,18 @@ export class UsersController {
     return res
       .status(HttpStatus.UNAUTHORIZED)
       .json({ message: 'Credenciais inválidas!' });
+  }
+
+  @Post('/verify-email')
+  @HttpCode(200)
+  async verifyEmail(@Body('email') email: string, @Res() res) {
+    const user = await this.usersService.verifyEmail(email);
+
+    if (user) {
+      return res.json({ message: 'Email valido' });
+    }
+
+    return res.status(401).json({ message: 'Email invalido' });
   }
 
   @Get()
