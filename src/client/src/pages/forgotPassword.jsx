@@ -1,5 +1,13 @@
+import { Header } from "../components/Header";
+import { Footer } from "../components/footer";
+import { FormForgotPassword } from "../components/formForgotPassword";
+
 export function ForgotPassword(){
     return(
-        <h1>Hello Password</h1>
+    <div>
+      <Header />
+        <FormForgotPassword />
+      <Footer />
+    </div>
     );
 }
