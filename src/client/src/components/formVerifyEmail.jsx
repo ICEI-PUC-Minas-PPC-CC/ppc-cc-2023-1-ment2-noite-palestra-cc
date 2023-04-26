@@ -3,26 +3,20 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { Logo } from "./Logo";
 
-export function FormForgotPassword(){
+export function FormVerifyEmail({email, setEmail, signIn}){
     
     return (
         <>
           <Logo />
           <div className={styles.formDiv}>
             <form>
-              <h1 className={styles.titleH1}>REDEFINIR SENHA</h1>
+              <h1 className={styles.titleH1}>VERICAR EMAIL</h1>
               <TextField
                 required
                 id="standard-basic"
-                label="Nova senha"
+                label="Email"
                 variant="standard" 
-              />
-              <TextField
-                required
-                type="password"
-                id="standard-basic"
-                label="Confirmar senha"
-                variant="standard"
+                value={email} onChange={(v) => setEmail(v.target.value)}
               />
               <Button
                 sx={{
@@ -36,8 +30,9 @@ export function FormForgotPassword(){
                   cursor: "pointer",
                 }}
                 variant="contained"  
+                onClick={signIn}
               >
-                REDEFINIR
+                VALIDAR
               </Button>
             </form>
           </div>
