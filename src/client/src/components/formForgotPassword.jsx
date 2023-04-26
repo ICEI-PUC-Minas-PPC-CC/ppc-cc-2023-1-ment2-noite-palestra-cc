@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { Logo } from "./Logo";
 
-export function FormForgotPassword(){
+export function FormForgotPassword({password, setPassword, verifyPassword, setVerifyPassword, signIn}){
     
     return (
         <>
@@ -13,9 +13,11 @@ export function FormForgotPassword(){
               <h1 className={styles.titleH1}>REDEFINIR SENHA</h1>
               <TextField
                 required
+                type="password"
                 id="standard-basic"
                 label="Nova senha"
-                variant="standard" 
+                variant="standard"
+                value={password} onChange={(v) => setPassword(v.target.value)}
               />
               <TextField
                 required
@@ -23,6 +25,7 @@ export function FormForgotPassword(){
                 id="standard-basic"
                 label="Confirmar senha"
                 variant="standard"
+                value={verifyPassword} onChange={(v) => setVerifyPassword(v.target.value)}
               />
               <Button
                 sx={{
@@ -35,7 +38,8 @@ export function FormForgotPassword(){
                   backgroundColor: "#EB268F",
                   cursor: "pointer",
                 }}
-                variant="contained"  
+                variant="contained" 
+                onClick={signIn} 
               >
                 REDEFINIR
               </Button>

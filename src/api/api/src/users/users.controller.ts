@@ -12,7 +12,6 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { LoginDTO } from './dto/login.dto';
 import { UpdatePasswordDto } from './dto/update-password.dto';
 
@@ -51,6 +50,15 @@ export class UsersController {
     return res.status(401).json({ message: 'Email inválido' });
   }
 
+  @Patch(':id/change-password')
+  async updatePassword(
+    @Param('id') id: string,
+    @Body() updatePasswordDto: UpdatePasswordDto,
+  ) {
+    console.log(updatePasswordDto);
+    return this.usersService.updatePassword(id, updatePasswordDto);
+  }
+
   @Get()
   findAllUsers() {
     return this.usersService.findAllUsers();
@@ -59,22 +67,6 @@ export class UsersController {
   @Get(':id')
   findOneUser(@Param('id') id: string) {
     return this.usersService.findOneUser(id);
-  }
-
-  @Patch(':id')
-  updateUserData(
-    @Param('id') id: string,
-    @Body() updateUserDto: UpdateUserDto,
-  ) {
-    return this.usersService.updateUserData(id, updateUserDto);
-  }
-
-  @Patch(':id/change-password')
-  updatePassword(
-    @Param('id') id: string,
-    @Body() updatePasswordDto: UpdatePasswordDto,
-  ) {
-    return this.usersService.updatePassword(id, updatePasswordDto);
   }
 
   @Delete(':id')
