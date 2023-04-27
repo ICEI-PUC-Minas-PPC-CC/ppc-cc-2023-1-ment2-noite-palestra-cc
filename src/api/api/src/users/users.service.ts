@@ -1,11 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './schemas/user.schema';
 import { LoginDTO } from './dto/login.dto';
 import { UpdatePasswordDto } from './dto/update-password.dto';
+import { UpdateResult } from 'mongodb';
 
 @Injectable()
 export class UsersService {
@@ -43,20 +43,36 @@ export class UsersService {
     return user ? user._id.toString() : null;
   }
 
-  updateUserData(id: string, updateUserDto: UpdateUserDto) {
-    const { name, username } = updateUserDto;
-    return this.userModel
-      .updateOne({ _id: id }, { $set: { name, username } })
-      .exec();
-  }
+  // updateUserData(id: string, updateUserDto: UpdateUserDto) {
+  //   const { name, username } = updateUserDto;
+  //   return this.userModel
+  //     .updateOne({ _id: id }, { $set: { name, username } })
+  //     .exec();
+  // }
 
   async removeUser(id: string) {
     await this.userModel.deleteOne({ _id: id }).exec();
     return `This action removes a #${id} user`;
   }
 
-  updatePassword(id: string, updatePasswordDto: UpdatePasswordDto) {
-    const { password } = updatePasswordDto;
-    return this.userModel.updateOne({ _id: id }, { $set: { password } }).exec();
+  async updatePassword(
+    id: string,
+    updatePasswordDto: UpdatePasswordDto,
+  ): Promise<{ success: boolean }> {
+    const { password, verifyPassword } = updatePasswordDto;
+    if (password === verifyPassword) {
+      const result: UpdateResult = await this.userModel
+        .updateOne({ _id: id }, { $set: { password: password } })
+        .exec();
+      if (result && result.modifiedCount > 0) {
+        return { success: true };
+      }
+      return { success: false };
+    } else {
+      throw new HttpException(
+        'As senhas não conferem',
+        HttpStatus.UNAUTHORIZED,
+      );
+    }
   }
 }

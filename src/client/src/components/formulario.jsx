@@ -56,7 +56,7 @@ export function Formulario({user, setUser, password, setPassword, signIn}) {
             {" "}
             Entrar{" "}
           </Button>
-          <a className={styles.forgotPassword} href="/forgot-password">
+          <a className={styles.forgotPassword} href="/verify-email">
             Esqueceu sua senha?
           </a>
         </form>
