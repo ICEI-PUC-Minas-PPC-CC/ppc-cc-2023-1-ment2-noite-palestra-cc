@@ -6,7 +6,7 @@ on:
 
 jobs:
     deploy:
-        name: Gcloud Auto Deploy
+        name: Deploy API
         runs-on: ubuntu-latest
         env:
             IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/api-gaapo:latest
