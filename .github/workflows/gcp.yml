@@ -23,6 +23,12 @@ jobs:
                   service_account_key: ${{ secrets.GCP_CREDENTIALS }}
                   project_id: ${{ secrets.GCP_PROJECT_ID }}
 
+            - name: Onde ta o projeto
+              run: pwd
+            
+            - name: lista arquivo
+              run: ls
+              
             # gcloud configure docker
             - name: Configure Docker
               run: gcloud auth configure-docker --quiet
