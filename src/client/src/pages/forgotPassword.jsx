@@ -23,7 +23,7 @@ export function ForgotPassword(){
       if (response.status === 200) {
         navigation('/')
       } else if (response.status === 401){
-        alert("Ocorreu um erro ao alterar a senha!");
+        alert("As senhas não conferem")
       }
     });
   }

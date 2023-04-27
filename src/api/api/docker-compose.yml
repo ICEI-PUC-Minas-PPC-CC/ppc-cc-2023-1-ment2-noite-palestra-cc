@@ -1,0 +1,27 @@
+version: "3" ## especifica a versão do docker-compose file
+
+services: ## Define um serviço
+    development: ## nome do serviço
+        build: ## localização do dockerfile
+            context: .
+            target: development
+        container_name: development
+        command: yarn dev ## comando a executar
+        ports:
+            - "4000:4000" ## redirecionamento de porta quando chegar alguma requisição na porta 4000 chama o container na porta 4000
+        volumes:
+            - .:/usr/app ## monitoro a pasta atual . e envio as alterações para /usr/app
+        tty: true
+        stdin_open: true ## Libera essa entrada pra rodar os comandos
+    production:
+        build: ## localização do dockerfile
+            context: .
+            target: production
+        container_name: production
+        command: yarn start ## comando a executar
+        ports:
+            - "8080:8080" ## redirecionamento de porta quando chegar alguma requisição na porta 4000 chama o container na porta 4000
+        volumes:
+            - .:/usr/app ## monitoro a pasta atual . e envio as alterações para /usr/app
+        tty: true
+        stdin_open: true ## Libera essa entrada pra rodar os comandos
