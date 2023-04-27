@@ -1,8 +1,8 @@
 import {Routes, Route} from 'react-router-dom'
-import {Login} from "./src/pages/Login"
-import {ForgotPassword} from "./src/pages/forgotPassword"
-import { Home } from './src/pages/home';
-import { VerifyEmail } from './src/pages/verifyEmail';
+import {Login} from "./pages/Login"
+import {ForgotPassword} from "./pages/forgotPassword"
+import { Home } from './pages/home';
+import { VerifyEmail } from './pages/verifyEmail';
 
 export function Router() {
     return(
