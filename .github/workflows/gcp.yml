@@ -24,23 +24,24 @@ jobs:
                   project_id: ${{ secrets.GCP_PROJECT_ID }}
 
             - name: Onde ta o projeto
-              run: pwd
+              run: cd src/api/api/ && pwd
             
             - name: lista arquivo
-              run: ls
-              
+              run: cd src/api/api/ && ls
+
             # gcloud configure docker
             - name: Configure Docker
-              run: gcloud auth configure-docker --quiet
+              run: cd src/api/api/ && gcloud auth configure-docker --quiet
 
+            
             # build image
             - name: Build Docker image
-              run: docker build --no-cache -t $IMAGE_NAME .
+              run: cd src/api/api/ && docker build --no-cache -t $IMAGE_NAME .
 
             # push image to registry
             - name: Push Docker image
-              run: docker push $IMAGE_NAME
+              run: cd src/api/api/ && docker push $IMAGE_NAME
 
             # deploy image
             - name: Deploy Docker image
-              run: gcloud run deploy api-gaapo --image $IMAGE_NAME --max-instances 5 --project ${{ secrets.GCP_PROJECT_ID }} --platform managed --region us-west1 --allow-unauthenticated
+              run: cd src/api/api/ && gcloud run deploy api-gaapo --image $IMAGE_NAME --max-instances 5 --project ${{ secrets.GCP_PROJECT_ID }} --platform managed --region us-west1 --allow-unauthenticated
