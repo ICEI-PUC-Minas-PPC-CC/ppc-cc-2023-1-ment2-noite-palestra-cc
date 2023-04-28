@@ -2,7 +2,7 @@ import {Routes, Route} from 'react-router-dom'
 import {Login} from "./pages/Login"
 import {ForgotPassword} from "./pages/forgotPassword"
 import { Home } from './pages/home';
-import { VerifyEmail } from './pages/verifyEmail';
+import { VerifyEmail } from './pages/VerifyEmail';
 
 export function Router() {
     return(

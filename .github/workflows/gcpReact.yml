@@ -1,0 +1,46 @@
+name: GCP
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+    deploy:
+        name: Deploy API
+        runs-on: ubuntu-latest
+        env:
+            IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/client-gaapo:latest
+        steps:
+            # Git checkout
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Navigate to Docker folder
+              run: cd src/client/
+            # Login to GCP
+            - uses: google-github-actions/setup-gcloud@v0.2.0
+              with:
+                  service_account_key: ${{ secrets.GCP_CREDENTIALS }}
+                  project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+            - name: Onde ta o projeto
+              run: cd src/client/ && pwd
+            
+            - name: lista arquivo
+              run: cd src/client/ && ls
+
+            # gcloud configure docker
+            - name: Configure Docker
+              run: cd src/client/ && gcloud auth configure-docker --quiet
+
+            # build image
+            - name: Build Docker image
+              run: cd src/client/ && docker build --no-cache -t $IMAGE_NAME .
+
+            # push image to registry
+            - name: Push Docker image
+              run: cd src/client/ && docker push $IMAGE_NAME
+
+            # deploy image
+            - name: Deploy Docker image
+              run: cd src/client/ && gcloud run deploy client-gaapo --image $IMAGE_NAME --max-instances 5 --project ${{ secrets.GCP_PROJECT_ID }} --platform managed --region us-west1 --allow-unauthenticated

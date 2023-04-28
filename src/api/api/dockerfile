@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:16 
 
 WORKDIR /usr/app
 
@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 4000
+EXPOSE 8080
 
 RUN npm run build
 
