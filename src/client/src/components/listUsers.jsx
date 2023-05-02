@@ -3,8 +3,9 @@ import styles from '../css/tableBox.module.css'
 import { useState, useEffect } from "react";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { IconButton } from '@mui/material';
+import { Button, IconButton, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 
 export function ListUsers() {
   const [usuarios, setUsuarios] = useState([]);
@@ -85,16 +86,73 @@ export function ListUsers() {
   const getRowId = (row) => row._id;
 
   return (
-    <div className={styles.table}>
-      <div style={{ height: 400, width: '80%', margin: '10% auto' }}>
-        <DataGrid
-          rows={usuarios}
-          columns={columns}
-          getRowId={getRowId}
-          paginationModel={{ page: 0, pageSize: 5 }}
-          checkboxSelection
-        />
-      </div>
+    <>
+    <div style={{ marginTop: '2%' }}>
+      <Box
+        sx={{
+          height: '50',
+          width: '100%',
+          padding: '16px',
+          border: '1px solid #D9D9D9',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          maxWidth: '80%',
+          margin: '0 auto',
+          boxSizing: 'border-box',
+          borderRadius: '5px',
+        }}
+      >
+      </Box>
     </div>
+    
+    <div style={{ marginTop: '1%' }}>
+      <Box
+        sx={{
+          height: '100%',
+          width: '100%',
+          padding: '16px',
+          border: '1px solid #D9D9D9',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          maxWidth: '80%',
+          margin: '0 auto',
+          boxSizing: 'border-box',
+          borderRadius: '5px',
+
+        }}
+      >
+        <div style={{ height: 400, width: '100%', overflow: 'auto' }}>
+        <div>
+          <div style={{ height: 280, width: '100%' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px'}}>
+              <Typography variant="h5" component="span" sx={{ mx: 1 }}>
+                Usuários Ativos
+              </Typography>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+              <Button variant="contained" startIcon={<PersonAddAlt1Icon  />} sx={{
+                backgroundColor: '#00992E',
+                marginLeft: 'auto'
+              }}>
+                Adicionar
+              </Button>
+            </div>
+            
+            <DataGrid
+              rows={usuarios}
+              columns={columns}
+              getRowId={getRowId}
+              paginationModel={{ page: 0, pageSize: 5 }}
+              checkboxSelection
+            />
+          </div>
+          </div>
+        </div>
+      </Box>
+    </div>
+    </>         
   );
 }
