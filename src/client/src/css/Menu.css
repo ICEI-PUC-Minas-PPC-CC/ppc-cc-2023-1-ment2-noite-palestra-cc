@@ -7,6 +7,14 @@
     overflow-x: hidden;
     transition: all 0.2s ease-out;
   }
+
+  .menu-container.open .menu-icon {
+    left: 260px;
+  }
+  
+  .menu-container.open .menu-items {
+    left: 0;
+  }
   
   .menu-container.open {
     width: 250px;
@@ -14,8 +22,8 @@
   
   .menu-icon{
     position: fixed;
-    top: 60px;
-    left: 20px;
+    top: 3rem;
+    left: 1rem;
     cursor: pointer;
     z-index: 2;
   }
@@ -28,7 +36,9 @@
 
   .menu-items {
     position: fixed;
-    top: 0;
+    align-items: center;
+    margin-bottom: 20px;
+    top: 40px;
     left: 0;
     bottom: 0;
     width: 250px;

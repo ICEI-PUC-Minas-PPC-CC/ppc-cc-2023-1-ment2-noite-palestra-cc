@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/Menu.css';
+import { Header } from './Header';
+import { MdHome } from 'react-icons/md';
 
 export function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,6 +13,7 @@ export function Menu() {
 
   return (
     <div className={`menu-container ${isMenuOpen ? 'open' : ''}`}>
+        <Header />
       <div className="menu-icon" onClick={toggleMenu}>
         <div className="line"></div>
         <div className="line"></div>
@@ -20,7 +23,10 @@ export function Menu() {
         <nav className="menu-items">
             <ul>
             <li>
-                <Link to="/">Início</Link>
+                <Link to="/">
+                    {/*<MdHome className="menu-icon" />*/}
+                    Início
+                    </Link>
             </li>
             <li>
                 <a href="#">Estoque</a>
