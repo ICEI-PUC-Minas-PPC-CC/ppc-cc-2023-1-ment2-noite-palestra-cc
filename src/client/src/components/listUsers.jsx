@@ -53,7 +53,7 @@ export function ListUsers() {
   const getRowId = (row) => row._id;
 
   return (
-    <div style={{ height: 400, width: '80%', margin: '10% auto'}}>    
+    <div style={{height: 400, width: '80%', margin: '10% auto'}}>    
     
       <DataGrid
         rows={usuarios}
