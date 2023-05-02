@@ -1,13 +1,14 @@
 import styles from "../css/Formulario.module.css";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { Logo } from "./Logo";
+import { LogoLogin } from "./LogoLogin";
+
 
 export function FormForgotPassword({password, setPassword, verifyPassword, setVerifyPassword, signIn}){
     
     return (
         <>
-          <Logo />
+          <LogoLogin />
           <div className={styles.formDiv}>
             <form>
               <h1 className={styles.titleH1}>REDEFINIR SENHA</h1>

@@ -1,13 +1,14 @@
 import styles from "../css/Formulario.module.css";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { Logo } from "./Logo";
+import { LogoLogin } from "./LogoLogin";
+
 
 export function FormVerifyEmail({email, setEmail, signIn}){
     
     return (
         <>
-          <Logo />
+          <LogoLogin />
           <div className={styles.formDiv}>
             <form>
               <h1 className={styles.titleH1}>VERICAR EMAIL</h1>

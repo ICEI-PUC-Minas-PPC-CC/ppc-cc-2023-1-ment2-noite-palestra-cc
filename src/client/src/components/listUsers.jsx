@@ -1,12 +1,14 @@
 import { DataGrid } from '@mui/x-data-grid';
+import styles from '../css/tableBox.module.css'
 import { useState, useEffect } from "react";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from '@mui/material';
+import Box from '@mui/material/Box';
 
 export function ListUsers() {
   const [usuarios, setUsuarios] = useState([]);
- 
+
   useEffect(() => {
     const getUsers = () => {
       fetch("http://localhost:8080/users", {
@@ -15,24 +17,24 @@ export function ListUsers() {
           "Content-Type": "application/json",
         },
       })
-      .then(response => response.json())
-      .then(data => {
-        setUsuarios(data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+        .then(response => response.json())
+        .then(data => {
+          setUsuarios(data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     };
 
     getUsers();
 
     const interval = setInterval(() => {
       getUsers();
-    }, 5000); // atualiza a cada 5 segundos
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
-  
+
   const deleteUser = (id) => {
     fetch(`http://localhost:8080/users/${id}`, {
       method: "DELETE",
@@ -42,7 +44,7 @@ export function ListUsers() {
     })
       .then(response => {
         if (response.status === 200) {
-            getUsers(); // atualiza a lista de usuários após a exclusão
+          getUsers();
         } else if (response.status === 401) {
           console.log("Usuário não autorizado para exclusão.");
         } else {
@@ -54,8 +56,8 @@ export function ListUsers() {
         console.log(error);
       });
   };
-  
-  
+
+
   const columns = [
     { field: '_id', headerName: 'ID', width: 250 },
     { field: 'name', headerName: 'NOME', width: 250 },
@@ -79,18 +81,20 @@ export function ListUsers() {
       },
     },
   ];
-  
+
   const getRowId = (row) => row._id;
 
   return (
-    <div style={{height: 400, width: '80%', margin: '10% auto'}}>    
-      <DataGrid
-        rows={usuarios}
-        columns={columns}
-        getRowId={getRowId} 
-        paginationModel={{ page: 0, pageSize: 5 }}
-        checkboxSelection
-      />
+    <div className={styles.table}>
+      <div style={{ height: 400, width: '80%', margin: '10% auto' }}>
+        <DataGrid
+          rows={usuarios}
+          columns={columns}
+          getRowId={getRowId}
+          paginationModel={{ page: 0, pageSize: 5 }}
+          checkboxSelection
+        />
+      </div>
     </div>
   );
 }

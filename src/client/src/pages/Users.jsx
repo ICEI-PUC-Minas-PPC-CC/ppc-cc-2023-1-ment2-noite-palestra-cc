@@ -1,11 +1,14 @@
-import { Header } from "../components/Header";
+
+import { HeaderDefault } from "../components/HeaderDefault";
 import { Footer } from "../components/footer";
 import { ListUsers } from "../components/listUsers";
+import SubHeader from "../components/subHeader";
 
 export function Users() {
     return (
         <div>
-            <Header />
+            <HeaderDefault />
+            <SubHeader />
             <ListUsers />
             <Footer />
         </div>

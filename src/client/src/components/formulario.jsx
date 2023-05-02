@@ -2,9 +2,7 @@ import { useState } from "react";
 import styles from "../css/Formulario.module.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-
-
-import { Logo } from "./Logo";
+import { LogoLogin } from "./LogoLogin";
 
 export function Formulario({user, setUser, password, setPassword, signIn}) {
   const estilo = {
@@ -19,7 +17,7 @@ export function Formulario({user, setUser, password, setPassword, signIn}) {
 
   return (
     <>
-      <Logo />
+      <LogoLogin />
       <div className={styles.formDiv}>
         <form>
           <h1 className={styles.titleH1}>LOGIN</h1>
