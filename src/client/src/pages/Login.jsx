@@ -5,23 +5,20 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "@mui/material";
 import styles from '../css/Formulario.module.css'
+import Rotas from "../api";
 
 export function Login() {
+  const routes = new Rotas()
   const navigation = useNavigate();
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(null);
 
   const signIn = () => {
-    fetch("http://localhost:8080/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username: user, password: password }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
+    const data = { username: user, password: password };
+    routes.post('users/login', data)
+      .then((response) => {
+        const data = response.data;
         if (data.message === "Usuário autenticado!") {
           navigation("/home");
         } else {
@@ -32,7 +29,8 @@ export function Login() {
         console.error(error);
         setLoginError("Ocorreu um erro ao efetuar login!");
       });
-  };
+  }
+  
 
   return (
     <div id="login-container">

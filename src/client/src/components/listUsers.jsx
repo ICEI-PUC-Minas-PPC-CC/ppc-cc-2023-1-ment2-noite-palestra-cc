@@ -6,22 +6,16 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, IconButton, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
+import Rotas  from '../api';
 
 export function ListUsers() {
   const [usuarios, setUsuarios] = useState([]);
+  const routes = new Rotas()
 
   useEffect(() => {
     const getUsers = () => {
-      fetch("http://localhost:8080/users", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then(response => response.json())
-        .then(data => {
-          setUsuarios(data);
-        })
+      routes.get('/users')
+        .then(response => setUsuarios(response.data ))
         .catch(error => {
           console.log(error);
         });
@@ -37,12 +31,7 @@ export function ListUsers() {
   }, []);
 
   const deleteUser = (id) => {
-    fetch(`http://localhost:8080/users/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+       routes.delete('/users', id)
       .then(response => {
         if (response.status === 200) {
           getUsers();
