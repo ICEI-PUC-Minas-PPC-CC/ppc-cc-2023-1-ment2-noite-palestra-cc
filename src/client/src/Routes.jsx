@@ -8,8 +8,8 @@ import { Users } from './pages/Users';
 export function Router() {
     return(
         <Routes>
-                <Route path='/' element={<Login />}/>
-                <Route path='/home' element={<Home />} /> 
+                <Route path='/login' element={<Login />}/>
+                <Route path='/' element={<Home />} /> 
                 <Route path='/verify-email' element={<VerifyEmail />} />
                 <Route path='/:id/forgot-password' element={ <ForgotPassword /> }/>
                 <Route path='/users' element={ <Users />} />

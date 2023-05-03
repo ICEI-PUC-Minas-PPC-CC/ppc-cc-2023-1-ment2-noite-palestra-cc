@@ -20,16 +20,3 @@ export default class Rotas {
     }
 }
 
-
-/**
- * 
- * public static get(url: string, id: string = '', payload: any = {}): Promise<AxiosResponse> {
-    const config = {
-      params: payload.params,
-      paramsSerializer: (data: any) => stringify(data),
-    };
-    return new Promise<AxiosResponse>((resolve) => {
-      resolve(api.get(`${url}/${id}`, config));
-    });
-  }
- */
