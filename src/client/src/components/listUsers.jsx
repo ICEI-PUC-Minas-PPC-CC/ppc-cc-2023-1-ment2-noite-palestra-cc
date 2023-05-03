@@ -66,7 +66,7 @@ export function ListUsers() {
     { field: 'created', headerName: 'DATA', width: 180 },
     {
       field: 'actions',
-      headerName: 'Ações',
+      headerName: 'AÇÕES',
       width: 130,
       renderCell: (params) => {
         return (
