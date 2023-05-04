@@ -2,6 +2,8 @@ import styles from "../css/Formulario.module.css";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { LogoLogin } from "./LogoLogin";
+import { InputAdornment } from "@mui/material";
+import HttpsIcon from '@mui/icons-material/Https';
 
 
 export function FormForgotPassword({password, setPassword, verifyPassword, setVerifyPassword, signIn}){
@@ -13,19 +15,28 @@ export function FormForgotPassword({password, setPassword, verifyPassword, setVe
             <form>
               <h1 className={styles.titleH1}>REDEFINIR SENHA</h1>
               <TextField
-                required
                 type="password"
                 id="standard-basic"
                 label="Nova senha"
                 variant="standard"
+                InputProps={{
+                  startAdornment: <InputAdornment><HttpsIcon fontSize="small"/></InputAdornment>,
+                }}
                 value={password} onChange={(v) => setPassword(v.target.value)}
               />
               <TextField
-                required
                 type="password"
                 id="standard-basic"
                 label="Confirmar senha"
                 variant="standard"
+                InputProps={{
+                  startAdornment: <InputAdornment><HttpsIcon fontSize="small"/></InputAdornment>,
+                }}
+                sx={
+                  {
+                    marginTop: '25px'
+                  }
+                }
                 value={verifyPassword} onChange={(v) => setVerifyPassword(v.target.value)}
               />
               <Button
