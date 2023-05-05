@@ -38,6 +38,14 @@ export class UsersController {
       .json({ message: 'Credenciais inválidas!' });
   }
 
+  @Post('/findUser')
+  async findUser(@Body() name: string) {
+    const user = await this.usersService.findUser(name);
+    if (user) {
+      return user;
+    }
+  }
+
   @Post('/verify-email')
   @HttpCode(200)
   async verifyEmail(@Body('email') email: string, @Res() res) {

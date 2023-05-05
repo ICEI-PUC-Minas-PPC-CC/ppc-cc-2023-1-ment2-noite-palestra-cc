@@ -43,6 +43,11 @@ export class UsersService {
     return user ? user._id.toString() : null;
   }
 
+  async findUser(name: string) {
+    const user = await this.userModel.find({ name: name });
+    return user;
+  }
+
   // updateUserData(id: string, updateUserDto: UpdateUserDto) {
   //   const { name, username } = updateUserDto;
   //   return this.userModel
