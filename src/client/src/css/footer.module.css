@@ -1,9 +1,22 @@
+/* footer.module.css */
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto; /* Faz com que o conteúdo principal preencha todo o espaço disponível */
+}
+
 .Footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 5%; 
-    background: #eb268f;
-  }
-  
+  flex-shrink: 0; /* Impede que o rodapé diminua de tamanho */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5%;
+  background-color: #eb268f;
+  z-index: 1;
+}

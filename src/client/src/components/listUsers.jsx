@@ -1,5 +1,5 @@
-import { DataGrid } from '@mui/x-data-grid';
-import styles from '../css/tableBox.module.css'
+import { DataGrid, ptBR  } from '@mui/x-data-grid';
+import styles from '../css/tableBox.module.css';
 import { useState, useEffect } from "react";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -54,7 +54,15 @@ export function ListUsers() {
     { field: 'name', headerName: 'NOME', width: 250 },
     { field: 'username', headerName: 'USER', width: 180 },
     { field: 'email', headerName: 'EMAIL', width: 180 },
-    { field: 'createdAt', headerName: 'DATA', width: 180 },
+    { 
+      field: 'createdAt', 
+      headerName: 'DATA', 
+      width: 180, 
+      valueGetter: (params) => {
+        const date = new Date(params.value);
+        return date.toLocaleDateString("pt-BR");
+      }
+    },
     {
       field: 'actions',
       headerName: 'AÇÕES',
@@ -73,6 +81,7 @@ export function ListUsers() {
       },
     },
   ];
+  
 
   const getRowId = (row) => row._id;
 
@@ -105,12 +114,12 @@ export function ListUsers() {
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', marginTop: '50px' }}>
-                  <TextField fullWidth id="outlined-basic" label="Pesquise o nome do usuário..." variant="outlined" size="small" sx={{
+                  <TextField fullWidth id="outlined-basic" label="Pesquise o nome do usuário" variant="outlined" size="small" sx={{
                     marginRight: '25px'
+                  }} InputProps={{
+                    startAdornment: <InputAdornment><SearchIcon sx={{ color: '#D9D9D9' }} fontSize="small" /></InputAdornment>,
                   }} />
-                  <IconButton  type="button" sx={{ p: '10px', marginRight: '25px' }} aria-label="search">
-                      <SearchIcon />
-                    </IconButton>
+
                   <Button variant="contained" startIcon={<PersonAddAlt1Icon />} sx={{
                     backgroundColor: '#00992E',
                     marginLeft: 'auto'
@@ -127,9 +136,16 @@ export function ListUsers() {
                   }}
                   rows={usuarios}
                   columns={columns}
+                  localeText={ptBR.components.MuiDataGrid.defaultProps.localeText}
                   getRowId={getRowId}
-                  paginationModel={{ page: 1, pageSize: 5 }}
-                  checkboxSelection
+                  initialState={{
+                    pagination: {
+                      paginationModel: {
+                        pageSize: 5,
+                      },
+                    },
+                  }}
+                  pageSizeOptions={[5]}
                 />
               </div>
             </div>
