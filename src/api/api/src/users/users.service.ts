@@ -30,6 +30,12 @@ export class UsersService {
     return userId;
   }
 
+  async searchUsers(letter: string): Promise<User[]> {
+    console.log(letter);
+    const regex = new RegExp(`^${letter}`, 'i');
+    return this.userModel.find({ name: regex }).exec();
+  }
+
   async login(login: LoginDTO) {
     const user = await this.userModel.findOne({
       username: login.username,

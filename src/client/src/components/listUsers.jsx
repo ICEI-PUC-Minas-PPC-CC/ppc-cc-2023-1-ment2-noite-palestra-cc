@@ -1,5 +1,4 @@
-import { DataGrid, ptBR  } from '@mui/x-data-grid';
-import styles from '../css/tableBox.module.css';
+import { DataGrid, ptBR } from '@mui/x-data-grid';
 import { useState, useEffect } from "react";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -11,6 +10,8 @@ import Rotas from '../api';
 
 export function ListUsers() {
   const [usuarios, setUsuarios] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [isTextFieldEmpty, setIsTextFieldEmpty] = useState(true);
   const routes = new Rotas()
 
   useEffect(() => {
@@ -24,11 +25,6 @@ export function ListUsers() {
 
     getUsers();
 
-    const interval = setInterval(() => {
-      getUsers();
-    }, 5000);
-
-    return () => clearInterval(interval);
   }, []);
 
   const deleteUser = (id) => {
@@ -48,16 +44,53 @@ export function ListUsers() {
       });
   };
 
+  const handleSearchTextChange = (event) => {
+    const searchValue = event.target.value;
+    setSearchValue(searchValue);
+    if (searchValue === "") {
+      setIsTextFieldEmpty(true); 
+    } else {
+      setIsTextFieldEmpty(false); 
+    }
+  };
+
+  useEffect(() => {
+    let timerId;
+    if (!isTextFieldEmpty) {
+      timerId = setTimeout(() => {
+        routes
+          .get(`/users/search-users?letter=${searchValue}`)
+          .then((response) => {
+            setUsuarios(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }, 1000); // aguardar 1 segundo antes de executar a pesquisa
+    } else { // se o campo estiver vazio, carrega todos os usuários
+      routes
+        .get('/users')
+        .then((response) => {
+          setUsuarios(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
+    return () => clearTimeout(timerId); // limpar o timeout se o componente for desmontado
+  }, [searchValue, isTextFieldEmpty]);
+
 
   const columns = [
     { field: '_id', headerName: 'ID', width: 250 },
     { field: 'name', headerName: 'NOME', width: 250 },
     { field: 'username', headerName: 'USER', width: 180 },
     { field: 'email', headerName: 'EMAIL', width: 180 },
-    { 
-      field: 'createdAt', 
-      headerName: 'DATA', 
-      width: 180, 
+    {
+      field: 'createdAt',
+      headerName: 'DATA',
+      width: 180,
       valueGetter: (params) => {
         const date = new Date(params.value);
         return date.toLocaleDateString("pt-BR");
@@ -81,7 +114,7 @@ export function ListUsers() {
       },
     },
   ];
-  
+
 
   const getRowId = (row) => row._id;
 
@@ -117,8 +150,8 @@ export function ListUsers() {
                   <TextField fullWidth id="outlined-basic" label="Pesquise o nome do usuário" variant="outlined" size="small" sx={{
                     marginRight: '25px'
                   }} InputProps={{
-                    startAdornment: <InputAdornment><SearchIcon sx={{ color: '#D9D9D9' }} fontSize="small" /></InputAdornment>,
-                  }} />
+                    startAdornment: <InputAdornment position="start"><SearchIcon fontSize="small" /></InputAdornment>,
+                  }} value={searchValue} onChange={handleSearchTextChange} />
 
                   <Button variant="contained" startIcon={<PersonAddAlt1Icon />} sx={{
                     backgroundColor: '#00992E',

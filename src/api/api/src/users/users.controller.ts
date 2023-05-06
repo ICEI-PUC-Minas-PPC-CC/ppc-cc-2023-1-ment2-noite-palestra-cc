@@ -9,6 +9,7 @@ import {
   HttpStatus,
   Res,
   HttpCode,
+  Query,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -44,6 +45,11 @@ export class UsersController {
     if (user) {
       return user;
     }
+  }
+
+  @Get('/search-users')
+  async findByLetter(@Query('letter') letter: string) {
+    return this.usersService.searchUsers(letter);
   }
 
   @Post('/verify-email')
