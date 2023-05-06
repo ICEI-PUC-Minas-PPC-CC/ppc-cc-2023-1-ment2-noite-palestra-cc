@@ -1,5 +1,6 @@
 import { DataGrid, ptBR } from '@mui/x-data-grid';
 import { useState, useEffect } from "react";
+import React from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
@@ -7,11 +8,15 @@ import Box from '@mui/material/Box';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import SearchIcon from '@mui/icons-material/Search';
 import Rotas from '../api';
+import ModalDelete from './modal_deleteUser';
+import FormDelUser from './formDelUser';
 
 export function ListUsers() {
   const [usuarios, setUsuarios] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [isTextFieldEmpty, setIsTextFieldEmpty] = useState(true);
+  const [openPopup, setOpenPopup] = useState(false);
+  const [userId, setUserId] = React.useState(null);
   const routes = new Rotas()
 
   useEffect(() => {
@@ -27,30 +32,27 @@ export function ListUsers() {
 
   }, []);
 
-  const deleteUser = (id) => {
-    routes.delete('/users', id)
-      .then(response => {
-        if (response.status === 200) {
-          getUsers();
-        } else if (response.status === 401) {
-          console.log("Usuário não autorizado para exclusão.");
-        } else {
-          console.log("Ocorreu um erro na exclusão do usuário.");
-          console.log(id)
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
+  const handleDelete = () => {
+    setOpenPopup(false);
+}
+
+const handleCancel = () => {
+    setOpenPopup(false);
+}
+
+
+  const deleteUser = (userId) => {
+    setUserId(userId);
+    setOpenPopup(true);
+  }
 
   const handleSearchTextChange = (event) => {
     const searchValue = event.target.value;
     setSearchValue(searchValue);
     if (searchValue === "") {
-      setIsTextFieldEmpty(true); 
+      setIsTextFieldEmpty(true);
     } else {
-      setIsTextFieldEmpty(false); 
+      setIsTextFieldEmpty(false);
     }
   };
 
@@ -66,8 +68,8 @@ export function ListUsers() {
           .catch((error) => {
             console.log(error);
           });
-      }, 1000); // aguardar 1 segundo antes de executar a pesquisa
-    } else { // se o campo estiver vazio, carrega todos os usuários
+      }, 1000);
+    } else {
       routes
         .get('/users')
         .then((response) => {
@@ -78,7 +80,7 @@ export function ListUsers() {
         });
     }
 
-    return () => clearTimeout(timerId); // limpar o timeout se o componente for desmontado
+    return () => clearTimeout(timerId);
   }, [searchValue, isTextFieldEmpty]);
 
 
@@ -106,6 +108,9 @@ export function ListUsers() {
             <IconButton aria-label="edit" size="small">
               <EditIcon />
             </IconButton>
+            {/* <IconButton onClick={() => deleteUser(params.row._id)} aria-label="delete" size="small">
+              <DeleteIcon />
+            </IconButton> */}
             <IconButton onClick={() => deleteUser(params.row._id)} aria-label="delete" size="small">
               <DeleteIcon />
             </IconButton>
@@ -185,6 +190,9 @@ export function ListUsers() {
           </div>
         </Box>
       </div>
+      <ModalDelete title="Apagar Usuário" openPopup={openPopup} setOpenPopup={setOpenPopup} onDeleteSuccess={() => getUsers()} >
+        <FormDelUser userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel}/>
+      </ModalDelete>
     </>
   );
 }
