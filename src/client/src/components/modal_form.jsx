@@ -1,7 +1,7 @@
 import { Dialog, DialogContent, DialogTitle } from '@mui/material'
 import React from 'react'
 
-export default function ModalDelete(props){
+export default function ModalForm(props){
     const { title, children, openPopup, setOpenPopup } = props
 
     return (

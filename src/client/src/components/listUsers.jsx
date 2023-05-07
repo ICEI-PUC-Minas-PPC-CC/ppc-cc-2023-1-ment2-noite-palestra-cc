@@ -8,14 +8,18 @@ import Box from '@mui/material/Box';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import SearchIcon from '@mui/icons-material/Search';
 import Rotas from '../api';
-import ModalDelete from './modal_deleteUser';
+import ModalForm from './modal_form';
 import FormDelUser from './formDelUser';
+import FormCreateUser from './form_createUser';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 export function ListUsers() {
   const [usuarios, setUsuarios] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [isTextFieldEmpty, setIsTextFieldEmpty] = useState(true);
   const [openPopup, setOpenPopup] = useState(false);
+  const [openCreateUserPopup, setOpenCreateUserPopup] = useState(false);
+  const [openUpdateUserPopup, setOpenUpdateUserPopup] = useState(false);
   const [userId, setUserId] = React.useState(null);
   const routes = new Rotas()
 
@@ -34,17 +38,25 @@ export function ListUsers() {
 
   const handleDelete = () => {
     setOpenPopup(false);
-}
+  }
 
-const handleCancel = () => {
+  const handleCancel = () => {
     setOpenPopup(false);
-}
+  }
 
 
   const deleteUser = (userId) => {
     setUserId(userId);
     setOpenPopup(true);
   }
+
+  const handleContinueClick = () => {
+    setOpenCreateUserPopup(false);
+  };
+
+  const handleCancelClick = () => {
+    setOpenCreateUserPopup(false);
+  };
 
   const handleSearchTextChange = (event) => {
     const searchValue = event.target.value;
@@ -108,9 +120,6 @@ const handleCancel = () => {
             <IconButton aria-label="edit" size="small">
               <EditIcon />
             </IconButton>
-            {/* <IconButton onClick={() => deleteUser(params.row._id)} aria-label="delete" size="small">
-              <DeleteIcon />
-            </IconButton> */}
             <IconButton onClick={() => deleteUser(params.row._id)} aria-label="delete" size="small">
               <DeleteIcon />
             </IconButton>
@@ -158,10 +167,15 @@ const handleCancel = () => {
                     startAdornment: <InputAdornment position="start"><SearchIcon fontSize="small" /></InputAdornment>,
                   }} value={searchValue} onChange={handleSearchTextChange} />
 
-                  <Button variant="contained" startIcon={<PersonAddAlt1Icon />} sx={{
+                  <Button variant="contained" startIcon={<PersonAddIcon />} sx={{
                     backgroundColor: '#00992E',
                     marginLeft: 'auto'
-                  }}>
+                  }}
+                    onClick={() => {
+                      console.log('Botão "Adicionar" clicado');
+                      setOpenCreateUserPopup(true);
+                    }}
+                  >
                     Adicionar
                   </Button>
                 </div>
@@ -190,9 +204,13 @@ const handleCancel = () => {
           </div>
         </Box>
       </div>
-      <ModalDelete title="Apagar Usuário" openPopup={openPopup} setOpenPopup={setOpenPopup} onDeleteSuccess={() => getUsers()} >
-        <FormDelUser userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel}/>
-      </ModalDelete>
+      <ModalForm title="APAGAR USUÁRIO" openPopup={openPopup} setOpenPopup={setOpenPopup} onDeleteSuccess={() => getUsers()} >
+        <FormDelUser userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel} />
+      </ModalForm>
+
+      <ModalForm title="CRIAR NOVO USUÁRIO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
+        <FormCreateUser onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} />
+      </ModalForm>
     </>
   );
 }
