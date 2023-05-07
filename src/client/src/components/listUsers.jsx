@@ -12,6 +12,7 @@ import ModalForm from './modal_form';
 import FormDelUser from './formDelUser';
 import FormCreateUser from './form_createUser';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import FormEditUser from './formEditUser';
 
 export function ListUsers() {
   const [usuarios, setUsuarios] = useState([]);
@@ -48,6 +49,11 @@ export function ListUsers() {
   const deleteUser = (userId) => {
     setUserId(userId);
     setOpenPopup(true);
+  }
+
+  const updateUser = (userId) => {
+    setUserId(userId);
+    setOpenUpdateUserPopup(true);
   }
 
   const handleContinueClick = () => {
@@ -117,7 +123,7 @@ export function ListUsers() {
       renderCell: (params) => {
         return (
           <div>
-            <IconButton aria-label="edit" size="small">
+            <IconButton aria-label="edit" size="small" onClick={() => updateUser(params.row._id)}>
               <EditIcon />
             </IconButton>
             <IconButton onClick={() => deleteUser(params.row._id)} aria-label="delete" size="small">
@@ -211,6 +217,11 @@ export function ListUsers() {
       <ModalForm title="CRIAR NOVO USUÁRIO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
         <FormCreateUser onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} />
       </ModalForm>
+
+      <ModalForm title="EDIÇÃO DO USUÁRIO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup} >
+        <FormEditUser userId={userId} onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} />
+      </ModalForm>
+
     </>
   );
 }

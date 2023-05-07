@@ -11,7 +11,7 @@ import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import LockIcon from '@mui/icons-material/Lock';
 import Rotas from '../api';
 
-export default function FormCreateUser({ userId, onContinueClick, onCancelClick }) {
+export default function FormEditUser({ userId, onContinueClick, onCancelClick }) {
     const routes = new Rotas();
     const [name, setName] = React.useState(userId.name);
     const [email, setEmail] = React.useState(userId.email);
@@ -19,10 +19,13 @@ export default function FormCreateUser({ userId, onContinueClick, onCancelClick 
     const [password, setPassword] = React.useState('');
     const [confirmPassword, setConfirmPassword] = React.useState('');
 
-
     const handleContinueClick = () => {
+        const updateUser = { name, email, username };
+        if (password !== '') {
+            updateUser.password = password;
+        }
         routes
-            .patch('/users', { name, email, username }, userId.id)
+            .patch(`/users/${userId}`, updateUser)
             .then((response) => {
                 if (response.status === 200) {
                     onContinueClick();
@@ -36,9 +39,11 @@ export default function FormCreateUser({ userId, onContinueClick, onCancelClick 
             });
     };
 
+
     const handleCancelClick = () => {
         onCancelClick();
-    };
+      };
+    
 
     return (
         <div>
@@ -61,6 +66,7 @@ export default function FormCreateUser({ userId, onContinueClick, onCancelClick 
                             }}
                             onChange={(e) => setName(e.target.value)}
                         />
+
                         <TextField
                             label="E-mail"
                             variant="outlined"
@@ -81,6 +87,7 @@ export default function FormCreateUser({ userId, onContinueClick, onCancelClick 
                             }}
                             onChange={(e) => setUsername(e.target.value)}
                         />
+
                         <TextField
                             label="Senha"
                             variant="outlined"
