@@ -11,36 +11,28 @@ import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import LockIcon from '@mui/icons-material/Lock';
 import Rotas from '../api';
 
-export default function FormCreateUser({ onContinueClick, onCancelClick }) {
+export default function FormCreateUser({ userId, onContinueClick, onCancelClick }) {
     const routes = new Rotas();
-    const [name, setName] = React.useState('');
-    const [email, setEmail] = React.useState('');
-    const [username, setUsername] = React.useState('');
+    const [name, setName] = React.useState(userId.name);
+    const [email, setEmail] = React.useState(userId.email);
+    const [username, setUsername] = React.useState(userId.username);
     const [password, setPassword] = React.useState('');
     const [confirmPassword, setConfirmPassword] = React.useState('');
 
-    const handleContinueClick = () => {
-        const userData = {
-            name,
-            email,
-            username,
-            password,
-            confirmPassword,
-        };
 
+    const handleContinueClick = () => {
         routes
-            .post('/users',  userData)
+            .patch('/users', { name, email, username }, userId.id)
             .then((response) => {
-                if (response.status === 201) {
-                    onContinueClick(userData);
-                    getUsers();
+                if (response.status === 200) {
+                    onContinueClick();
                 } else {
-                    console.log('Ocorreu um erro na criação do usuário');
+                    console.log('Ocorreu um erro na atualização do usuário');
                 }
             })
             .catch((error) => {
                 console.error(error);
-                console.log('Ocorreu um erro na criação do usuário');
+                console.log('Ocorreu um erro na atualização do usuário');
             });
     };
 
