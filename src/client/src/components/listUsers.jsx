@@ -23,18 +23,26 @@ export function ListUsers() {
   const [userId, setUserId] = React.useState(null);
   const routes = new Rotas()
 
+  const getUsers = () => {
+    routes.get('/users')
+      .then(response => setUsuarios(response.data))
+      .catch(error => {
+        console.log(error);
+      });
+  };
+  
   useEffect(() => {
-    const getUsers = () => {
-      routes.get('/users')
-        .then(response => setUsuarios(response.data))
-        .catch(error => {
-          console.log(error);
-        });
-    };
-
     getUsers();
-
   }, []);
+  
+  const updateTable = () => {
+    routes.get('/users')
+      .then(response => setUsuarios(response.data))
+      .catch(error => {
+        console.log(error);
+      });
+  };
+  
 
   const handleDelete = () => {
     setOpenPopup(false);
@@ -217,16 +225,16 @@ export function ListUsers() {
           </div>
         </Box>
       </div>
-      <ModalForm title="APAGAR USUÁRIO" openPopup={openPopup} setOpenPopup={setOpenPopup} onDeleteSuccess={() => getUsers()} >
-        <FormDelUser userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel} />
+      <ModalForm title="APAGAR USUÁRIO" openPopup={openPopup} setOpenPopup={setOpenPopup} >
+        <FormDelUser userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel} updateGrid={() => getUsers()} />
       </ModalForm>
 
       <ModalForm title="CRIAR NOVO USUÁRIO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
-        <FormCreateUser onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} />
+        <FormCreateUser onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
       </ModalForm>
 
       <ModalForm title="EDIÇÃO DO USUÁRIO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
-        <FormEditUser userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} />
+        <FormEditUser userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()}/>
       </ModalForm>
 
 

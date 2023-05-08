@@ -11,7 +11,7 @@ import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import LockIcon from '@mui/icons-material/Lock';
 import Rotas from '../api';
 
-export default function FormCreateUser({ onContinueClick, onCancelClick }) {
+export default function FormCreateUser({ onContinueClick, onCancelClick, updateGrid }) {
     const routes = new Rotas();
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
@@ -33,7 +33,7 @@ export default function FormCreateUser({ onContinueClick, onCancelClick }) {
             .then((response) => {
                 if (response.status === 201) {
                     onContinueClick(userData);
-                    getUsers();
+                    updateGrid()
                 } else {
                     console.log('Ocorreu um erro na criação do usuário');
                 }

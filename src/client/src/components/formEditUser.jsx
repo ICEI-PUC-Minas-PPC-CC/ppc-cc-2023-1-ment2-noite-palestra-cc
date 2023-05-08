@@ -12,7 +12,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import Rotas from '../api';
 
 
-export default function FormEditUser({ userId, onContinueClick, onCancelClick }) {
+export default function FormEditUser({ userId, onContinueClick, onCancelClick, updateGrid }) {
   const routes = new Rotas();
   const [userData, setUserData] = React.useState(null);
   const [name, setName] = React.useState('');
@@ -32,6 +32,7 @@ export default function FormEditUser({ userId, onContinueClick, onCancelClick })
         if (response.status === 200) {
           onContinueClick(userData);
           onCancelClick();
+          updateGrid();
         } else {
           console.log('Ocorreu um erro na atualização do usuário');
         }

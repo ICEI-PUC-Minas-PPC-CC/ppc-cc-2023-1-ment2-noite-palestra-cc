@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 import Rotas from '../api';
 
-export default function FormDelUser({userId, onDeleteSuccess, onCancel}) {
+export default function FormDelUser({userId, onDeleteSuccess, onCancel, updateGrid}) {
     const routes = new Rotas();
     const [showComponent, setShowComponent] = React.useState(true);
  
@@ -13,8 +13,8 @@ export default function FormDelUser({userId, onDeleteSuccess, onCancel}) {
         routes.delete('/users', userId)
           .then(response => {
             if (response.status === 200) {
-         
               onDeleteSuccess();
+              updateGrid()
             } else if (response.status === 401) {
               console.log("Usuário não autorizado para exclusão.");
               onDeleteSuccess();
