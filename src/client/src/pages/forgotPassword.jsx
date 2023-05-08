@@ -6,7 +6,7 @@ import { FormForgotPassword } from "../components/formForgotPassword";
 
 export function ForgotPassword(){
   const { id } = useParams();
-  const changePasswordUrl = `http://localhost:8080/users/${id}/change-password`;
+  const changePasswordUrl = `https://api-gaapo-i2ddno6wla-uw.a.run.app/users/${id}/change-password`;
   const navigation = useNavigate();
   const [password, setPassword] = useState("");
   const [verifyPassword, setVerifyPassword] = useState("");
