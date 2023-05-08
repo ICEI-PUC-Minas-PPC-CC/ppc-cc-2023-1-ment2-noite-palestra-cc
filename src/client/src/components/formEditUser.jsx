@@ -13,53 +13,53 @@ import Rotas from '../api';
 
 
 export default function FormEditUser({ userId, onContinueClick, onCancelClick, updateGrid }) {
-  const routes = new Rotas();
-  const [userData, setUserData] = React.useState(null);
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [confirmPassword, setConfirmPassword] = React.useState('');
+    const routes = new Rotas();
+    const [userData, setUserData] = React.useState(null);
+    const [name, setName] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [username, setUsername] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const [confirmPassword, setConfirmPassword] = React.useState('');
 
-  const handleContinueClick = () => {
-    const updateUser = { name, email, username };
-    if (password !== '') {
-      updateUser.password = password;
-    }
-    routes
-      .patch(`/users/${userId}`, updateUser)
-      .then((response) => {
-        if (response.status === 200) {
-          onContinueClick(userData);
-          onCancelClick();
-          updateGrid();
-        } else {
-          console.log('Ocorreu um erro na atualização do usuário');
+    const handleContinueClick = () => {
+        const updateUser = { name, email, username };
+        if (password !== '') {
+            updateUser.password = password;
         }
-      })
-      .catch((error) => {
-        console.error(error);
-        console.log('Ocorreu um erro na atualização do usuário');
-      });
-  };
+        routes
+            .patch(`/users/${userId}`, updateUser)
+            .then((response) => {
+                if (response.status === 200) {
+                    onContinueClick(userData);
+                    onCancelClick();
+                    updateGrid();
+                } else {
+                    console.log('Ocorreu um erro na atualização do usuário');
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+                console.log('Ocorreu um erro na atualização do usuário');
+            });
+    };
 
-  const fetchUserData = () => {
-    routes.get(`/users/${userId}`).then((response) => {
-      setUserData(response.data);
-      setName(response.data.name);
-      setEmail(response.data.email);
-      setUsername(response.data.username);
-    });
-  };
+    const fetchUserData = () => {
+        routes.get(`/users/${userId}`).then((response) => {
+            setUserData(response.data);
+            setName(response.data.name);
+            setEmail(response.data.email);
+            setUsername(response.data.username);
+        });
+    };
 
-  React.useEffect(() => {
-    fetchUserData();
-  }, []);
+    React.useEffect(() => {
+        fetchUserData();
+    }, []);
 
-  const handleCancelClick = () => {
-    console.log("Aqui")
-    onCancelClick();
-  };
+    const handleCancelClick = () => {
+        console.log("Aqui")
+        onCancelClick();
+    };
 
     return (
         <div>
@@ -68,9 +68,14 @@ export default function FormEditUser({ userId, onContinueClick, onCancelClick, u
                     component="form"
                     sx={{
                         '& .MuiTextField-root': { m: 1, width: '25ch' },
+                        border: '1px solid #D9D9D9',
+                        alignItems: 'center',
+                        padding: '16px',
+                        margin: '8px',
+                        marginBottom: '8%'
                     }}
                     noValidate
-                    autoComplete="off"
+                    autoComplete
                 >
                     <div>
                         <TextField

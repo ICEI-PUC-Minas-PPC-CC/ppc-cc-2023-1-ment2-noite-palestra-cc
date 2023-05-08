@@ -29,7 +29,7 @@ export default function FormCreateUser({ onContinueClick, onCancelClick, updateG
         };
 
         routes
-            .post('/users',  userData)
+            .post('/users', userData)
             .then((response) => {
                 if (response.status === 201) {
                     onContinueClick(userData);
@@ -55,6 +55,11 @@ export default function FormCreateUser({ onContinueClick, onCancelClick, updateG
                     component="form"
                     sx={{
                         '& .MuiTextField-root': { m: 1, width: '25ch' },
+                        border: '1px solid #D9D9D9',
+                        alignItems: 'center',
+                        padding: '16px',
+                        margin: '8px',
+                        marginBottom: '8%'
                     }}
                     noValidate
                     autoComplete="off"
