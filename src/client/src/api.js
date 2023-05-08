@@ -14,9 +14,8 @@ export default class Rotas {
         return api.post(url, data)
     }
 
-    patch(url, data, id){
-        const patchUrl = `${url}/${id}` 
-        return api.patch(patchUrl, data)
+    patch(url, data){
+        return api.patch(url, data)
     }
 
     delete(url, id) {

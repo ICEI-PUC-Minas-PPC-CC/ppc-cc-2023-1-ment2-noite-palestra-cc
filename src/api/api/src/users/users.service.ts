@@ -46,11 +46,11 @@ export class UsersService {
   }
 
   async login(login: LoginDTO) {
-    const user = await this.userModel.findOne({
-      username: login.username,
-      password: login.password,
-    });
-    return user;
+    const user = await this.userModel.findOne({ username: login.username });
+    if (user && bcrypt.compareSync(login.password, user.password)) {
+      return user;
+    }
+    return null;
   }
 
   async verifyEmail(emailUser: string): Promise<string | null> {

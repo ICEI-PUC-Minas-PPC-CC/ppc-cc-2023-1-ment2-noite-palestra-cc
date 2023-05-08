@@ -4,46 +4,61 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { Grid, InputAdornment, TextField, Typography } from '@mui/material';
+import { Alert, Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import LockIcon from '@mui/icons-material/Lock';
 import Rotas from '../api';
 
+
 export default function FormEditUser({ userId, onContinueClick, onCancelClick }) {
-    const routes = new Rotas();
-    const [name, setName] = React.useState(userId.name);
-    const [email, setEmail] = React.useState(userId.email);
-    const [username, setUsername] = React.useState(userId.username);
-    const [password, setPassword] = React.useState('');
-    const [confirmPassword, setConfirmPassword] = React.useState('');
+  const routes = new Rotas();
+  const [userData, setUserData] = React.useState(null);
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [confirmPassword, setConfirmPassword] = React.useState('');
 
-    const handleContinueClick = () => {
-        const updateUser = { name, email, username };
-        if (password !== '') {
-            updateUser.password = password;
+  const handleContinueClick = () => {
+    const updateUser = { name, email, username };
+    if (password !== '') {
+      updateUser.password = password;
+    }
+    routes
+      .patch(`/users/${userId}`, updateUser)
+      .then((response) => {
+        if (response.status === 200) {
+          onContinueClick(userData);
+          onCancelClick();
+        } else {
+          console.log('Ocorreu um erro na atualização do usuário');
         }
-        routes
-            .patch(`/users/${userId}`, updateUser)
-            .then((response) => {
-                if (response.status === 200) {
-                    onContinueClick();
-                } else {
-                    console.log('Ocorreu um erro na atualização do usuário');
-                }
-            })
-            .catch((error) => {
-                console.error(error);
-                console.log('Ocorreu um erro na atualização do usuário');
-            });
-    };
+      })
+      .catch((error) => {
+        console.error(error);
+        console.log('Ocorreu um erro na atualização do usuário');
+      });
+  };
 
+  const fetchUserData = () => {
+    routes.get(`/users/${userId}`).then((response) => {
+      setUserData(response.data);
+      setName(response.data.name);
+      setEmail(response.data.email);
+      setUsername(response.data.username);
+    });
+  };
 
-    const handleCancelClick = () => {
-        onCancelClick();
-      };
-    
+  React.useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const handleCancelClick = () => {
+    console.log("Aqui")
+    onCancelClick();
+  };
 
     return (
         <div>

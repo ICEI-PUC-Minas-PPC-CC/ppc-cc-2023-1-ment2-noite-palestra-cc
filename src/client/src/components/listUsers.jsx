@@ -5,7 +5,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
-import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import SearchIcon from '@mui/icons-material/Search';
 import Rotas from '../api';
 import ModalForm from './modal_form';
@@ -64,6 +63,14 @@ export function ListUsers() {
     setOpenCreateUserPopup(false);
   };
 
+  const handleUpdateContinueClick = () => {
+    setOpenUpdateUserPopup(false);
+  };
+  
+  const handleUpdateCancelClick = () => {
+    setOpenUpdateUserPopup(false);
+  };
+  
   const handleSearchTextChange = (event) => {
     const searchValue = event.target.value;
     setSearchValue(searchValue);
@@ -218,9 +225,10 @@ export function ListUsers() {
         <FormCreateUser onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} />
       </ModalForm>
 
-      <ModalForm title="EDIÇÃO DO USUÁRIO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup} >
-        <FormEditUser userId={userId} onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} />
+      <ModalForm title="EDIÇÃO DO USUÁRIO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
+        <FormEditUser userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} />
       </ModalForm>
+
 
     </>
   );
