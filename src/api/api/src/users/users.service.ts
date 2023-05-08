@@ -79,21 +79,25 @@ export class UsersService {
     updatePasswordDto: UpdatePasswordDto,
   ): Promise<{ success: boolean }> {
     const { password, verifyPassword } = updatePasswordDto;
+    console.log('password:', password);
+    console.log('verifyPassword:', verifyPassword);
     if (password === verifyPassword) {
       const hashedPassword = await bcrypt.hash(password, 10);
-      const result: UpdateResult = await this.userModel
-        .updateOne({ _id: id }, { $set: { password: hashedPassword } })
-        .exec();
-      if (result && result.modifiedCount > 0) {
-        return { success: true };
+      console.log('hashedPassword:', hashedPassword);
+      try {
+        const result: UpdateResult = await this.userModel
+          .updateOne({ _id: id }, { $set: { password: hashedPassword } })
+          .exec();
+        console.log('result:', result);
+        if (result && result.modifiedCount > 0) {
+          console.log('foi');
+          return { success: true };
+        }
+      } catch (error) {
+        console.log('error:', error);
       }
-      return { success: false };
-    } else {
-      throw new HttpException(
-        'As senhas não conferem',
-        HttpStatus.UNAUTHORIZED,
-      );
     }
+    return { success: false };
   }
 
   async removeUser(id: string) {

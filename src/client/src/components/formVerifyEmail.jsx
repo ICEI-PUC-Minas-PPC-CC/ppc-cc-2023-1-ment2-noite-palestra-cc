@@ -19,7 +19,7 @@ export function FormVerifyEmail({email, setEmail, signIn}){
                 label="Email"
                 variant="standard" 
                 InputProps={{
-                  startAdornment: <InputAdornment><EmailIcon fontSize="small"/></InputAdornment>,
+                  startAdornment: <InputAdornment position="start"><EmailIcon fontSize="small"/></InputAdornment>,
                 }}
                 value={email} onChange={(v) => setEmail(v.target.value)}
               />

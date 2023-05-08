@@ -20,7 +20,7 @@ export function FormForgotPassword({password, setPassword, verifyPassword, setVe
                 label="Nova senha"
                 variant="standard"
                 InputProps={{
-                  startAdornment: <InputAdornment><HttpsIcon fontSize="small"/></InputAdornment>,
+                  startAdornment: <InputAdornment position="start"><HttpsIcon fontSize="small"/></InputAdornment>,
                 }}
                 value={password} onChange={(v) => setPassword(v.target.value)}
               />
@@ -30,7 +30,7 @@ export function FormForgotPassword({password, setPassword, verifyPassword, setVe
                 label="Confirmar senha"
                 variant="standard"
                 InputProps={{
-                  startAdornment: <InputAdornment><HttpsIcon fontSize="small"/></InputAdornment>,
+                  startAdornment: <InputAdornment position="start"><HttpsIcon fontSize="small"/></InputAdornment>,
                 }}
                 sx={
                   {

@@ -29,7 +29,7 @@ export function Formulario({user, setUser, password, setPassword, signIn}) {
             label="Usuário"
             variant="standard"
             InputProps={{
-              startAdornment: <InputAdornment><PersonIcon fontSize="small" /></InputAdornment>,
+              startAdornment: <InputAdornment position="start"><PersonIcon fontSize="small" /></InputAdornment>,
             }}
             sx={estilo} value={user} onChange={(v) => setUser(v.target.value)}
           />
@@ -39,7 +39,7 @@ export function Formulario({user, setUser, password, setPassword, signIn}) {
             label="Senha"
             variant="standard"
             InputProps={{
-              startAdornment: <InputAdornment><HttpsIcon fontSize="small"/></InputAdornment>,
+              startAdornment: <InputAdornment position="start"><HttpsIcon fontSize="small"/></InputAdornment>,
             }}
             sx={{ ...estilo }}
             value={password} onChange={(v) => setPassword(v.target.value)}

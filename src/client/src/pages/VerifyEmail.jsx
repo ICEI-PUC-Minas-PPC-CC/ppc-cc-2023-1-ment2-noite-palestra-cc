@@ -12,7 +12,7 @@ export function VerifyEmail() {
     const [erro, setErro] = useState("");
 
     const signInEmail = () => {
-        fetch('http://localhost:4000/users/verify-email', {
+        fetch('http://localhost:8080/users/verify-email', {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

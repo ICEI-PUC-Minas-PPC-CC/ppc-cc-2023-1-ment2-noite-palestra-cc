@@ -20,7 +20,7 @@ export function Login() {
       .then((response) => {
         const data = response.data;
         if (data.message === "Usuário autenticado!") {
-          navigation("/home");
+          navigation("/");
         } else {
           setLoginError("Usuário ou senha inválidos!");
         }
