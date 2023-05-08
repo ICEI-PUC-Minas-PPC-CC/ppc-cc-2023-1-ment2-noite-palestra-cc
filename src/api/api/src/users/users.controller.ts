@@ -9,11 +9,13 @@ import {
   HttpStatus,
   Res,
   HttpCode,
+  Query,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginDTO } from './dto/login.dto';
 import { UpdatePasswordDto } from './dto/update-password.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -38,6 +40,19 @@ export class UsersController {
       .json({ message: 'Credenciais inválidas!' });
   }
 
+  @Post('/findUser')
+  async findUser(@Body() name: string) {
+    const user = await this.usersService.findUser(name);
+    if (user) {
+      return user;
+    }
+  }
+
+  @Get('/search-users')
+  async findByLetter(@Query('letter') letter: string) {
+    return this.usersService.searchUsers(letter);
+  }
+
   @Post('/verify-email')
   @HttpCode(200)
   async verifyEmail(@Body('email') email: string, @Res() res) {
@@ -48,6 +63,14 @@ export class UsersController {
     }
 
     return res.status(401).json({ message: 'Email inválido' });
+  }
+
+  @Patch(':id')
+  async updateUser(
+    @Param('id') id: string,
+    @Body() updateUserDto: UpdateUserDto,
+  ) {
+    return this.usersService.updateUserData(id, updateUserDto);
   }
 
   @Patch(':id/change-password')
