@@ -10,6 +10,7 @@ export function Users() {
         <div className={styles.MainContent}>
             <HeaderDefault />
             <SubHeader />
+            <h1> teste</h1>
             <ListUsers />
             <Footer />
         </div>
