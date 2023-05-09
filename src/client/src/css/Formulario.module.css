@@ -102,3 +102,12 @@
     color: #0076A8;
     margin-top: 20px;
 } 
+
+.alertContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 16px;
+    width: 300px;
+    box-sizing: border-box;
+  }

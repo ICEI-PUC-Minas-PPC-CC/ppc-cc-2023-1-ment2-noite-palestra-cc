@@ -8,6 +8,12 @@ export class User {
   @Prop()
   name: string;
 
+  @Prop({ default: Date.now })
+  createdAt: Date;
+
+  @Prop()
+  email: string;
+
   @Prop()
   username: string;
 
@@ -16,3 +22,10 @@ export class User {
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
+
+UserSchema.pre('save', function (next) {
+  if (!this.createdAt) {
+    this.createdAt = new Date();
+  }
+  next();
+});

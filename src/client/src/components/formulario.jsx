@@ -1,10 +1,11 @@
 import { useState } from "react";
 import styles from "../css/Formulario.module.css";
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-
-
-import { Logo } from "./Logo";
+import Button from "@mui/material/Button";
+import PersonIcon from '@mui/icons-material/Person';
+import HttpsIcon from '@mui/icons-material/Https';
+import { LogoLogin } from "./LogoLogin";
+import { InputAdornment } from "@mui/material";
 
 export function Formulario({user, setUser, password, setPassword, signIn}) {
   const estilo = {
@@ -19,23 +20,27 @@ export function Formulario({user, setUser, password, setPassword, signIn}) {
 
   return (
     <>
-      <Logo />
+      <LogoLogin />
       <div className={styles.formDiv}>
         <form>
           <h1 className={styles.titleH1}>LOGIN</h1>
           <TextField
-            required
             id="standard-basic"
             label="Usuário"
             variant="standard"
+            InputProps={{
+              startAdornment: <InputAdornment position="start"><PersonIcon fontSize="small" /></InputAdornment>,
+            }}
             sx={estilo} value={user} onChange={(v) => setUser(v.target.value)}
           />
           <TextField
-            required
             type="password"
             id="standard-basic"
             label="Senha"
             variant="standard"
+            InputProps={{
+              startAdornment: <InputAdornment position="start"><HttpsIcon fontSize="small"/></InputAdornment>,
+            }}
             sx={{ ...estilo }}
             value={password} onChange={(v) => setPassword(v.target.value)}
           />
@@ -56,7 +61,7 @@ export function Formulario({user, setUser, password, setPassword, signIn}) {
             {" "}
             Entrar{" "}
           </Button>
-          <a className={styles.forgotPassword} href="/forgot-password">
+          <a className={styles.forgotPassword} href="/verify-email">
             Esqueceu sua senha?
           </a>
         </form>
