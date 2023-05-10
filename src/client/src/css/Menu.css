@@ -28,6 +28,7 @@
     z-index: 2;
   }
   .menu-icon .line {
+    margin-right: 50px;
     width: 25px;
     height: 3px;
     background-color: #EB268F;
@@ -77,5 +78,14 @@
   
   .menu-items ul li:hover ul {
     display: block;
+  }
+
+  .content {
+    margin-left: 0;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .content.menu-open {
+    margin-left: 250px;
   }
   
