@@ -1,34 +1,36 @@
 import { Footer } from "../components/footer";
 import { Header } from "../components/Header";
 import { Formulario } from "../components/formulario";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "@mui/material";
 import styles from '../css/Formulario.module.css'
-import Rotas from "../api";
+import Rotas from "../services/api";
+import AuthContext from "../context/context";
 
 export function Login() {
   const routes = new Rotas()
   const navigation = useNavigate();
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const authContext = useContext(AuthContext)
   const [loginError, setLoginError] = useState(null);
 
   const signIn = () => {
-    const data = { username: user, password: password };
-    routes.post('users/login', data)
-      .then((response) => {
-        const data = response.data;
-        if (data.message === "Usuário autenticado!") {
-          navigation("/");
-        } else {
-          setLoginError("Usuário ou senha inválidos!");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        setLoginError("Ocorreu um erro ao efetuar login!");
-      });
+    authContext.signIn(user, password)
+    // routes.post('users/login', data)
+    //   .then((response) => {
+    //     const data = response.data;
+    //     if (data.message === "Usuário autenticado!") {
+    //       return data;
+    //     } else {
+    //       setLoginError("Usuário ou senha inválidos!");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //     setLoginError("Ocorreu um erro ao efetuar login!");
+    //   });
   }
   
 

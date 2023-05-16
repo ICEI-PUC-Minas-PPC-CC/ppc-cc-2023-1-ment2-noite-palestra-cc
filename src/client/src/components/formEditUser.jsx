@@ -9,7 +9,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import LockIcon from '@mui/icons-material/Lock';
-import Rotas from '../api';
+import Rotas from '../services/api';
 
 
 export default function FormEditUser({ userId, onContinueClick, onCancelClick, updateGrid }) {

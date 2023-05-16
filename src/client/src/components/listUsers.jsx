@@ -6,7 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
-import Rotas from '../api';
+import Rotas from '../services/api';
 import ModalForm from './modal_form';
 import FormDelUser from './formDelUser';
 import FormCreateUser from './form_createUser';
