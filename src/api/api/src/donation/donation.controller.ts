@@ -31,6 +31,13 @@ export class DonationController {
     return donation;
   }
 
+  @Post('/perishable')
+  async findByperishable(@Body() body: { perishable: boolean }) {
+    const { perishable } = body;
+    const donation = await this.donationService.findByperishable(perishable);
+    return donation;
+  }
+
   @Post('/entry-date')
   async findDonationByentryDate(@Body() body: { date: string }) {
     const { date } = body;

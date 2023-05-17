@@ -11,10 +11,10 @@ export class User {
   @Prop({ default: Date.now })
   createdAt: Date;
 
-  @Prop()
+  @Prop({ unique: true })
   email: string;
 
-  @Prop()
+  @Prop({ unique: true })
   username: string;
 
   @Prop()

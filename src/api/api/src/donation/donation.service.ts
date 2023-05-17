@@ -59,6 +59,11 @@ export class DonationService {
     return donation;
   }
 
+  async findByperishable(perishable: boolean) {
+    const donation = await this.donationModel.find({ perishable: perishable });
+    return donation;
+  }
+
   async searcDoantion(letter: string): Promise<Donation[]> {
     console.log(letter);
     const regex = new RegExp(`^${letter}`, 'i');
