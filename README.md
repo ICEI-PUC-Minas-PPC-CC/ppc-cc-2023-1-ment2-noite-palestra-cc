@@ -11,7 +11,7 @@
 - João Eduardo
 - Lucas Florentino
 - Marcelle
-- Matheus Boletta
+
 
 ## Professores
 
