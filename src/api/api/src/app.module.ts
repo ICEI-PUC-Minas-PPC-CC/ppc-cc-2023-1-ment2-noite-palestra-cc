@@ -3,6 +3,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
+import { DonatorsModule } from './donators/donators.module';
+import { BeneficiaryModule } from './beneficiary/beneficiary.module';
 
 @Module({
   imports: [
@@ -10,6 +12,8 @@ import { UsersModule } from './users/users.module';
       'mongodb+srv://admin:1x4VAAEdPJxDPnnw@gaapo-bd.ixn47lw.mongodb.net/?retryWrites=true&w=majority',
     ),
     UsersModule,
+    DonatorsModule,
+    BeneficiaryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
