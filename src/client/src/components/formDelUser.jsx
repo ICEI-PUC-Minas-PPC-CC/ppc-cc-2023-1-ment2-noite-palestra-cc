@@ -2,7 +2,7 @@ import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { Box, Typography } from '@mui/material';
-import Rotas from '../services/api';
+import Rotas from '../api';
 import AlertComponent from './Alerts';
 
 export default function FormDelUser({ userId, onDeleteSuccess, onCancel, updateGrid }) {

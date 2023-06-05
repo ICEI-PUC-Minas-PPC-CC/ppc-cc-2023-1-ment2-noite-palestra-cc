@@ -1,5 +1,6 @@
 import { Dialog, DialogContent, DialogTitle } from '@mui/material'
 import React from 'react'
+import { Header } from './Header'
 
 export default function ModalForm(props){
     const { title, children, openPopup, setOpenPopup } = props

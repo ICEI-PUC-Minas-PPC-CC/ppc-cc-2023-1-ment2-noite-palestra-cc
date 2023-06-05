@@ -9,7 +9,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import LockIcon from '@mui/icons-material/Lock';
-import Rotas from '../services/api';
+import Rotas from '../api';
 
 export default function FormCreateUser({ onContinueClick, onCancelClick, updateGrid }) {
     const routes = new Rotas();

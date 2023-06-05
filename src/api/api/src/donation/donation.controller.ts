@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { DonationService } from './donation.service';
 import { CreateDonationDto } from './dto/create-donation.dto';
@@ -22,6 +23,11 @@ export class DonationController {
   @Get()
   listDonation() {
     return this.donationService.listDonation();
+  }
+
+  @Get('/search-users')
+  async findByLetter(@Query('letter') letter: string) {
+    return this.donationService.searcDoantion(letter);
   }
 
   @Post('/expiration')
