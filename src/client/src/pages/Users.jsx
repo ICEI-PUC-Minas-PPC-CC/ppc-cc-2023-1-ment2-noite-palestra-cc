@@ -11,9 +11,7 @@ export function Users() {
     return (
         <div className={styles.MainContent}>
             <MiniDrawer>
-            <h1>teste</h1>
             <ListUsers />
-            <Footer />
             </MiniDrawer>
         </div>
     )
