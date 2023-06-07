@@ -6,9 +6,6 @@ import {
   Patch,
   Param,
   Delete,
-  HttpStatus,
-  Res,
-  HttpCode,
   Query,
 } from '@nestjs/common';
 import { BeneficiaryService } from './beneficiary.service';

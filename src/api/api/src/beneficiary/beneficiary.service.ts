@@ -39,8 +39,7 @@ export class BeneficiaryService {
     if (name) {
       updateFields.name = name;
     }
-    // eslint-disable-next-line prettier/prettier
-    if(age){
+    if (age) {
       updateFields.age = age;
     }
     if (cpf) {
