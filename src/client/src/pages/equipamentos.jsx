@@ -5,11 +5,11 @@ import { Footer } from "../components/footer";
 
 
 
-export function Home() {
+export function Equipamentos() {
     return (
         <div>
             <MiniDrawer>
-                <h1>Home</h1>
+                <h1>Equipamentos</h1>
             </MiniDrawer>
                 
         </div>
