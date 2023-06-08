@@ -16,15 +16,14 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { LogoDefault } from './LogoDefault';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import SingleBedOutlinedIcon from '@mui/icons-material/SingleBedOutlined';
 import { Header } from './Header';
 import { Footer } from './footer';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import { Link } from 'react-router-dom';
+import { FiHome, MdSettingsAccessibility, IoSettingsOutline, MdOutlineGroupAdd, BiDonateHeart, MdEmojiPeople, TbWheelchair } from 'react-icons/all';
+//import { FaPeopleLine } from 'react-icons/fa';
+
 
 const drawerWidth = 240;
 
@@ -106,6 +105,13 @@ export default function MiniDrawer(props) {
     setOpen(false);
   };
 
+  const PinkListItemIcon = styled(ListItemIcon)(({ theme }) => ({
+    minWidth: 0,
+    marginRight: open ? theme.spacing(3) : 'auto',
+    justifyContent: 'center',
+    color: '#eb2690', 
+  }));
+
   return (
     <>
       <Box sx={{ display: 'flex' }}>
@@ -125,7 +131,7 @@ export default function MiniDrawer(props) {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-            <Link to="/">
+              <Link to="/">
                 <IconButton aria-label="delete" size="small">
                   <LogoDefault />
                 </IconButton>
@@ -147,9 +153,9 @@ export default function MiniDrawer(props) {
             </IconButton>
           </DrawerHeader>
           <Divider />
-          <List>
-            {['Início', 'Doações', 'Doador', 'Beneficiários', 'Voluntários', 'Equipamentos'].map((text, index) => (
-              <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          <List disablePadding>
+            <ListItem sx={{ display: 'block' }}>
+              <Link to="/" style={{ textDecoration: 'none' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -157,24 +163,15 @@ export default function MiniDrawer(props) {
                     px: 2.5,
                   }}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    {index === 0 ? <HomeOutlinedIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                  <PinkListItemIcon sx={{ fontSize: 24 }}>
+                    <FiHome />
+                  </PinkListItemIcon>
+                  <ListItemText primary="Início" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
                 </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {['Configurações'].map((text, index) => (
-              <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+              </Link>
+            </ListItem>
+            <ListItem sx={{ display: 'block' }}>
+              <Link to="/beneficiarios" style={{ textDecoration: 'none' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -182,23 +179,98 @@ export default function MiniDrawer(props) {
                     px: 2.5,
                   }}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                  <PinkListItemIcon sx={{ fontSize: 24 }}>
+                    <MdSettingsAccessibility />
+                  </PinkListItemIcon>
+                  <ListItemText primary="Beneficiários" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
                 </ListItemButton>
-              </ListItem>
-            ))}
+              </Link>
+            </ListItem>
+            <ListItem sx={{ display: 'block' }}>
+              <Link to="/doacoes" style={{ textDecoration: 'none' }}>
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                >
+                  <PinkListItemIcon sx={{ fontSize: 24 }}>
+                    <BiDonateHeart />
+                  </PinkListItemIcon>
+                  <ListItemText primary="Doações" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+            <ListItem sx={{ display: 'block' }}>
+              <Link to="/doador" style={{ textDecoration: 'none' }}>
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                >
+                  <PinkListItemIcon sx={{ fontSize: 24 }}>
+                    <MdEmojiPeople />
+                  </PinkListItemIcon>
+                  <ListItemText primary="Doador" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+            <ListItem sx={{ display: 'block' }}>
+              <Link to="/equipamentos" style={{ textDecoration: 'none' }}>
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                >
+                  <PinkListItemIcon sx={{ fontSize: 24 }}>
+                    <TbWheelchair />
+                  </PinkListItemIcon>
+                  <ListItemText primary="Equipamentos" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+            <ListItem sx={{ display: 'block' }}>
+              <Link to="/voluntarios" style={{ textDecoration: 'none' }}>
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                >
+                  <PinkListItemIcon sx={{ fontSize: 24 }}>
+                    <MdOutlineGroupAdd />
+                  </PinkListItemIcon>
+                  <ListItemText primary="Voluntários" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+            <Divider />
+            <ListItem sx={{ display: 'block' }}>
+              <Link to="/users" style={{ textDecoration: 'none' }}>
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                >
+                  <PinkListItemIcon sx={{ fontSize: 24 }}>
+                    <IoSettingsOutline />
+                  </PinkListItemIcon>
+                  <ListItemText primary="Configurações" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
+                </ListItemButton>
+              </Link>
+            </ListItem>
           </List>
         </Drawer>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <DrawerHeader />
+          <Header />
           <div>{children}</div>
 
         </Box>
