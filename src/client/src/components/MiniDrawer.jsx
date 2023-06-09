@@ -10,8 +10,6 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -21,7 +19,7 @@ import { Header } from './Header';
 import { Footer } from './footer';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import { Link } from 'react-router-dom';
-import { FiHome, MdSettingsAccessibility, IoSettingsOutline, MdOutlineGroupAdd, BiDonateHeart, MdEmojiPeople, TbWheelchair } from 'react-icons/all';
+import { FiHome, MdSettingsAccessibility, IoSettingsOutline, BsChevronBarLeft, MdOutlineGroupAdd, BiDonateHeart, MdEmojiPeople, TbWheelchair } from 'react-icons/all';
 
 
 const drawerWidth = 240;
@@ -52,7 +50,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'flex-end',
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
 
@@ -138,7 +135,7 @@ export default function MiniDrawer(props) {
             </Typography>
             <Typography variant="h6" noWrap component="div" sx={{ marginLeft: 'auto' }}>
               <Link to="/login">
-                <IconButton aria-label="delete" size="small">
+                <IconButton aria-label="delete" size="small" style={{ color: '#eb268f' }}>
                   <ExitToAppOutlinedIcon />
                 </IconButton>
               </Link>
@@ -147,8 +144,8 @@ export default function MiniDrawer(props) {
         </AppBar>
         <Drawer variant="permanent" open={open}>
           <DrawerHeader>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            <IconButton onClick={handleDrawerClose} sx={{ color: '#eb2690'}}>
+              {theme.direction === 'rtl' ? <BsChevronBarLeft /> : <BsChevronBarLeft />}
             </IconButton>
           </DrawerHeader>
           <Divider />

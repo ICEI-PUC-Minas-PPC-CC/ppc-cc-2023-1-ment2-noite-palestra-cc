@@ -1,7 +1,6 @@
 
 import { HeaderDefault } from "../components/HeaderDefault";
 import MiniDrawer from "../components/MiniDrawer";
-{/*import { MiniDrawer } from "../components/MiniDrawer";*/}
 import { Footer } from "../components/footer";
 import { ListUsers } from "../components/listUsers";
 import SubHeader from "../components/subHeader";
