@@ -22,7 +22,6 @@ import { Footer } from './footer';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import { Link } from 'react-router-dom';
 import { FiHome, MdSettingsAccessibility, IoSettingsOutline, MdOutlineGroupAdd, BiDonateHeart, MdEmojiPeople, TbWheelchair } from 'react-icons/all';
-//import { FaPeopleLine } from 'react-icons/fa';
 
 
 const drawerWidth = 240;
