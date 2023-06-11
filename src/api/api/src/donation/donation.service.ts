@@ -64,7 +64,7 @@ export class DonationService {
     return donation;
   }
 
-  async searcDoantion(letter: string): Promise<Donation[]> {
+  async searchDonation(letter: string): Promise<Donation[]> {
     console.log(letter);
     const regex = new RegExp(`^${letter}`, 'i');
     return this.donationModel.find({ name: regex }).exec();

@@ -1,25 +1,21 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  Query,
-} from '@nestjs/common';
-import { DonationService } from './donation.service';
-import { CreateDonationDto } from './dto/create-donation.dto';
+import { Controller, Post, Body } from '@nestjs/common';
+import { BasketService } from './basket.service';
+import { CreateBasketDto } from './dto/create-basket.dto';
 
-@Controller('donation')
-export class DonationController {
-  constructor(private readonly donationService: DonationService) {}
+@Controller('basket')
+export class BasketController {
+  constructor(private readonly basketService: BasketService) {}
 
-  @Post()
-  create(@Body() createDonationDto: CreateDonationDto) {
-    return this.donationService.createDonation(createDonationDto);
+  @Post('/create')
+  async create(@Body() createBasketDto: CreateBasketDto) {
+    const createdBasket = await this.basketService.createBasket(
+      createBasketDto,
+    );
+    return createdBasket;
   }
+}
 
+/*
   @Get()
   listDonation() {
     return this.donationService.listDonation();
@@ -27,7 +23,7 @@ export class DonationController {
 
   @Get('/search-users')
   async findByLetter(@Query('letter') letter: string) {
-    return this.donationService.searchDonation(letter);
+    return this.donationService.searcDoantion(letter);
   }
 
   @Post('/expiration')
@@ -49,5 +45,4 @@ export class DonationController {
     const { date } = body;
     const donation = await this.donationService.findDonationByentryDate(date);
     return donation;
-  }
-}
+  }*/
