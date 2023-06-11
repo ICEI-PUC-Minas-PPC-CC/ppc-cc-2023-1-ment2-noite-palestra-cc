@@ -1,14 +1,18 @@
-import { HeaderDefault } from "../components/HeaderDefault";
+import { Header } from "../components/Header";
 import { ListDonation } from "../components/ListDonations";
+import { LogoDefault } from "../components/LogoDefault";
+import MiniDrawer from "../components/MiniDrawer";
 import { Footer } from "../components/footer";
-import SubHeader from "../components/subHeader";
+
+
 
 export function Donations() {
-    return(
+    return (
         <div>
-            <HeaderDefault />
-            <SubHeader />
+            <MiniDrawer>
                 <ListDonation />
+            </MiniDrawer>
+                
         </div>
     );
 }
