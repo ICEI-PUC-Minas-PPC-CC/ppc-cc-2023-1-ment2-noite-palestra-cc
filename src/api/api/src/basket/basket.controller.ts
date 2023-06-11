@@ -44,6 +44,11 @@ export class BasketController {
     }
   }
 
+  @Get('/list')
+  listBaskets() {
+    return this.basketService.listBaskets();
+  }
+
   @Post('/add-product')
   async addToTheBasket(@Body() addToBasketDto: AddToBasketDto) {
     const { donationName, quantity } = addToBasketDto;

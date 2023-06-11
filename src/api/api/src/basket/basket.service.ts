@@ -47,6 +47,11 @@ export class BasketService {
     return { success: true };
   }
 
+  async listBaskets() {
+    const allBaskets = await this.basketModel.find();
+    return allBaskets;
+  }
+
   async findDonationByName(name: string): Promise<Donation | null> {
     const donation = await this.donationModel.findOne({ name }).exec();
     return donation;
