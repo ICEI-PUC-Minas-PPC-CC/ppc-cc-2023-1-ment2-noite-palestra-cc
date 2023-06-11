@@ -5,14 +5,14 @@ export type EquipamentDocument = HydratedDocument<Equipament>;
 
 @Schema()
 export class Equipament {
-  @Prop()
+  @Prop({ required: true })
   code: string;
 
   @Prop()
   name: string;
 
-  @Prop()
-  lend: string;
+  @Prop({ default: false })
+  lend: boolean;
 
   @Prop({ default: Date.now })
   lendedAt: Date;

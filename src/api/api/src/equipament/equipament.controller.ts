@@ -39,7 +39,7 @@ export class EquipamentController {
     return this.equipamentService.updateEquipament(id, updateEquipamentDto);
   }
 
-  @Get('/search-equipament')
+  @Get('/search-equipament-name')
   async findByLetter(@Query('letter') letter: string) {
     return this.equipamentService.searchEquipament(letter);
   }
