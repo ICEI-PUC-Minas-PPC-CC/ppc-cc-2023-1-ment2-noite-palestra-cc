@@ -1,15 +1,13 @@
-import { HydratedDocument } from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Product } from '../dto/product.interface';
-
-export type BasketDocument = HydratedDocument<Basket>;
+import { Document } from 'mongoose';
 
 @Schema()
-export class Basket {
+export class Basket extends Document {
   @Prop({ required: true })
   name: string;
 
-  @Prop([{ type: Object }])
+  @Prop({ type: [{ type: Object }] })
   products: Product[];
 
   @Prop({ default: Date.now })
@@ -17,3 +15,10 @@ export class Basket {
 }
 
 export const BasketSchema = SchemaFactory.createForClass(Basket);
+
+BasketSchema.pre('save', function (next) {
+  if (!this.date) {
+    this.date = new Date();
+  }
+  next();
+});

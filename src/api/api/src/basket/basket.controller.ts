@@ -1,6 +1,19 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Query,
+  Get,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { BasketService } from './basket.service';
 import { CreateBasketDto } from './dto/create-basket.dto';
+import { CreateDonationDto } from 'src/donation/dto/create-donation.dto';
+import { AddToBasketDto } from './dto/add-basket.dto';
+import { RemoveProductDto } from './dto/remove.dto';
+import { Product } from './dto/product.interface';
 
 @Controller('basket')
 export class BasketController {
@@ -13,36 +26,50 @@ export class BasketController {
     );
     return createdBasket;
   }
+
+  @Post('/find-donation')
+  async findDonationByName(@Body() CreateDonationDto: CreateDonationDto) {
+    const { name } = CreateDonationDto;
+    return this.basketService.findDonationByName(name);
+  }
+
+  @Patch('update/:id')
+  async updateBasket(@Param('id') id: string) {
+    const updateResult = await this.basketService.updateBasket(id);
+
+    if (updateResult.success) {
+      return { message: 'Basket updated successfully' };
+    } else {
+      return { message: 'Basket not found' };
+    }
+  }
+
+  @Post('/add-product')
+  async addToTheBasket(@Body() addToBasketDto: AddToBasketDto) {
+    const { donationName, quantity } = addToBasketDto;
+    await this.basketService.addToTheBasket(donationName, quantity);
+  }
+
+  @Get('/find')
+  async findBasket(@Query('letter') letter: string) {
+    return this.basketService.findBasket(letter);
+  }
+
+  @Delete('/remove-product')
+  removeFromBasket(@Body() removeProductDto: RemoveProductDto) {
+    return this.basketService.removeFromBasket(
+      removeProductDto.id,
+      removeProductDto.productName,
+    );
+  }
+
+  @Get('/list-products/:id')
+  async listProducts(@Param('id') id: string): Promise<Product[]> {
+    return this.basketService.listProducts(id);
+  }
+
+  @Delete('/delete/:id')
+  deleteBasket(@Param('id') id: string) {
+    return this.basketService.deleteBasket(id);
+  }
 }
-
-/*
-  @Get()
-  listDonation() {
-    return this.donationService.listDonation();
-  }
-
-  @Get('/search-users')
-  async findByLetter(@Query('letter') letter: string) {
-    return this.donationService.searcDoantion(letter);
-  }
-
-  @Post('/expiration')
-  async findDonationByExpiration(@Body() body: { date: string }) {
-    const { date } = body;
-    const donation = await this.donationService.findDonationByExpiration(date);
-    return donation;
-  }
-
-  @Post('/perishable')
-  async findByperishable(@Body() body: { perishable: boolean }) {
-    const { perishable } = body;
-    const donation = await this.donationService.findByperishable(perishable);
-    return donation;
-  }
-
-  @Post('/entry-date')
-  async findDonationByentryDate(@Body() body: { date: string }) {
-    const { date } = body;
-    const donation = await this.donationService.findDonationByentryDate(date);
-    return donation;
-  }*/
