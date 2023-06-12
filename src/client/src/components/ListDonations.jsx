@@ -116,8 +116,9 @@ export function ListDonation() {
   }, [searchValue, isTextFieldEmpty]);
 
   const columns = [
-    { field: 'name', headerName: 'PRODUTO', width: 180 },
-    { field: 'description', headerName: 'DESCRIÇÃO', width: 150, editable: true },
+    { field: '_id', headerName: 'ID', width: 210 },
+    { field: 'name', headerName: 'PRODUTO', width: 200 },
+    { field: 'description', headerName: 'DESCRIÇÃO', width: 250, editable: true },
     { field: 'type', headerName: 'TIPO', width: 100 },
     { field: 'amount', headerName: 'QUANTIDADE', width: 110, align: 'center', type: 'number', editable: true },
     {
@@ -151,6 +152,24 @@ export function ListDonation() {
         return date.toLocaleDateString("pt-BR");
       }
     },
+  
+    {
+      field: 'actions',
+      headerName: 'AÇÕES',
+      width: 130,
+      renderCell: (params) => {
+        return (
+          <div>
+            <IconButton aria-label="edit" size="small" onClick={() => updateUser(params.row._id)}>
+              <EditIcon />
+            </IconButton>
+            <IconButton onClick={() => deleteUser(params.row._id)} aria-label="delete" size="small">
+              <DeleteIcon />
+            </IconButton>
+          </div>
+        );
+      },
+    },
   ];
 
   const getRowId = (row) => row._id;
@@ -174,7 +193,7 @@ export function ListDonation() {
 
           }}
         >
-          <div style={{ height: 550, width: '100%', overflow: 'auto' }}>
+          <div style={{ height: 600, width: '100%', overflow: 'auto' }}>
             <div>
               <div style={{ height: 280, width: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>

@@ -184,7 +184,7 @@ export default function MiniDrawer(props) {
               </Link>
             </ListItem>
             <ListItem sx={{ display: 'block' }}>
-              <Link to="/doacoes" style={{ textDecoration: 'none' }}>
+              <Link to="/donations" style={{ textDecoration: 'none' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -200,7 +200,7 @@ export default function MiniDrawer(props) {
               </Link>
             </ListItem>
             <ListItem sx={{ display: 'block' }}>
-              <Link to="/doador" style={{ textDecoration: 'none' }}>
+              <Link to="/donators" style={{ textDecoration: 'none' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -211,7 +211,7 @@ export default function MiniDrawer(props) {
                   <PinkListItemIcon sx={{ fontSize: 24 }}>
                     <MdEmojiPeople />
                   </PinkListItemIcon>
-                  <ListItemText primary="Doador" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
+                  <ListItemText primary="Doadores" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
                 </ListItemButton>
               </Link>
             </ListItem>
@@ -228,22 +228,6 @@ export default function MiniDrawer(props) {
                     <TbWheelchair />
                   </PinkListItemIcon>
                   <ListItemText primary="Equipamentos" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
-                </ListItemButton>
-              </Link>
-            </ListItem>
-            <ListItem sx={{ display: 'block' }}>
-              <Link to="/voluntarios" style={{ textDecoration: 'none' }}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-                >
-                  <PinkListItemIcon sx={{ fontSize: 24 }}>
-                    <MdOutlineGroupAdd />
-                  </PinkListItemIcon>
-                  <ListItemText primary="Voluntários" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
                 </ListItemButton>
               </Link>
             </ListItem>

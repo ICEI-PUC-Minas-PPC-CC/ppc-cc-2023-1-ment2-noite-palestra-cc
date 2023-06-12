@@ -1,9 +1,10 @@
 import { DataGrid, ptBR } from '@mui/x-data-grid';
 import { useState, useEffect } from "react";
+import AddIcon from '@mui/icons-material/Add';
 import React from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Button, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
+import { Button, Checkbox, FormControlLabel, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
 import Rotas from '../api';
@@ -12,8 +13,14 @@ import FormDelUser from './formDelUser';
 import FormCreateUser from './form_createUser';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import FormEditUser from './formEditUser';
+import { DemoItem } from '@mui/x-date-pickers/internals/demo';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers';
+import PrintIcon from '@mui/icons-material/Print';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 
-export function ListUsers() {
+export function ListBeneficiary() {
   const [usuarios, setUsuarios] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [isTextFieldEmpty, setIsTextFieldEmpty] = useState(true);
@@ -24,7 +31,7 @@ export function ListUsers() {
   const routes = new Rotas()
 
   const getUsers = () => {
-    routes.get('/users')
+    routes.get('/beneficiary/all')
       .then(response => setUsuarios(response.data))
       .catch(error => {
         console.log(error);
@@ -36,7 +43,7 @@ export function ListUsers() {
   }, []);
   
   const updateTable = () => {
-    routes.get('/users')
+    routes.get('/beneficiary/all')
       .then(response => setUsuarios(response.data))
       .catch(error => {
         console.log(error);
@@ -94,7 +101,7 @@ export function ListUsers() {
     if (!isTextFieldEmpty) {
       timerId = setTimeout(() => {
         routes
-          .get(`/users/search-users?letter=${searchValue}`)
+          .get(`beneficiary/search-beneficiary?letter=${searchValue}`)
           .then((response) => {
             setUsuarios(response.data);
           })
@@ -104,7 +111,7 @@ export function ListUsers() {
       }, 1000);
     } else {
       routes
-        .get('/users')
+        .get('/beneficiary/all')
         .then((response) => {
           setUsuarios(response.data);
         })
@@ -118,35 +125,20 @@ export function ListUsers() {
 
 
   const columns = [
-    { field: '_id', headerName: 'ID', width: 250 },
-    { field: 'name', headerName: 'NOME', width: 250 },
-    { field: 'username', headerName: 'USER', width: 180 },
-    { field: 'email', headerName: 'EMAIL', width: 300 },
+    { field: '_id', headerName: 'ID', width: 210 },
+    { field: 'name', headerName: 'NOME', width: 180 },
+    { field: 'age', headerName: 'IDADE', width: 90, editable: true },
+    { field: 'cpf', headerName: 'CPF', width: 130 },
+    { field: 'phone', headerName: 'TELEFONE', width: 130 },
+    { field: 'address', headerName: 'ENDEREÇO', width: 250 },
     {
       field: 'createdAt',
       headerName: 'DATA',
-      width: 180,
+      width: 100,
       valueGetter: (params) => {
         const date = new Date(params.value);
         return date.toLocaleDateString("pt-BR");
       }
-    },
-    {
-      field: 'actions',
-      headerName: 'AÇÕES',
-      width: 130,
-      renderCell: (params) => {
-        return (
-          <div>
-            <IconButton aria-label="edit" size="small" onClick={() => updateUser(params.row._id)}>
-              <EditIcon />
-            </IconButton>
-            <IconButton onClick={() => deleteUser(params.row._id)} aria-label="delete" size="small">
-              <DeleteIcon />
-            </IconButton>
-          </div>
-        );
-      },
     },
     {
       field: 'actions',
@@ -189,17 +181,17 @@ export function ListUsers() {
 
           }}
         >
-          <div style={{ height: 550, width: '100%', overflow: 'auto' }}>
+          <div style={{ height: 600, width: '100%', overflow: 'auto' }}>
             <div>
               <div style={{ height: 280, width: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                   <Typography variant="h5" component="span" sx={{ mx: 1 }}>
-                    Usuários Ativos
+                    Beneficiarios Ativos
                   </Typography>
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', marginTop: '50px' }}>
-                  <TextField fullWidth id="outlined-basic" label="Pesquise o nome do usuário" variant="outlined" size="small" sx={{
+                  <TextField fullWidth id="outlined-basic" label="Pesquise o nome do Benefeciario" variant="outlined" size="small" sx={{
                     marginRight: '25px'
                   }} InputProps={{
                     startAdornment: <InputAdornment position="start"><SearchIcon fontSize="small" /></InputAdornment>,
@@ -237,24 +229,40 @@ export function ListUsers() {
                   }}
                   pageSizeOptions={[5]}
                 />
+                 <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '2%' }}>
+                  <Button
+                    variant="contained"
+                    startIcon={<PrintIcon />}
+                    sx={{
+                      backgroundColor: '#1465bb',
+      
+                    }}
+                    onClick={() => {
+                      console.log('Botão "Adicionar" clicado');
+                      setOpenCreateUserPopup(true);
+                    }}
+                  >
+                    Imprimir
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
         </Box>
       </div>
-      <ModalForm title="APAGAR USUÁRIO" openPopup={openPopup} setOpenPopup={setOpenPopup} >
+      {/* <ModalForm title="APAGAR DOADIR" openPopup={openPopup} setOpenPopup={setOpenPopup} >
         <FormDelUser userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel} updateGrid={() => getUsers()} />
       </ModalForm>
 
-      <ModalForm title="CRIAR NOVO USUÁRIO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
+      <ModalForm title="CRIAR NOVO DOADOR" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
         <FormCreateUser onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
       </ModalForm>
 
-      <ModalForm title="EDIÇÃO DO USUÁRIO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
+      <ModalForm title="EDIÇÃO DE DOADOR" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
         <FormEditUser userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()}/>
       </ModalForm>
 
-
+ */}
     </>
   );
 }

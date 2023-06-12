@@ -8,6 +8,7 @@ import { Donations } from './pages/donations';
 import { Beneficiarios } from './pages/beneficiarios';
 import { Equipamentos } from './pages/equipamentos';
 import { Voluntarios } from './pages/voluntarios';
+import { Donators } from './pages/doador';
 
 export function Router() {
     return(
@@ -20,7 +21,7 @@ export function Router() {
                 <Route path='/donations' element={<Donations />}/>
                 <Route path='/beneficiarios' element={<Beneficiarios />}/>
                 <Route path='/equipamentos' element={<Equipamentos />}/>
-                <Route path='/voluntarios' element={<Voluntarios />}/>
+                <Route path='/donators' element={<Donators />}/>
         </Routes>
     );
 }
