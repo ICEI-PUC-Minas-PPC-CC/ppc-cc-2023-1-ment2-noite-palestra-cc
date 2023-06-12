@@ -1,8 +1,7 @@
-import { Header } from "../components/Header";
-import { HeaderDefault } from "../components/HeaderDefault";
-import { LogoDefault } from "../components/LogoDefault";
+
 import MiniDrawer from "../components/MiniDrawer";
-import { Footer } from "../components/footer";
+import Welcome from "../components/Welcome";
+import Notifications from "../components/Notifications"
 
 
 
@@ -11,7 +10,8 @@ export function Home() {
         <div>
             
             <MiniDrawer>
-                <h1>Home</h1>
+                <Notifications />
+                <Welcome />
             </MiniDrawer>
                 
         </div>
