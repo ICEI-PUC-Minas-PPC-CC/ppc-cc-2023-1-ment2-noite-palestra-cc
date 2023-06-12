@@ -19,6 +19,9 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers';
 import PrintIcon from '@mui/icons-material/Print';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import FormDelBeneficiary from './formDelBeneficiary';
+import FormCreateBeneficiary from './formCreateBeneficiary';
+import FormEditBeneficiary from './formEditBeneficiary';
 
 export function ListBeneficiary() {
   const [usuarios, setUsuarios] = useState([]);
@@ -250,19 +253,19 @@ export function ListBeneficiary() {
           </div>
         </Box>
       </div>
-      {/* <ModalForm title="APAGAR DOADIR" openPopup={openPopup} setOpenPopup={setOpenPopup} >
-        <FormDelUser userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel} updateGrid={() => getUsers()} />
+      <ModalForm title="APAGAR BENEFICIÁRIO" openPopup={openPopup} setOpenPopup={setOpenPopup} >
+        <FormDelBeneficiary userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel} updateGrid={() => getUsers()} />
       </ModalForm>
 
-      <ModalForm title="CRIAR NOVO DOADOR" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
-        <FormCreateUser onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
+      <ModalForm title="CRIAR NOVO BENEFICIÁRIO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
+        <FormCreateBeneficiary onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
       </ModalForm>
 
-      <ModalForm title="EDIÇÃO DE DOADOR" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
-        <FormEditUser userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()}/>
+      <ModalForm title="EDIÇÃO DE BENEFICIÁRIO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
+        <FormEditBeneficiary userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()}/>
       </ModalForm>
 
- */}
+
     </>
   );
 }

@@ -1,6 +1,5 @@
 import { DataGrid, ptBR } from '@mui/x-data-grid';
 import { useState, useEffect } from "react";
-import AddIcon from '@mui/icons-material/Add';
 import React from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -9,16 +8,11 @@ import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
 import Rotas from '../api';
 import ModalForm from './modal_form';
-import FormDelUser from './formDelUser';
-import FormCreateUser from './form_createUser';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import FormEditUser from './formEditUser';
-import { DemoItem } from '@mui/x-date-pickers/internals/demo';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker } from '@mui/x-date-pickers';
 import PrintIcon from '@mui/icons-material/Print';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import FormDelDonator from './formDelDonator';
+import FormCreateDonator from './formCreateDonator';
+import FormEditDonator from './formEditDonator';
 
 export function ListDonators() {
   const [usuarios, setUsuarios] = useState([]);
@@ -111,7 +105,7 @@ export function ListDonators() {
       }, 1000);
     } else {
       routes
-        .get('/donators')
+        .get('/donators/all')
         .then((response) => {
           setUsuarios(response.data);
         })
@@ -249,19 +243,17 @@ export function ListDonators() {
           </div>
         </Box>
       </div>
-      {/* <ModalForm title="APAGAR DOADIR" openPopup={openPopup} setOpenPopup={setOpenPopup} >
-          <FormDelUser userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel} updateGrid={() => getUsers()} />
+        <ModalForm title="APAGAR DOADOR" openPopup={openPopup} setOpenPopup={setOpenPopup} >
+            <FormDelDonator userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel} updateGrid={() => getUsers()} />
         </ModalForm>
   
         <ModalForm title="CRIAR NOVO DOADOR" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
-          <FormCreateUser onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
+          <FormCreateDonator onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
         </ModalForm>
   
         <ModalForm title="EDIÇÃO DE DOADOR" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
-          <FormEditUser userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()}/>
+          <FormEditDonator userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()}/>
         </ModalForm>
-  
-   */}
     </>
   );
 }
