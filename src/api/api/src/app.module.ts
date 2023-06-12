@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { DonatorsModule } from './donators/donators.module';
 import { BeneficiaryModule } from './beneficiary/beneficiary.module';
+import { EquipamentModule } from './equipament/equipament.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { BeneficiaryModule } from './beneficiary/beneficiary.module';
     UsersModule,
     DonatorsModule,
     BeneficiaryModule,
+    EquipamentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
