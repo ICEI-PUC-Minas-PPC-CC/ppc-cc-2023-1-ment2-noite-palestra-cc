@@ -151,10 +151,10 @@ export function ListBeneficiary() {
         return (
           <div>
             <IconButton aria-label="edit" size="small" onClick={() => updateUser(params.row._id)}>
-              <EditIcon />
+              <EditIcon sx={{color: '#ffb14b'}} />
             </IconButton>
             <IconButton onClick={() => deleteUser(params.row._id)} aria-label="delete" size="small">
-              <DeleteIcon />
+              <DeleteIcon sx={{color:'#f83515'}} />
             </IconButton>
           </div>
         );
@@ -189,12 +189,12 @@ export function ListBeneficiary() {
               <div style={{ height: 280, width: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                   <Typography variant="h5" component="span" sx={{ mx: 1 }}>
-                    Beneficiarios Ativos
+                    Beneficiários Ativos
                   </Typography>
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', marginTop: '50px' }}>
-                  <TextField fullWidth id="outlined-basic" label="Pesquise o nome do Benefeciario" variant="outlined" size="small" sx={{
+                  <TextField fullWidth id="outlined-basic" label="Pesquise o nome do Beneficiário" variant="outlined" size="small" sx={{
                     marginRight: '25px'
                   }} InputProps={{
                     startAdornment: <InputAdornment position="start"><SearchIcon fontSize="small" /></InputAdornment>,
@@ -261,7 +261,7 @@ export function ListBeneficiary() {
         <FormCreateBeneficiary onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
       </ModalForm>
 
-      <ModalForm title="EDIÇÃO DE BENEFICIÁRIO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
+      <ModalForm title="EDITAR DE BENEFICIÁRIO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
         <FormEditBeneficiary userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()}/>
       </ModalForm>
 

@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
+import dayjs from 'dayjs';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Paper from '@mui/material/Paper';
@@ -14,7 +15,8 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker } from '@mui/x-date-pickers';;
+import { DatePicker } from '@mui/x-date-pickers';
+import 'dayjs/locale/br';
 import Rotas from '../api';
 
 
@@ -55,8 +57,9 @@ export default function FormEditDonation({ userId, onContinueClick, onCancelClic
             setDescription(response.data.description);
             setAmount(response.data.amount);
             setPerishable(response.data.perishable);
-            setEntryDate(response.data.entryDate);
-            setExpirationDate(response.data.expirationDate);
+            setExpirationDate(dayjs(response.data.expirationDate));
+            setEntryDate(dayjs(response.data.entryDate))
+            
         });
     };
 
@@ -116,7 +119,7 @@ export default function FormEditDonation({ userId, onContinueClick, onCancelClic
                             }}
                             onChange={(e) => setAmount(Number(e.target.value))}
                         />
-                        <FormControl sx={{ width: 230, marginLeft: '5px' }}>
+                        <FormControl sx={{width: 230, marginLeft: '5px', marginTop: '8px'}}>
                             <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
@@ -131,19 +134,15 @@ export default function FormEditDonation({ userId, onContinueClick, onCancelClic
                         </FormControl>
                     </div>
                     <div>
-                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='en-gb'>
-                            <DatePicker
-                                size="small"
-                                label="Data de vencimento"
-                                value={expirationDate}
-                                onChange={(date) => setExpirationDate(date)}
-                            />
-
-                            <DatePicker
-                                size="small"
-                                label="Data de entrada"
-                                value={entryDate}
-                                onChange={(date) => setEntryDate(date)}
+                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='br'>
+                            <DatePicker size="small" label="Data de vencimento"
+                             value={expirationDate} 
+                             onChange={(e) => setExpirationDate(e)} />
+                        </LocalizationProvider>
+                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='br'>
+                            <DatePicker size="small" label="Data de entrada" 
+                            value={entryDate} 
+                            onChange={(e) => setEntryDate(e)} 
                             />
                         </LocalizationProvider>
                     </div>

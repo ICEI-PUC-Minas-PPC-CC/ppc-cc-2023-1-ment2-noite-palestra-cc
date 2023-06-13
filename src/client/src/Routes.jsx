@@ -9,6 +9,8 @@ import { Beneficiarios } from './pages/beneficiarios';
 import { Equipamentos } from './pages/equipamentos';
 import { Voluntarios } from './pages/voluntarios';
 import { Donators } from './pages/doador';
+import { Config } from './pages/config';
+import { Basket } from './pages/basket';
 
 export function Router() {
     return(
@@ -22,6 +24,8 @@ export function Router() {
                 <Route path='/beneficiarios' element={<Beneficiarios />}/>
                 <Route path='/equipamentos' element={<Equipamentos />}/>
                 <Route path='/donators' element={<Donators />}/>
+                <Route path='/config' element={<Config />}/>
+                <Route path='/basket' element={<Basket />}/>
         </Routes>
     );
 }

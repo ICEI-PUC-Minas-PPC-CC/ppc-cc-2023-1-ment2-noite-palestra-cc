@@ -174,10 +174,10 @@ export function ListDonation() {
         return (
           <div>
             <IconButton aria-label="edit" size="small" onClick={() => updateUser(params.row._id)}>
-              <EditIcon />
+              <EditIcon sx={{color: '#ffb14b'}} />
             </IconButton>
             <IconButton onClick={() => deleteUser(params.row._id)} aria-label="delete" size="small">
-              <DeleteIcon />
+              <DeleteIcon sx={{color:'#f83515'}} />
             </IconButton>
           </div>
         );
