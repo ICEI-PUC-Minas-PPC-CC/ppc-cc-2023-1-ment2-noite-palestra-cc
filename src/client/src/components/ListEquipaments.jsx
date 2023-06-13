@@ -1,6 +1,7 @@
 import { DataGrid, ptBR } from '@mui/x-data-grid';
 import { useState, useEffect } from "react";
-import React, { useRef } from 'react';
+import AddIcon from '@mui/icons-material/Add';
+import React from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, Checkbox, FormControlLabel, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
@@ -8,27 +9,41 @@ import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
 import Rotas from '../api';
 import ModalForm from './modal_form';
+import { useRef } from 'react';
+import FormDelUser from './formDelUser';
+import FormCreateUser from './form_createUser';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import FormEditUser from './formEditUser';
+import { DemoItem } from '@mui/x-date-pickers/internals/demo';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers';
 import PrintIcon from '@mui/icons-material/Print';
-import FormDelDonator from './formDelDonator';
-import FormCreateDonator from './formCreateDonator';
-import FormEditDonator from './formEditDonator';
-import ReportProblemIcon from '@mui/icons-material/ReportProblem';
-import ImpressoDoadores from './ImpressoDonators';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import FormDelDonation from './formDelDonation';
+import FormCreateDonation from './formCreateDonation';
+import FormEditDonation from './formEditDonation';
+import ImpressoEquipamentos from './impressoEquipament';
 import { useReactToPrint } from 'react-to-print';
 
-export function ListDonators() {
+export function ListEquipament() {
   const [usuarios, setUsuarios] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [isTextFieldEmpty, setIsTextFieldEmpty] = useState(true);
   const [openPopup, setOpenPopup] = useState(false);
   const [openCreateUserPopup, setOpenCreateUserPopup] = useState(false);
   const [openUpdateUserPopup, setOpenUpdateUserPopup] = useState(false);
+  const [isPerishableChecked, setIsPerishableChecked] = useState(false);
   const [userId, setUserId] = React.useState(null);
   const routes = new Rotas()
-
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: 'teste',
+    onAfterPrint: () => alert("Impresso gerado!")
+  });
   const getUsers = () => {
-    routes.get('/donators/all ')
+    routes.get('/equipament/all')
       .then(response => setUsuarios(response.data))
       .catch(error => {
         console.log(error);
@@ -40,7 +55,7 @@ export function ListDonators() {
   }, []);
 
   const updateTable = () => {
-    routes.get('/donators/all ')
+    routes.get('/equipament/all')
       .then(response => setUsuarios(response.data))
       .catch(error => {
         console.log(error);
@@ -98,7 +113,7 @@ export function ListDonators() {
     if (!isTextFieldEmpty) {
       timerId = setTimeout(() => {
         routes
-          .get(`/donators/search-donators?letter=${searchValue}`)
+          .get(`/equipament/search-equipament-name?letter=${searchValue}`)
           .then((response) => {
             setUsuarios(response.data);
           })
@@ -108,7 +123,7 @@ export function ListDonators() {
       }, 1000);
     } else {
       routes
-        .get('/donators/all')
+        .get('/equipament/all')
         .then((response) => {
           setUsuarios(response.data);
         })
@@ -120,27 +135,44 @@ export function ListDonators() {
     return () => clearTimeout(timerId);
   }, [searchValue, isTextFieldEmpty]);
 
-  const componentRef = useRef();
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-    documentTitle: 'teste',
-    onAfterPrint: () => alert("Impresso gerado!")
-  });
 
   const columns = [
-    { field: '_id', headerName: 'ID', width: 250 },
-    { field: 'name', headerName: 'NOME', width: 250 },
-    { field: 'cpf', headerName: 'CPF', width: 180 },
-    { field: 'email', headerName: 'EMAIL', width: 300 },
+    { field: '_id', headerName: 'ID', width: 210, hide: true },
+    { field: 'code', headerName: 'Cód. Equip', width: 90 },
     {
-      field: 'createdAt',
-      headerName: 'DATA',
+      field: 'lend',
+      headerName: 'Emprestado',
+      width: 100,
+      align: 'center',
+      renderCell: (params) => {
+        const value = params.value;
+        const displayValue = value ? 'Sim' : 'Não';
+        return <div>{displayValue}</div>;
+      },
+    },
+    { field: 'lendedTo', headerName: 'Beneficiário', width: 180 },
+    { field: 'phone', headerName: 'Telefone', width: 100 },
+    { field: 'address', headerName: 'Endereço', width: 210 },
+    {
+      field: 'lendedAt',
+      headerName: 'Data de Empréstimo',
       width: 180,
+      type: 'Date',
       valueGetter: (params) => {
         const date = new Date(params.value);
         return date.toLocaleDateString("pt-BR");
       }
     },
+    {
+        field: 'createdAt',
+        headerName: 'Data de Devolução',
+        width: 140,
+        type: 'Date',
+        valueGetter: (params) => {
+          const date = new Date(params.value);
+          return date.toLocaleDateString("pt-BR");
+        }
+      },
     {
       field: 'actions',
       headerName: 'AÇÕES',
@@ -187,21 +219,46 @@ export function ListDonators() {
               <div style={{ height: 280, width: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                   <Typography variant="h5" component="span" sx={{ mx: 1 }}>
-                    Doadores Ativos
+                    Equipamentos
                   </Typography>
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', marginTop: '50px' }}>
-                  <TextField fullWidth id="outlined-basic" label="Pesquise o nome do doador" variant="outlined" size="small" sx={{
-                    marginRight: '25px'
-                  }} InputProps={{
-                    startAdornment: <InputAdornment position="start"><SearchIcon fontSize="small" /></InputAdornment>,
-                  }} value={searchValue} onChange={handleSearchTextChange} />
+                  <TextField
+                    id="outlined-basic"
+                    label="Pesquise pelo nome do equipamento"
+                    variant="outlined"
+                    size="medium"
+                    sx={{ marginRight: '20px', width: '40%' }}
+                    InputProps={{
+                      startAdornment: <InputAdornment position="start"><SearchIcon fontSize="small" /></InputAdornment>,
+                    }}
+                    value={searchValue}
+                    onChange={handleSearchTextChange}
+                  />
+                  <div style={{ margin: '0 10px', display: 'flex', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <FormControlLabel
+                        control={<Checkbox checked={isPerishableChecked} onChange={(e) => setIsPerishableChecked(e.target.checked)} />}
+                        label="Emprestado"
+                      />
 
-                  <Button variant="contained" startIcon={<PersonAddIcon />} sx={{
-                    backgroundColor: '#00992E',
-                    marginLeft: 'auto'
-                  }}
+                      <div style={{ margin: '0 10px' }}></div>
+                      <div>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                          <DatePicker size="small" label="Data de devolução" />
+                        </LocalizationProvider>
+
+                      </div>
+                    </div>
+                  </div>
+                  <Button
+                    variant="contained"
+                    startIcon={<AddIcon />}
+                    sx={{
+                      backgroundColor: '#00992E',
+
+                    }}
                     onClick={() => {
                       console.log('Botão "Adicionar" clicado');
                       setOpenCreateUserPopup(true);
@@ -210,6 +267,7 @@ export function ListDonators() {
                     Adicionar
                   </Button>
                 </div>
+
 
                 <DataGrid
                   sx={{
@@ -229,11 +287,12 @@ export function ListDonators() {
                     },
                   }}
                   pageSizeOptions={[5]}
+                  checkboxSelection
                 />
                 <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '2%' }}>
 
                 <div style={{ display: 'none' }}>
-                    <ImpressoDoadores ref={componentRef} title="Teste" data={usuarios}/>
+                    <ImpressoEquipamentos ref={componentRef} title="Teste" data={usuarios}/>
                   </div>
                   <Button
                     variant="contained"
@@ -252,17 +311,18 @@ export function ListDonators() {
           </div>
         </Box>
       </div>
-        <ModalForm title="APAGAR DOADOR" openPopup={openPopup} setOpenPopup={setOpenPopup} >
-            <FormDelDonator userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel} updateGrid={() => getUsers()} />
-        </ModalForm>
-  
-        <ModalForm title="CRIAR NOVO DOADOR" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
-          <FormCreateDonator onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
-        </ModalForm>
-  
-        <ModalForm title="EDITAR DOADOR" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
-          <FormEditDonator userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()}/>
-        </ModalForm>
+
+      <ModalForm title="APAGAR EQUIPAMENTO" openPopup={openPopup} setOpenPopup={setOpenPopup} >
+        <FormDelDonation userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel} updateGrid={() => getUsers()} />
+      </ModalForm>
+
+      <ModalForm title="ADICIONAR EQUIPAMENTO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
+        <FormCreateDonation onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
+      </ModalForm>
+
+      <ModalForm title="EDITAR EQUIPAMENTO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
+        <FormEditDonation userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()} />
+      </ModalForm>
     </>
   );
 }

@@ -30,6 +30,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.10.0",
+    "react-to-print": "^2.14.13",
     "styled-components": "^5.3.10"
   },
   "devDependencies": {

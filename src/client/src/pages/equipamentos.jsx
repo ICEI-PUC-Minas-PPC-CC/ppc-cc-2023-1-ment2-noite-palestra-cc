@@ -1,7 +1,6 @@
-import { Header } from "../components/Header";
-import { LogoDefault } from "../components/LogoDefault";
+import { ListEquipament } from "../components/ListEquipaments";
 import MiniDrawer from "../components/MiniDrawer";
-import { Footer } from "../components/footer";
+
 
 
 
@@ -9,7 +8,7 @@ export function Equipamentos() {
     return (
         <div>
             <MiniDrawer>
-                <h1>Equipamentos</h1>
+                <ListEquipament />
             </MiniDrawer>
                 
         </div>

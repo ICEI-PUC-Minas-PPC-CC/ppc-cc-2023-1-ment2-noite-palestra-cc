@@ -1,7 +1,7 @@
 import { DataGrid, ptBR } from '@mui/x-data-grid';
 import { useState, useEffect } from "react";
 import AddIcon from '@mui/icons-material/Add';
-import React from 'react';
+import React, { useRef } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, Checkbox, FormControlLabel, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
@@ -22,6 +22,12 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import FormDelDonation from './formDelDonation';
 import FormCreateDonation from './formCreateDonation';
 import FormEditDonation from './formEditDonation';
+import ImpressoDonation from './ImpressoDonation';
+import { useReactToPrint } from 'react-to-print';
+
+
+
+
 
 
 export function ListDonation() {
@@ -101,6 +107,14 @@ export function ListDonation() {
     }
   };
 
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: 'teste',
+    onAfterPrint: () => alert("Impresso gerado!")
+  });
+
+
   useEffect(() => {
     let timerId;
     if (!isTextFieldEmpty) {
@@ -174,10 +188,10 @@ export function ListDonation() {
         return (
           <div>
             <IconButton aria-label="edit" size="small" onClick={() => updateUser(params.row._id)}>
-              <EditIcon sx={{color: '#ffb14b'}} />
+              <EditIcon sx={{ color: '#ffb14b' }} />
             </IconButton>
             <IconButton onClick={() => deleteUser(params.row._id)} aria-label="delete" size="small">
-              <DeleteIcon sx={{color:'#f83515'}} />
+              <DeleteIcon sx={{ color: '#f83515' }} />
             </IconButton>
           </div>
         );
@@ -298,6 +312,9 @@ export function ListDonation() {
                   >
                     Cestas
                   </Button>
+                  <div style={{ display: 'none' }}>
+                    <ImpressoDonation ref={componentRef} title="Teste" data={usuarios}/>
+                  </div>
                   <Button
                     variant="contained"
                     startIcon={<PrintIcon />}
@@ -305,10 +322,7 @@ export function ListDonation() {
                       backgroundColor: '#1465bb',
 
                     }}
-                    onClick={() => {
-                      console.log('Botão "Adicionar" clicado');
-                      setOpenCreateUserPopup(true);
-                    }}
+                    onClick={handlePrint}
                   >
                     Imprimir
                   </Button>
@@ -327,7 +341,7 @@ export function ListDonation() {
         <FormCreateDonation onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
       </ModalForm>
 
-      <ModalForm title="EDIÇÃO DE DOAÇÃO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
+      <ModalForm title="EDITAR DE DOAÇÃO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
         <FormEditDonation userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()} />
       </ModalForm>
     </>

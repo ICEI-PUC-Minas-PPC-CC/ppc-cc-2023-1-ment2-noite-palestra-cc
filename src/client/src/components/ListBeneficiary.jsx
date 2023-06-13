@@ -1,7 +1,7 @@
 import { DataGrid, ptBR } from '@mui/x-data-grid';
 import { useState, useEffect } from "react";
 import AddIcon from '@mui/icons-material/Add';
-import React from 'react';
+import React, { useRef } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, Checkbox, FormControlLabel, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
@@ -22,6 +22,9 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import FormDelBeneficiary from './formDelBeneficiary';
 import FormCreateBeneficiary from './formCreateBeneficiary';
 import FormEditBeneficiary from './formEditBeneficiary';
+import { useReactToPrint } from 'react-to-print';
+import ImpressoBeneficiarios from './impressoBeneficiary';
+
 
 export function ListBeneficiary() {
   const [usuarios, setUsuarios] = useState([]);
@@ -32,6 +35,13 @@ export function ListBeneficiary() {
   const [openUpdateUserPopup, setOpenUpdateUserPopup] = useState(false);
   const [userId, setUserId] = React.useState(null);
   const routes = new Rotas()
+  
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: 'teste',
+    onAfterPrint: () => alert("Impresso gerado!")
+  });
 
   const getUsers = () => {
     routes.get('/beneficiary/all')
@@ -233,17 +243,17 @@ export function ListBeneficiary() {
                   pageSizeOptions={[5]}
                 />
                  <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '2%' }}>
+                 <div style={{ display: 'none' }}>
+                    <ImpressoBeneficiarios ref={componentRef} title="Teste" data={usuarios}/>
+                  </div>
                   <Button
                     variant="contained"
                     startIcon={<PrintIcon />}
                     sx={{
                       backgroundColor: '#1465bb',
-      
+
                     }}
-                    onClick={() => {
-                      console.log('Botão "Adicionar" clicado');
-                      setOpenCreateUserPopup(true);
-                    }}
+                    onClick={handlePrint}
                   >
                     Imprimir
                   </Button>
