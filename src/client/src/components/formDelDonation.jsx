@@ -5,13 +5,14 @@ import { Box, Typography } from '@mui/material';
 import Rotas from '../api';
 import AlertComponent from './Alerts';
 
-export default function FormDelUser({ userId, onDeleteSuccess, onCancel, updateGrid }) {
+
+export default function FormDelDonation({ userId, onDeleteSuccess, onCancel, updateGrid }) {
     const routes = new Rotas();
     const [showComponent, setShowComponent] = React.useState(true);
     const [alertProps, setAlertProps] = React.useState(null);
 
     const deleteUser = (userId) => {
-        routes.delete('/users', userId)
+        routes.delete('/donation', userId)
             .then(response => {
                 if (response.status === 200) {
                     onDeleteSuccess();
@@ -66,7 +67,7 @@ export default function FormDelUser({ userId, onDeleteSuccess, onCancel, updateG
                 <Typography variant="p" component="span" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     Você está prestes a realizar uma ação irreversível.
                 </Typography>
-                <Typography variant="p" component="span" sx={{ fontWeight: 'bold', display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '8%' }}>
+                <Typography variant="p" component="span" sx={{  fontWeight: 'bold', display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '8%' }}>
                     Tem certeza que deseja continuar?
                 </Typography>
             </Box>

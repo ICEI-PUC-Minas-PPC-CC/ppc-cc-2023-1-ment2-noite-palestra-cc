@@ -13,6 +13,7 @@ import PrintIcon from '@mui/icons-material/Print';
 import FormDelDonator from './formDelDonator';
 import FormCreateDonator from './formCreateDonator';
 import FormEditDonator from './formEditDonator';
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 
 export function ListDonators() {
   const [usuarios, setUsuarios] = useState([]);
@@ -251,7 +252,7 @@ export function ListDonators() {
           <FormCreateDonator onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
         </ModalForm>
   
-        <ModalForm title="EDIÇÃO DE DOADOR" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
+        <ModalForm icon={<ReportProblemIcon />} title="EDIÇÃO DE DOADOR" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
           <FormEditDonator userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()}/>
         </ModalForm>
     </>

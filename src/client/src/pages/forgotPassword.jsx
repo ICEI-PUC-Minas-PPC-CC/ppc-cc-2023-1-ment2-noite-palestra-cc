@@ -3,6 +3,7 @@ import { Footer } from "../components/footer";
 import { useState } from "react";
 import { useNavigate, useParams  } from 'react-router-dom'
 import { FormForgotPassword } from "../components/formForgotPassword";
+import { HeaderDefault } from "../components/HeaderDefault";
 
 export function ForgotPassword(){
   const { id } = useParams();
@@ -30,7 +31,7 @@ export function ForgotPassword(){
   
   return(
     <div>
-      <Header />
+      <HeaderDefault />
         <FormForgotPassword
         password={password}
         setPassword={setPassword}

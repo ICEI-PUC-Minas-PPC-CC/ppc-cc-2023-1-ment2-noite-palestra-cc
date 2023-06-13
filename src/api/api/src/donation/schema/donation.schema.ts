@@ -10,9 +10,6 @@ export class Donation {
   @Prop({ required: false })
   description: string;
 
-  @Prop({ required: true })
-  type: string;
-
   @Prop({ required: true, default: 0 })
   amount: number;
 
@@ -22,7 +19,7 @@ export class Donation {
   @Prop({ default: Date.now })
   entryDate: Date;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   expirationDate: Date;
 }
 

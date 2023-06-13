@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { DonationService } from './donation.service';
 import { CreateDonationDto } from './dto/create-donation.dto';
+import { UpdateDonationDto } from './dto/update-donation.dto';
 
 @Controller('donation')
 export class DonationController {
@@ -25,7 +26,12 @@ export class DonationController {
     return this.donationService.listDonation();
   }
 
-  @Get('/search-users')
+  @Get(':id/find')
+  findOneDonator(@Param('id') id: string) {
+    return this.donationService.findOneDonation(id);
+  }
+
+  @Get('/search-donation')
   async findByLetter(@Query('letter') letter: string) {
     return this.donationService.searcDoantion(letter);
   }
@@ -49,5 +55,18 @@ export class DonationController {
     const { date } = body;
     const donation = await this.donationService.findDonationByentryDate(date);
     return donation;
+  }
+
+  @Patch(':id/update-donation')
+  updateDonation(
+    @Param('id') id: string,
+    @Body() updateDonationDtp: UpdateDonationDto,
+  ) {
+    return this.donationService.updateDonation(id, updateDonationDtp);
+  }
+
+  @Delete(':id')
+  removeDonation(@Param('id') id: string) {
+    return this.donationService.removeDonation(id);
   }
 }

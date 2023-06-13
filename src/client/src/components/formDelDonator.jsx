@@ -5,6 +5,7 @@ import { Box, Typography } from '@mui/material';
 import Rotas from '../api';
 import AlertComponent from './Alerts';
 
+
 export default function FormDelDonator({ userId, onDeleteSuccess, onCancel, updateGrid }) {
     const routes = new Rotas();
     const [showComponent, setShowComponent] = React.useState(true);
@@ -66,7 +67,7 @@ export default function FormDelDonator({ userId, onDeleteSuccess, onCancel, upda
                 <Typography variant="p" component="span" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     Você está prestes a realizar uma ação irreversível.
                 </Typography>
-                <Typography variant="p" component="span" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '8%' }}>
+                <Typography variant="p" component="span" sx={{  fontWeight: 'bold', display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '8%' }}>
                     Tem certeza que deseja continuar?
                 </Typography>
             </Box>

@@ -19,38 +19,42 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers';
 import PrintIcon from '@mui/icons-material/Print';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import FormDelDonation from './formDelDonation';
+import FormCreateDonation from './formCreateDonation';
+import FormEditDonation from './formEditDonation';
+
 
 export function ListDonation() {
-
-  const [donations, setdonations] = useState([]);
+  const [usuarios, setUsuarios] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [isTextFieldEmpty, setIsTextFieldEmpty] = useState(true);
   const [openPopup, setOpenPopup] = useState(false);
-  const [openCreateDonationPopup, setOpenCreateDonationPopup] = useState(false);
-  const [openUpdateDonationPopup, setOpenUpdateDonationPopup] = useState(false);
-  const [donationId, setDonationId] = React.useState(null);
+  const [openCreateUserPopup, setOpenCreateUserPopup] = useState(false);
+  const [openUpdateUserPopup, setOpenUpdateUserPopup] = useState(false);
+  const [isPerishableChecked, setIsPerishableChecked] = useState(false);
+  const [userId, setUserId] = React.useState(null);
   const routes = new Rotas()
 
-  const getDonation = () => {
+  const getUsers = () => {
     routes.get('/donation')
-      .then(response => setdonations(response.data))
+      .then(response => setUsuarios(response.data))
       .catch(error => {
         console.log(error);
       });
   };
-  console.log(setdonations)
-  useEffect(() => {
-    getDonation();
-  }, []);
 
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   const updateTable = () => {
     routes.get('/donation')
-      .then(response => setdonations(response.data))
+      .then(response => setUsuarios(response.data))
       .catch(error => {
         console.log(error);
       });
   };
+
 
   const handleDelete = () => {
     setOpenPopup(false);
@@ -60,22 +64,32 @@ export function ListDonation() {
     setOpenPopup(false);
   }
 
+
+  const deleteUser = (userId) => {
+    setUserId(userId);
+    setOpenPopup(true);
+  }
+
+  const updateUser = (userId) => {
+    setUserId(userId);
+    setOpenUpdateUserPopup(true);
+  }
+
   const handleContinueClick = () => {
-    setOpenCreateDonationPopup(false);
+    setOpenCreateUserPopup(false);
   };
 
   const handleCancelClick = () => {
-    setOpenCreateDonationPopup(false);
+    setOpenCreateUserPopup(false);
   };
 
   const handleUpdateContinueClick = () => {
-    setOpenUpdateDonationPopup(false);
+    setOpenUpdateUserPopup(false);
   };
 
   const handleUpdateCancelClick = () => {
-    setOpenUpdateDonationPopup(false);
+    setOpenUpdateUserPopup(false);
   };
-
 
   const handleSearchTextChange = (event) => {
     const searchValue = event.target.value;
@@ -92,9 +106,9 @@ export function ListDonation() {
     if (!isTextFieldEmpty) {
       timerId = setTimeout(() => {
         routes
-          .get(`/donation/search-users?letter=${searchValue}`)
+          .get(`/donation/search-donation?letter=${searchValue}`)
           .then((response) => {
-            setdonations(response.data);
+            setUsuarios(response.data);
           })
           .catch((error) => {
             console.log(error);
@@ -104,8 +118,7 @@ export function ListDonation() {
       routes
         .get('/donation')
         .then((response) => {
-          setdonations(response.data);
-          console.log(set)
+          setUsuarios(response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -115,11 +128,11 @@ export function ListDonation() {
     return () => clearTimeout(timerId);
   }, [searchValue, isTextFieldEmpty]);
 
+
   const columns = [
     { field: '_id', headerName: 'ID', width: 210 },
     { field: 'name', headerName: 'PRODUTO', width: 200 },
     { field: 'description', headerName: 'DESCRIÇÃO', width: 250, editable: true },
-    { field: 'type', headerName: 'TIPO', width: 100 },
     { field: 'amount', headerName: 'QUANTIDADE', width: 110, align: 'center', type: 'number', editable: true },
     {
       field: 'perishable',
@@ -152,7 +165,7 @@ export function ListDonation() {
         return date.toLocaleDateString("pt-BR");
       }
     },
-  
+
     {
       field: 'actions',
       headerName: 'AÇÕES',
@@ -171,6 +184,7 @@ export function ListDonation() {
       },
     },
   ];
+
 
   const getRowId = (row) => row._id;
 
@@ -217,7 +231,11 @@ export function ListDonation() {
                   />
                   <div style={{ margin: '0 10px', display: 'flex', alignItems: 'center' }}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <FormControlLabel control={<Checkbox defaultChecked />} label="Perecível" />
+                      <FormControlLabel
+                        control={<Checkbox checked={isPerishableChecked} onChange={(e) => setIsPerishableChecked(e.target.checked)} />}
+                        label="Perecível"
+                      />
+
                       <div style={{ margin: '0 10px' }}></div>
                       <div>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -249,7 +267,7 @@ export function ListDonation() {
                     minHeight: '350px'
 
                   }}
-                  rows={donations}
+                  rows={usuarios}
                   columns={columns}
                   localeText={ptBR.components.MuiDataGrid.defaultProps.localeText}
                   getRowId={getRowId}
@@ -264,13 +282,13 @@ export function ListDonation() {
                   checkboxSelection
                 />
                 <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '2%' }}>
-                <Button
+                  <Button
                     variant="contained"
                     startIcon={<ShoppingBasketIcon />}
                     sx={{
                       backgroundColor: '#ea00f6',
                       marginRight: '1%'
-                      
+
 
                     }}
                     onClick={() => {
@@ -285,7 +303,7 @@ export function ListDonation() {
                     startIcon={<PrintIcon />}
                     sx={{
                       backgroundColor: '#1465bb',
-      
+
                     }}
                     onClick={() => {
                       console.log('Botão "Adicionar" clicado');
@@ -299,21 +317,19 @@ export function ListDonation() {
             </div>
           </div>
         </Box>
-
       </div>
-      {/* <ModalForm title="APAGAR USUÁRIO" openPopup={openPopup} setOpenPopup={setOpenPopup} >
-            <FormDelUser userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel} updateGrid={() => getUsers()} />
-          </ModalForm>
-    
-          <ModalForm title="CRIAR NOVO USUÁRIO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
-            <FormCreateUser onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
-          </ModalForm>
-    
-          <ModalForm title="EDIÇÃO DO USUÁRIO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
-            <FormEditUser userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()}/>
-          </ModalForm>
-     */}
 
+      <ModalForm title="APAGAR DOAÇÃO" openPopup={openPopup} setOpenPopup={setOpenPopup} >
+        <FormDelDonation userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel} updateGrid={() => getUsers()} />
+      </ModalForm>
+
+      <ModalForm title="ADICIONAR NOVA DOAÇÃO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
+        <FormCreateDonation onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
+      </ModalForm>
+
+      <ModalForm title="EDIÇÃO DE DOAÇÃO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
+        <FormEditDonation userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()} />
+      </ModalForm>
     </>
   );
 }

@@ -148,23 +148,6 @@ export function ListUsers() {
         );
       },
     },
-    {
-      field: 'actions',
-      headerName: 'AÇÕES',
-      width: 130,
-      renderCell: (params) => {
-        return (
-          <div>
-            <IconButton aria-label="edit" size="small" onClick={() => updateUser(params.row._id)}>
-              <EditIcon />
-            </IconButton>
-            <IconButton onClick={() => deleteUser(params.row._id)} aria-label="delete" size="small">
-              <DeleteIcon />
-            </IconButton>
-          </div>
-        );
-      },
-    },
   ];
 
 

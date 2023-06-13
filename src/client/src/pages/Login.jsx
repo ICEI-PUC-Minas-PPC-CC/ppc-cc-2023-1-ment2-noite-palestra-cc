@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Alert } from "@mui/material";
 import styles from '../css/Formulario.module.css'
 import Rotas from "../api";
+import { HeaderDefault } from "../components/HeaderDefault";
 
 export function Login() {
   const routes = new Rotas()
@@ -34,7 +35,7 @@ export function Login() {
 
   return (
     <div id="login-container">
-      <Header />
+      <HeaderDefault />
       {loginError && (
           <div className={styles.alertContainer}>
           <Alert severity="error">{loginError}</Alert>
