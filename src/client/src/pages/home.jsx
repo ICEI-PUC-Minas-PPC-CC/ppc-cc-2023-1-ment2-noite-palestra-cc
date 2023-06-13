@@ -1,19 +1,12 @@
-import { Header } from "../components/Header";
-import { HeaderDefault } from "../components/HeaderDefault";
-import { LogoDefault } from "../components/LogoDefault";
-import MiniDrawer from "../components/MiniDrawer";
-import { Footer } from "../components/footer";
-
-
+import homeStyles from "../css/Home.module.css";
+import Welcome from "../components/Welcome";
+import Notifications from "../components/Notifications";
 
 export function Home() {
-    return (
-        <div>
-            
-            <MiniDrawer>
-                <h1>Home</h1>
-            </MiniDrawer>
-                
-        </div>
-    );
+  return (
+    <div className={homeStyles.home}>
+      <Welcome />
+      <Notifications />
+    </div>
+  );
 }
