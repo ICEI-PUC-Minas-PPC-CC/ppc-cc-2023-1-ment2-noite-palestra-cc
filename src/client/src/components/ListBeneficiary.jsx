@@ -199,12 +199,12 @@ export function ListBeneficiary() {
               <div style={{ height: 280, width: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                   <Typography variant="h5" component="span" sx={{ mx: 1 }}>
-                    Beneficiários Ativos
+                    Beneficiados Ativos
                   </Typography>
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', marginTop: '50px' }}>
-                  <TextField fullWidth id="outlined-basic" label="Pesquise o nome do Beneficiário" variant="outlined" size="small" sx={{
+                  <TextField fullWidth id="outlined-basic" label="Pesquise o nome do beneficiado" variant="outlined" size="small" sx={{
                     marginRight: '25px'
                   }} InputProps={{
                     startAdornment: <InputAdornment position="start"><SearchIcon fontSize="small" /></InputAdornment>,

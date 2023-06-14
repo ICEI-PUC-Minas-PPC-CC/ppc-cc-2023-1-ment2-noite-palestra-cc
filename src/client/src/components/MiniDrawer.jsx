@@ -179,7 +179,7 @@ export default function MiniDrawer(props) {
                   <PinkListItemIcon sx={{ fontSize: 24 }}>
                     <MdSettingsAccessibility />
                   </PinkListItemIcon>
-                  <ListItemText primary="Beneficiários" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
+                  <ListItemText primary="Beneficiados" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
                 </ListItemButton>
               </Link>
             </ListItem>
