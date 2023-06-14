@@ -31,6 +31,12 @@ export class DonationController {
     return this.donationService.findOneDonation(id);
   }
 
+  @Post('/expiring-products')
+  async findExpiringProducts(@Body('days') days: number) {
+    const products = await this.donationService.findExpiringProducts(days);
+    return products;
+  }
+
   @Get('/search-donation')
   async findByLetter(@Query('letter') letter: string) {
     return this.donationService.searcDoantion(letter);
