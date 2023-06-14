@@ -118,7 +118,6 @@ export function ListUsers() {
 
 
   const columns = [
-    { field: '_id', headerName: 'ID', width: 250 },
     { field: 'name', headerName: 'NOME', width: 250 },
     { field: 'username', headerName: 'USER', width: 180 },
     { field: 'email', headerName: 'EMAIL', width: 300 },

@@ -138,7 +138,6 @@ export function ListBeneficiary() {
 
 
   const columns = [
-    { field: '_id', headerName: 'ID', width: 210 },
     { field: 'name', headerName: 'NOME', width: 180 },
     { field: 'age', headerName: 'IDADE', width: 90, editable: true },
     { field: 'cpf', headerName: 'CPF', width: 130 },

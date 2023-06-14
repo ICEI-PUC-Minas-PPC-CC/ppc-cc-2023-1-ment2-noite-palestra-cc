@@ -137,7 +137,6 @@ export function ListEquipament() {
 
 
   const columns = [
-    { field: '_id', headerName: 'ID', width: 210, hide: true },
     { field: 'code', headerName: 'Cód. Equip', width: 90 },
     {
       field: 'lend',

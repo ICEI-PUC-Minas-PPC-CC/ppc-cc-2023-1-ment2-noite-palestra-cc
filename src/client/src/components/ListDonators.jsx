@@ -128,7 +128,6 @@ export function ListDonators() {
   });
 
   const columns = [
-    { field: '_id', headerName: 'ID', width: 250 },
     { field: 'name', headerName: 'NOME', width: 250 },
     { field: 'cpf', headerName: 'CPF', width: 180 },
     { field: 'email', headerName: 'EMAIL', width: 300 },
