@@ -32,15 +32,15 @@ export class DonatorsService {
     id: string,
     updateDonatorDto: UpdateDonatorDto,
   ): Promise<{ success: boolean }> {
-    const { name, cpf, phone, email, address } = updateDonatorDto;
+    const { name, obs, phone, email, address } = updateDonatorDto;
 
     const updateFields: any = {};
 
     if (name) {
       updateFields.name = name;
     }
-    if (cpf) {
-      updateFields.cpf = cpf;
+    if (obs) {
+      updateFields.obs = obs;
     }
     if (phone) {
       updateFields.phone = phone;

@@ -129,8 +129,10 @@ export function ListDonators() {
 
   const columns = [
     { field: 'name', headerName: 'NOME', width: 250 },
-    { field: 'cpf', headerName: 'CPF', width: 180 },
+    { field: 'phone', headerName: 'TELEFONE', width: 250 },
     { field: 'email', headerName: 'EMAIL', width: 300 },
+    { field: 'address', headerName: 'ENDEREÇO', width: 300 },
+    { field: 'obs', headerName: 'OBSERVAÇÃO', width: 180 },
     {
       field: 'createdAt',
       headerName: 'DATA',

@@ -44,7 +44,7 @@ export class DonatorsController {
     return this.donatorsService.searchDonators(letter);
   }
 
-  @Delete(':id/remove-donator')
+  @Delete(':id')
   removeDonator(@Param('id') id: string) {
     return this.donatorsService.removeDonator(id);
   }

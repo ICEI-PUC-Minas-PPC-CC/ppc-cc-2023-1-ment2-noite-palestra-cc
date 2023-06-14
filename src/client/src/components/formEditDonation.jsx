@@ -59,7 +59,7 @@ export default function FormEditDonation({ userId, onContinueClick, onCancelClic
             setPerishable(response.data.perishable);
             setExpirationDate(dayjs(response.data.expirationDate));
             setEntryDate(dayjs(response.data.entryDate))
-            
+
         });
     };
 
@@ -90,7 +90,7 @@ export default function FormEditDonation({ userId, onContinueClick, onCancelClic
                 >
                     <div>
                         <TextField
-                            label="Nome"
+                            label="Produto"
                             variant="outlined"
                             value={name}
                             InputProps={{
@@ -119,7 +119,7 @@ export default function FormEditDonation({ userId, onContinueClick, onCancelClic
                             }}
                             onChange={(e) => setAmount(Number(e.target.value))}
                         />
-                        <FormControl sx={{width: 230, marginLeft: '5px', marginTop: '8px'}}>
+                        <FormControl sx={{ width: 230, marginLeft: '5px', marginTop: '8px' }}>
                             <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
@@ -135,15 +135,15 @@ export default function FormEditDonation({ userId, onContinueClick, onCancelClic
                     </div>
                     <div>
                         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='br'>
-                            <DatePicker size="small" label="Data de vencimento"
-                             value={expirationDate} 
-                             onChange={(e) => setExpirationDate(e)} />
+                            <DatePicker size="small" label="Data de entrada"
+                                value={entryDate}
+                                onChange={(e) => setEntryDate(e)}
+                            />
                         </LocalizationProvider>
                         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='br'>
-                            <DatePicker size="small" label="Data de entrada" 
-                            value={entryDate} 
-                            onChange={(e) => setEntryDate(e)} 
-                            />
+                            <DatePicker size="small" label="Data de vencimento"
+                                value={expirationDate}
+                                onChange={(e) => setExpirationDate(e)} />
                         </LocalizationProvider>
                     </div>
                 </Box>

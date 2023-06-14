@@ -90,8 +90,10 @@ export class DonationService {
     if (name) {
       updateFields.name = name;
     }
-    if (amount) {
+    if (amount !== undefined) {
       updateFields.amount = amount;
+    } else {
+      delete updateFields.amount;
     }
     if (description) {
       updateFields.description = description;
@@ -100,7 +102,7 @@ export class DonationService {
       updateFields.entryDate = entryDate;
     }
     if (expirationDate) {
-      updateFields.adress = expirationDate;
+      updateFields.expirationDate = expirationDate;
     }
     if (perishable) {
       updateFields.perishable = perishable;
@@ -134,7 +136,7 @@ export class DonationService {
 
   async obterSomaQuantidades(): Promise<number> {
     const uri =
-      'mongodb+srv://admin:1x4VAAEdPJxDPnnw@gaapo-bd.ixn47lw.mongodb.net/?retryWrites=true&w=majority'; // URI de conexão com o MongoDB
+      'mongodb+srv://admin:1x4VAAEdPJxDPnnw@gaapo-bd.ixn47lw.mongodb.net/?retryWrites=true&w=majority';
     const client = new MongoClient(uri);
 
     try {
@@ -145,7 +147,7 @@ export class DonationService {
         {
           $group: {
             _id: null,
-            total: { $sum: '$amount' }, // Substitua 'amount' pelo nome do campo que armazena as quantidades
+            total: { $sum: '$amount' },
           },
         },
       ];
@@ -156,7 +158,7 @@ export class DonationService {
         return result[0].total;
       }
 
-      return 0; // Retorna 0 se não houver documentos na coleção
+      return 0;
     } finally {
       await client.close();
     }

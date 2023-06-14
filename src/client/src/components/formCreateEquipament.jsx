@@ -97,7 +97,7 @@ export default function FormCreateDonator({ onContinueClick, onCancelClick, upda
                             }}
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                                                <TextField
+                        <TextField
                             label="Telefone"
                             variant="outlined"
                             value={phone}
@@ -109,8 +109,8 @@ export default function FormCreateDonator({ onContinueClick, onCancelClick, upda
 
                     </div>
                     <div>
-                    <TextField
-                            sx={{width: '300px'}}
+                        <TextField
+                            sx={{ width: '300px' }}
                             label="Endereço"
                             variant="outlined"
                             value={address}

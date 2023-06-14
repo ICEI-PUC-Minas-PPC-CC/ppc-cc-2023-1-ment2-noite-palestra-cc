@@ -1,18 +1,15 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
-import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
-import LockIcon from '@mui/icons-material/Lock';
-import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import HouseIcon from '@mui/icons-material/House';
 import ContactPageIcon from '@mui/icons-material/ContactPage';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import ArticleIcon from '@mui/icons-material/Article';
 import Rotas from '../api';
 
 
@@ -21,14 +18,14 @@ export default function FormEditBeneficiary({ userId, onContinueClick, onCancelC
     const [BeneficiaryData, setBeneficiaryData] = React.useState(null);
     const [name, setName] = React.useState('');
     const [age, setAge] = React.useState('');
-    const [cpf, setCpf] = React.useState('');
+    const [obs, setObs] = React.useState('');
     const [phone, setPhone] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [address, setAddress] = React.useState('');
 
 
     const handleContinueClick = () => {
-        const updateBeneficiary = { name, age, cpf, phone, email, address };
+        const updateBeneficiary = { name, age, obs, phone, email, address };
         routes
             .patch(`beneficiary/${userId}/update-beneficiary`, updateBeneficiary)
             .then((response) => {
@@ -51,7 +48,7 @@ export default function FormEditBeneficiary({ userId, onContinueClick, onCancelC
             setBeneficiaryData(response.data);
             setName(response.data.name);
             setAge(response.data.age);
-            setCpf(response.data.cpf);
+            setObs(response.data.obs);
             setPhone(response.data.phone);
             setEmail(response.data.email);
             setAddress(response.data.address);
@@ -105,13 +102,13 @@ export default function FormEditBeneficiary({ userId, onContinueClick, onCancelC
                     </div>
                     <div>
                         <TextField
-                            label="CPF"
+                            label="Observação"
                             variant="outlined"
-                            value={cpf}
+                            value={obs}
                             InputProps={{
-                                startAdornment: <InputAdornment position="start"><FingerprintIcon fontSize="small" /></InputAdornment>,
+                                startAdornment: <InputAdornment position="start"><ArticleIcon fontSize="small" /></InputAdornment>,
                             }}
-                            onChange={(e) => setCpf(e.target.value)}
+                            onChange={(e) => setObs(e.target.value)}
                         />
                         <TextField
                             label="Telefone"

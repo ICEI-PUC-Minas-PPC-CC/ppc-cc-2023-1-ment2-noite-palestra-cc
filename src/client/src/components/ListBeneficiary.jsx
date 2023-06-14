@@ -140,9 +140,10 @@ export function ListBeneficiary() {
   const columns = [
     { field: 'name', headerName: 'NOME', width: 180 },
     { field: 'age', headerName: 'IDADE', width: 90, editable: true },
-    { field: 'cpf', headerName: 'CPF', width: 130 },
     { field: 'phone', headerName: 'TELEFONE', width: 130 },
+    { field: 'email', headerName: 'EMAIL', width: 180 },
     { field: 'address', headerName: 'ENDEREÇO', width: 250 },
+    { field: 'obs', headerName: 'OBSERVAÇÃO', width: 200 },
     {
       field: 'createdAt',
       headerName: 'DATA',
@@ -262,15 +263,15 @@ export function ListBeneficiary() {
           </div>
         </Box>
       </div>
-      <ModalForm title="APAGAR BENEFICIÁRIO" openPopup={openPopup} setOpenPopup={setOpenPopup} >
+      <ModalForm title="APAGAR BENEFICIADO" openPopup={openPopup} setOpenPopup={setOpenPopup} >
         <FormDelBeneficiary userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel} updateGrid={() => getUsers()} />
       </ModalForm>
 
-      <ModalForm title="CRIAR NOVO BENEFICIÁRIO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
+      <ModalForm title="CRIAR NOVO BENEFICIADO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
         <FormCreateBeneficiary onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
       </ModalForm>
 
-      <ModalForm title="EDITAR DE BENEFICIÁRIO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
+      <ModalForm title="EDITAR DE BENEFICIADO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
         <FormEditBeneficiary userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()}/>
       </ModalForm>
 

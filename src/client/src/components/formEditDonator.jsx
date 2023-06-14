@@ -10,6 +10,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import HouseIcon from '@mui/icons-material/House';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import ArticleIcon from '@mui/icons-material/Article';
 import Rotas from '../api';
 
 
@@ -17,14 +18,14 @@ export default function FormEditDonator({ userId, onContinueClick, onCancelClick
     const routes = new Rotas();
     const [DonatorData, setDonatorData] = React.useState(null);
     const [name, setName] = React.useState('');
-    const [cpf, setCpf] = React.useState('');
+    const [obs, setObs] = React.useState('');
     const [phone, setPhone] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [address, setAddress] = React.useState('');
 
 
     const handleContinueClick = () => {
-        const updateDonator = { name, cpf, phone, email, address };
+        const updateDonator = { name, obs, phone, email, address };
         routes
             .patch(`/donators/${userId}/update-donator`, updateDonator)
             .then((response) => {
@@ -46,7 +47,7 @@ export default function FormEditDonator({ userId, onContinueClick, onCancelClick
         routes.get(`/donators/${userId}/find`).then((response) => {
             setDonatorData(response.data);
             setName(response.data.name);
-            setCpf(response.data.cpf);
+            setObs(response.data.obs);
             setPhone(response.data.phone);
             setEmail(response.data.email);
             setAddress(response.data.address);
@@ -90,13 +91,13 @@ export default function FormEditDonator({ userId, onContinueClick, onCancelClick
                         />
 
                         <TextField
-                            label="CPF"
+                            label="Observação"
                             variant="outlined"
-                            value={cpf}
+                            value={obs}
                             InputProps={{
-                                startAdornment: <InputAdornment position="start"><FingerprintIcon fontSize="small" /></InputAdornment>,
+                                startAdornment: <InputAdornment position="start"><ArticleIcon fontSize="small" /></InputAdornment>,
                             }}
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={(e) => setObs(e.target.value)}
                         />
                     </div>
                     <div>
@@ -107,7 +108,7 @@ export default function FormEditDonator({ userId, onContinueClick, onCancelClick
                             InputProps={{
                                 startAdornment: <InputAdornment position="start"><EmailIcon fontSize="small" /></InputAdornment>,
                             }}
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
 
                         <TextField
@@ -117,7 +118,7 @@ export default function FormEditDonator({ userId, onContinueClick, onCancelClick
                             InputProps={{
                                 startAdornment: <InputAdornment position="start"><PhoneAndroidIcon fontSize="small" /></InputAdornment>,
                             }}
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={(e) => setPhone(e.target.value)}
                         />
                     </div>
                     <div>
@@ -128,7 +129,7 @@ export default function FormEditDonator({ userId, onContinueClick, onCancelClick
                             InputProps={{
                                 startAdornment: <InputAdornment position="start"><HouseIcon fontSize="small" /></InputAdornment>,
                             }}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            onChange={(e) => setAddress(e.target.value)}
                         />
                     </div>
                 </Box>

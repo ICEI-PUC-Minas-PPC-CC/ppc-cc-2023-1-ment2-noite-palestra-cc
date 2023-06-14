@@ -12,12 +12,13 @@ import LockIcon from '@mui/icons-material/Lock';
 import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import HouseIcon from '@mui/icons-material/House';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import ArticleIcon from '@mui/icons-material/Article';
 import Rotas from '../api';
 
 export default function FormCreateDonator({ onContinueClick, onCancelClick, updateGrid }) {
     const routes = new Rotas();
     const [name, setName] = React.useState('');
-    const [cpf, setCpf] = React.useState('');
+    const [obs, setObs] = React.useState('');
     const [phone, setPhone] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [address, setAddress] = React.useState('');
@@ -25,7 +26,7 @@ export default function FormCreateDonator({ onContinueClick, onCancelClick, upda
     const handleContinueClick = () => {
         const userData = {
             name,
-            cpf,
+            obs,
             phone,
             email,
             address
@@ -78,13 +79,13 @@ export default function FormCreateDonator({ onContinueClick, onCancelClick, upda
                             onChange={(e) => setName(e.target.value)}
                         />
                         <TextField
-                            label="CPF"
+                            label="Observação"
                             variant="outlined"
-                            value={cpf}
+                            value={obs}
                             InputProps={{
-                                startAdornment: <InputAdornment position="start"><FingerprintIcon fontSize="small" /></InputAdornment>,
+                                startAdornment: <InputAdornment position="start"><ArticleIcon fontSize="small" /></InputAdornment>,
                             }}
-                            onChange={(e) => setCpf(e.target.value)}
+                            onChange={(e) => setObs(e.target.value)}
                         />
                     </div>
                     <div>

@@ -5,7 +5,7 @@ export class UpdateBeneficiaryDto extends PartialType(CreateBeneficiaryDto) {
   id: string;
   name: string;
   age: string;
-  cpf: string;
+  obs: string;
   phone: string;
   email?: string;
   address?: string;

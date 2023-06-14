@@ -12,7 +12,7 @@ export class Beneficiary {
   age: string;
 
   @Prop()
-  cpf: string;
+  obs: string;
 
   @Prop()
   phone: string;
