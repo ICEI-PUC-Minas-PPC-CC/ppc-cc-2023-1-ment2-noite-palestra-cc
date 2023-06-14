@@ -7,6 +7,7 @@ import { DonatorsModule } from './donators/donators.module';
 import { BeneficiaryModule } from './beneficiary/beneficiary.module';
 import { DonationModule } from './donation/donation.module';
 import { EquipamentModule } from './equipament/equipament.module';
+import { ConfigModule } from './config/config.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { EquipamentModule } from './equipament/equipament.module';
     DonatorsModule,
     BeneficiaryModule,
     EquipamentModule,
+    ConfigModule,
   ],
   controllers: [AppController],
   providers: [AppService],
