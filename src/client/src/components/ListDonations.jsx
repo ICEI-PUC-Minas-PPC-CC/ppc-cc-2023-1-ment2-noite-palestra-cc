@@ -24,6 +24,8 @@ import FormCreateDonation from './formCreateDonation';
 import FormEditDonation from './formEditDonation';
 import ImpressoDonation from './ImpressoDonation';
 import { useReactToPrint } from 'react-to-print';
+import FormCreateBeneficiary from './formCreateBeneficiary';
+import FormCreateEquipament from './formCreateEquipament';
 
 
 
@@ -321,7 +323,7 @@ export function ListDonation() {
       </ModalForm>
 
       <ModalForm title="ADICIONAR NOVA DOAÇÃO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
-        <FormCreateDonation onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
+        <FormCreateEquipament onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
       </ModalForm>
 
       <ModalForm title="EDITAR DE DOAÇÃO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>

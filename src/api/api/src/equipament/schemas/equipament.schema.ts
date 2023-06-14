@@ -18,7 +18,7 @@ export class Equipament {
   lendedAt: Date;
 
   @Prop()
-  lendedTo?: string;
+  beneficiary?: string;
 
   @Prop()
   phone?: string;

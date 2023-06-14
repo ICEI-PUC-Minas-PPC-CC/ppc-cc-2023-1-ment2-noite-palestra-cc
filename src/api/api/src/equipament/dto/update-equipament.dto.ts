@@ -5,8 +5,8 @@ export class UpdateEquipamentDto extends PartialType(CreateEquipamentDto) {
   id: string;
   name: string;
   lend: boolean;
-  lendedAt?: string;
-  lendedTo?: string;
+  lendedAt?: Date;
+  beneficiary?: string;
   phone?: string;
   address?: string;
 }

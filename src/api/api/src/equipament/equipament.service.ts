@@ -32,7 +32,7 @@ export class EquipamentService {
     id: string,
     updateEquipamentDto: UpdateEquipamentDto,
   ): Promise<{ success: boolean }> {
-    const { name, lend, lendedAt, lendedTo, phone, address } =
+    const { name, lend, lendedAt, beneficiary, phone, address } =
       updateEquipamentDto;
 
     const updateFields: any = {};
@@ -46,8 +46,8 @@ export class EquipamentService {
     if (lendedAt) {
       updateFields.lendedAt = lendedAt;
     }
-    if (lendedTo) {
-      updateFields.lendedTo = lendedTo;
+    if (beneficiary) {
+      updateFields.beneficiary = beneficiary;
     }
     if (phone) {
       updateFields.phone = phone;

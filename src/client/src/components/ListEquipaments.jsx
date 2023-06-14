@@ -25,6 +25,7 @@ import FormCreateDonation from './formCreateDonation';
 import FormEditDonation from './formEditDonation';
 import ImpressoEquipamentos from './impressoEquipament';
 import { useReactToPrint } from 'react-to-print';
+import FormCreateEquipament from './formCreateEquipament';
 
 export function ListEquipament() {
   const [usuarios, setUsuarios] = useState([]);
@@ -137,9 +138,10 @@ export function ListEquipament() {
 
 
   const columns = [
-    { field: 'code', headerName: 'Cód. Equip', width: 90 },
+    { field: 'code', headerName: 'Cód. Equip', width: 90, resizable: true  },
     {
       field: 'lend',
+      resizable: true, 
       headerName: 'Emprestado',
       width: 100,
       align: 'center',
@@ -149,11 +151,12 @@ export function ListEquipament() {
         return <div>{displayValue}</div>;
       },
     },
-    { field: 'lendedTo', headerName: 'Beneficiário', width: 180 },
-    { field: 'phone', headerName: 'Telefone', width: 100 },
-    { field: 'address', headerName: 'Endereço', width: 210 },
+    { field: 'beneficiary', headerName: 'Beneficiado', width: 180, resizable: true },
+    { field: 'phone', headerName: 'Telefone', width: 100, resizable: true  },
+    { field: 'address', headerName: 'Endereço', width: 210, resizable: true  },
     {
       field: 'lendedAt',
+      resizable: true,
       headerName: 'Data de Empréstimo',
       width: 180,
       type: 'Date',
@@ -164,6 +167,7 @@ export function ListEquipament() {
     },
     {
         field: 'createdAt',
+        resizable: true,
         headerName: 'Data de Devolução',
         width: 140,
         type: 'Date',
@@ -174,6 +178,7 @@ export function ListEquipament() {
       },
     {
       field: 'actions',
+      resizable: true ,
       headerName: 'AÇÕES',
       width: 130,
       renderCell: (params) => {
@@ -316,7 +321,7 @@ export function ListEquipament() {
       </ModalForm>
 
       <ModalForm title="ADICIONAR EQUIPAMENTO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
-        <FormCreateDonation onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
+        <FormCreateEquipament onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
       </ModalForm>
 
       <ModalForm title="EDITAR EQUIPAMENTO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>

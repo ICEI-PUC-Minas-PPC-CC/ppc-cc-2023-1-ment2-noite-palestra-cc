@@ -17,7 +17,7 @@ const ImpressoEquipamentos = React.forwardRef(({ data }, ref) => {
           <tr>
             <th style={styles.tableHeader}>Cód. Equip</th>
             <th style={styles.tableHeader}>Emprestado</th>
-            <th style={styles.tableHeader}>Beneficiário</th>
+            <th style={styles.tableHeader}>Beneficiado</th>
             <th style={styles.tableHeader}>Telefone</th>
             <th style={styles.tableHeader}>Endereço</th>
             <th style={styles.tableHeader}>Empréstimo</th>
@@ -29,7 +29,7 @@ const ImpressoEquipamentos = React.forwardRef(({ data }, ref) => {
             <tr key={row._id}>
               <td style={styles.tableCell}>{row.code}</td>
               <td style={styles.tableCell}>{row.lend ? 'Sim' : 'Não'}</td>
-              <td style={styles.tableCell}>{row.lendedTo}</td>
+              <td style={styles.tableCell}>{row.beneficiary}</td>
               <td style={styles.tableCell}>{row.phone}</td>
               <td style={styles.tableCell}>{row.address}</td>
               <td style={styles.tableCell}>{new Date(row.lendedAt).toLocaleDateString('pt-BR')}</td>
