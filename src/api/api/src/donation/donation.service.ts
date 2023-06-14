@@ -49,6 +49,18 @@ export class DonationService {
     return donation;
   }
 
+  async findExpiringProducts(days: number) {
+    const currentDate = new Date();
+    const expirationDate = new Date();
+    expirationDate.setDate(currentDate.getDate() + days);
+
+    const productCount = await this.donationModel.countDocuments({
+      expirationDate: { $gte: currentDate, $lte: expirationDate },
+    });
+
+    return { count: productCount };
+  }
+
   async findDonationByExpiration(date: string) {
     const expirationDate = new Date(date);
     console.log(expirationDate);
