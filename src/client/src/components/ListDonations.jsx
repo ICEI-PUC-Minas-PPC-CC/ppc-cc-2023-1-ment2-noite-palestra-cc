@@ -144,7 +144,7 @@ export function ListDonation() {
 
 
   const columns = [
-    { field: '_id', headerName: 'ID', width: 210 },
+    { field: '_id', headerName: 'ID', width: 210, hide: true },
     { field: 'name', headerName: 'PRODUTO', width: 200 },
     { field: 'description', headerName: 'DESCRIÇÃO', width: 250, editable: true },
     { field: 'amount', headerName: 'QUANTIDADE', width: 110, align: 'center', type: 'number', editable: true },

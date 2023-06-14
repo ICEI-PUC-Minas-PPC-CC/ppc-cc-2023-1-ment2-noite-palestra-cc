@@ -4,7 +4,7 @@ import { CreateDonationDto } from './dto/create-donation.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Donation, DonationDocument } from './schema/donation.schema';
 import { UpdateDonationDto } from './dto/update-donation.dto';
-import { UpdateResult } from 'mongodb';
+import { MongoClient, UpdateResult } from 'mongodb';
 @Injectable()
 export class DonationService {
   constructor(
@@ -118,5 +118,35 @@ export class DonationService {
   async removeDonation(id: string) {
     await this.donationModel.deleteOne({ _id: id }).exec();
     return `This action removes a #${id} user`;
+  }
+
+  async obterSomaQuantidades(): Promise<number> {
+    const uri =
+      'mongodb+srv://admin:1x4VAAEdPJxDPnnw@gaapo-bd.ixn47lw.mongodb.net/?retryWrites=true&w=majority'; // URI de conexão com o MongoDB
+    const client = new MongoClient(uri);
+
+    try {
+      await client.connect();
+      const database = client.db('test');
+      const collection = database.collection('donations');
+      const pipeline = [
+        {
+          $group: {
+            _id: null,
+            total: { $sum: '$amount' }, // Substitua 'amount' pelo nome do campo que armazena as quantidades
+          },
+        },
+      ];
+
+      const result = await collection.aggregate(pipeline).toArray();
+
+      if (result.length > 0) {
+        return result[0].total;
+      }
+
+      return 0; // Retorna 0 se não houver documentos na coleção
+    } finally {
+      await client.close();
+    }
   }
 }

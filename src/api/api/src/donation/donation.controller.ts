@@ -26,6 +26,12 @@ export class DonationController {
     return this.donationService.listDonation();
   }
 
+  @Get('/sum-quantities')
+  async obterSomaQuantidades() {
+    const somaQuantidades = await this.donationService.obterSomaQuantidades();
+    return { soma: somaQuantidades };
+  }
+
   @Get(':id/find')
   findOneDonator(@Param('id') id: string) {
     return this.donationService.findOneDonation(id);
