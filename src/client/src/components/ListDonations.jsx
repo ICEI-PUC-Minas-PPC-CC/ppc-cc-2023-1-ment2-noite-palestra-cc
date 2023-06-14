@@ -296,22 +296,6 @@ export function ListDonation() {
                   checkboxSelection
                 />
                 <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '2%' }}>
-                  <Button
-                    variant="contained"
-                    startIcon={<ShoppingBasketIcon />}
-                    sx={{
-                      backgroundColor: '#ea00f6',
-                      marginRight: '1%'
-
-
-                    }}
-                    onClick={() => {
-                      console.log('Botão "Adicionar" clicado');
-                      setOpenCreateUserPopup(true);
-                    }}
-                  >
-                    Cestas
-                  </Button>
                   <div style={{ display: 'none' }}>
                     <ImpressoDonation ref={componentRef} title="Teste" data={usuarios}/>
                   </div>
