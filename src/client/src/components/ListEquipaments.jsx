@@ -139,6 +139,7 @@ export function ListEquipament() {
 
   const columns = [
     { field: 'code', headerName: 'Cód. Equip', width: 90, resizable: true  },
+    { field: 'name', headerName: 'Nome. Equip', width: 190, resizable: true  },
     {
       field: 'lend',
       resizable: true, 

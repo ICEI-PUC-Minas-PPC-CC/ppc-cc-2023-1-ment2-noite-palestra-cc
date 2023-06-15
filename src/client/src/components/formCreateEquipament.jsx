@@ -142,6 +142,7 @@ export default function FormCreateEquipament({ onContinueClick, onCancelClick, u
                                 label="Situação"
                                 onChange={(e) => setLend(e.target.value)}
                             >
+                                <MenuItem></MenuItem>
                                 <MenuItem value={true}>Emprestado</MenuItem>o
                                 <MenuItem value={false}>Não Emprestado</MenuItem>
                             </Select>
@@ -160,6 +161,7 @@ export default function FormCreateEquipament({ onContinueClick, onCancelClick, u
                                 }}
                                 onChange={handleBeneficiaryChange}
                             >
+                                <MenuItem> Escolha uma opção</MenuItem>
                                 {beneficiaries.map((beneficiary) => (
                                     <MenuItem key={beneficiary.name} value={beneficiary.name}>{beneficiary.name}</MenuItem>
                                 ))}

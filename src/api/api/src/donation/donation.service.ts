@@ -163,4 +163,16 @@ export class DonationService {
       await client.close();
     }
   }
+
+  async findExpiringDonation(days: number) {
+    const currentDate = new Date();
+    const expirationDate = new Date();
+    expirationDate.setDate(currentDate.getDate() + days);
+
+    const products = await this.donationModel.find({
+      expirationDate: { $gte: currentDate, $lte: expirationDate },
+    });
+
+    return products;
+  }
 }

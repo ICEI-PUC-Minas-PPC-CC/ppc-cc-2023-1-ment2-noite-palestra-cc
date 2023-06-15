@@ -17,7 +17,7 @@ const ImpressoBeneficiarios = React.forwardRef(({ data }, ref) => {
           <tr>
             <th style={styles.tableHeader}>NOME</th>
             <th style={styles.tableHeader}>IDADE</th>
-            <th style={styles.tableHeader}>CPF</th>
+            <th style={styles.tableHeader}>OBSERVAÇÃO</th>
             <th style={styles.tableHeader}>TELEFONE</th>
             <th style={styles.tableHeader}>ENDEREÇO</th>
             <th style={styles.tableHeader}>DATA</th>
@@ -28,7 +28,7 @@ const ImpressoBeneficiarios = React.forwardRef(({ data }, ref) => {
             <tr key={row._id}>
               <td style={styles.tableCell}>{row.name}</td>
               <td style={styles.tableCell}>{row.age}</td>
-              <td style={styles.tableCell}>{row.cpf}</td>
+              <td style={styles.tableCell}>{row.obs}</td>
               <td style={styles.tableCell}>{row.phone}</td>
               <td style={styles.tableCell}>{row.address}</td>
               <td style={styles.tableCell}>{new Date(row.createdAt).toLocaleDateString('pt-BR')}</td>

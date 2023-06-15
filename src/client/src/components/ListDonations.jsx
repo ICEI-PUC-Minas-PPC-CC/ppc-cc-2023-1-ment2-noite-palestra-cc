@@ -323,7 +323,7 @@ export function ListDonation() {
       </ModalForm>
 
       <ModalForm title="ADICIONAR NOVA DOAÇÃO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
-        <FormCreateEquipament onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
+        <FormCreateDonation onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
       </ModalForm>
 
       <ModalForm title="EDITAR DE DOAÇÃO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
