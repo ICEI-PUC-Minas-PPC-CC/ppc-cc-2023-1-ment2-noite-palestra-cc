@@ -26,6 +26,8 @@ import FormEditDonation from './formEditDonation';
 import ImpressoEquipamentos from './impressoEquipament';
 import { useReactToPrint } from 'react-to-print';
 import FormCreateEquipament from './formCreateEquipament';
+import FormEditEquipament from './formEditEquipament';
+import FormDelEquipament from './formDelEquipament';
 
 export function ListEquipament() {
   const [usuarios, setUsuarios] = useState([]);
@@ -318,7 +320,7 @@ export function ListEquipament() {
       </div>
 
       <ModalForm title="APAGAR EQUIPAMENTO" openPopup={openPopup} setOpenPopup={setOpenPopup} >
-        <FormDelDonation userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel} updateGrid={() => getUsers()} />
+        <FormDelEquipament userId={userId} onDeleteSuccess={handleDelete} onCancel={handleCancel} updateGrid={() => getUsers()} />
       </ModalForm>
 
       <ModalForm title="ADICIONAR EQUIPAMENTO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
@@ -326,7 +328,7 @@ export function ListEquipament() {
       </ModalForm>
 
       <ModalForm title="EDITAR EQUIPAMENTO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
-        <FormEditDonation userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()} />
+        <FormEditEquipament userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()} />
       </ModalForm>
     </>
   );

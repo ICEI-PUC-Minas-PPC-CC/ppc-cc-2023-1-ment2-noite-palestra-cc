@@ -104,9 +104,8 @@ export class DonationService {
     if (expirationDate) {
       updateFields.expirationDate = expirationDate;
     }
-    if (perishable) {
-      updateFields.perishable = perishable;
-    }
+
+    updateFields.perishable = perishable;
 
     const result: UpdateResult = await this.donationModel
       .updateOne({ _id: id }, { $set: updateFields })
