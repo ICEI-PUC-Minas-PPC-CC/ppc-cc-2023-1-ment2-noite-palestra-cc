@@ -204,7 +204,7 @@ export function ListEquipament() {
 
   return (
     <>
-      <div style={{ marginTop: '3%' }}>
+      <div style={{ marginTop: '5%' }}>
         <Box
           sx={{
             height: '100%',

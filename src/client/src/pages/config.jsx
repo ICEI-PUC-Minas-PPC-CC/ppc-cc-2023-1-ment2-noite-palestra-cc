@@ -1,3 +1,4 @@
+import { Configuration } from "../components/Config";
 import { Header } from "../components/Header";
 import { ListBeneficiary } from "../components/ListBeneficiary";
 import { LogoDefault } from "../components/LogoDefault";
@@ -10,7 +11,7 @@ export function Config() {
     return (
         <div>
             <MiniDrawer>
-                <h1>Configurações</h1>
+                <Configuration />
             </MiniDrawer>
                 
         </div>
