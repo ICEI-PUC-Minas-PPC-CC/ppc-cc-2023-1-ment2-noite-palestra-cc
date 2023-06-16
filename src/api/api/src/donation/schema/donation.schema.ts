@@ -21,6 +21,9 @@ export class Donation {
 
   @Prop({ required: false })
   expirationDate: Date;
+
+  @Prop()
+  directedFor: string;
 }
 
 export const DonationSchema = SchemaFactory.createForClass(Donation);

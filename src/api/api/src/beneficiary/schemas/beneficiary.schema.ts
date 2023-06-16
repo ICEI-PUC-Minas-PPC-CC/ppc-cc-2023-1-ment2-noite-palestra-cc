@@ -21,6 +21,9 @@ export class Beneficiary {
   email?: string;
 
   @Prop()
+  receive: number;
+
+  @Prop()
   address?: string;
 
   @Prop({ default: Date.now })

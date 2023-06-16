@@ -22,18 +22,12 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import FormDelDonation from './formDelDonation';
 import FormCreateDonation from './formCreateDonation';
 import FormEditDonation from './formEditDonation';
-import ImpressoDonation from './ImpressoDonation';
+import MovingIcon from '@mui/icons-material/Moving';
 import { useReactToPrint } from 'react-to-print';
-import FormCreateBeneficiary from './formCreateBeneficiary';
-import FormCreateEquipament from './formCreateEquipament';
 
 
+export function ListDirectingDonation() {
 
-
-
-
-export function ListDonation() {
-  
   const [donations, setDonation] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [isTextFieldEmpty, setIsTextFieldEmpty] = useState(true);
@@ -45,7 +39,7 @@ export function ListDonation() {
   const routes = new Rotas()
 
   const getDonations = () => {
-    routes.get('/donation')
+    routes.get('/direct-donation/all')
       .then(response => setDonation(response.data))
       .catch(error => {
         console.log(error);
@@ -57,7 +51,7 @@ export function ListDonation() {
   }, []);
 
   const updateTable = () => {
-    routes.get('/donation')
+    routes.get('/direct-donation/all')
       .then(response => setDonation(response.data))
       .catch(error => {
         console.log(error);
@@ -110,12 +104,6 @@ export function ListDonation() {
     }
   };
 
-  const componentRef = useRef();
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-    documentTitle: 'teste',
-    onAfterPrint: () => alert("Impresso gerado!")
-  });
 
 
   useEffect(() => {
@@ -123,7 +111,7 @@ export function ListDonation() {
     if (!isTextFieldEmpty) {
       timerId = setTimeout(() => {
         routes
-          .get(`/donation/search-donation?letter=${searchValue}`)
+          .get(`/search-direct-donation?letter=${searchValue}`)
           .then((response) => {
             setDonation(response.data);
           })
@@ -133,7 +121,7 @@ export function ListDonation() {
       }, 1000);
     } else {
       routes
-        .get('/donation')
+        .get('/direct-donation/all')
         .then((response) => {
           setDonation(response.data);
         })
@@ -147,34 +135,13 @@ export function ListDonation() {
 
 
   const columns = [
-    { field: 'name', headerName: 'PRODUTO', width: 200 },
-    { field: 'description', headerName: 'DESCRIÇÃO', width: 250, editable: true },
-    { field: 'amount', headerName: 'QUANTIDADE', width: 110, align: 'center', type: 'number', editable: true },
+    { field: 'nameBeneficiary', headerName: 'BENEFICIADO', width: 200 },
+    { field: 'donationName', headerName: 'DOAÇÃO', width: 180, editable: true },
+    { field: 'amountReceive', headerName: 'QUANTIDADE', width: 110, align: 'center', type: 'number', editable: true },
     {
-      field: 'perishable',
-      headerName: 'PERECIVEL',
-      width: 100,
-      align: 'center',
-      renderCell: (params) => {
-        const value = params.value;
-        const displayValue = value ? 'Sim' : 'Não';
-        return <div>{displayValue}</div>;
-      },
-    },
-    {
-      field: 'entryDate',
-      headerName: 'ENTRADA',
-      width: 100,
-      type: 'Date',
-      valueGetter: (params) => {
-        const date = new Date(params.value);
-        return date.toLocaleDateString("pt-BR");
-      }
-    },
-    {
-      field: 'expirationDate',
-      headerName: 'VENCIMENTO',
-      width: 110,
+      field: 'deliveryDate',
+      headerName: 'DATA DE ENTREGA',
+      width: 150,
       type: 'Date',
       valueGetter: (params) => {
         const date = new Date(params.value);
@@ -228,41 +195,23 @@ export function ListDonation() {
               <div style={{ height: 280, width: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                   <Typography variant="h5" component="span" sx={{ mx: 1 }}>
-                    Doações
+                    Direcionamento de Doações
                   </Typography>
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', marginTop: '50px' }}>
-                  <TextField
-                    id="outlined-basic"
-                    label="Pesquise o nome da doação"
-                    variant="outlined"
-                    size="medium"
-                    sx={{ marginRight: '20px', width: '40%' }}
+                  <TextField fullWidth id="outlined-basic" label="Pesquise o nome do usuário" variant="outlined" size="small" sx={{
+                    marginRight: '25px'
+                  }}
                     InputProps={{
                       startAdornment: <InputAdornment position="start"><SearchIcon fontSize="small" /></InputAdornment>,
                     }}
                     value={searchValue}
                     onChange={handleSearchTextChange}
                   />
-                  <div style={{ margin: '0 10px', display: 'flex', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <FormControlLabel
-                        control={<Checkbox checked={isPerishableChecked} onChange={(e) => setIsPerishableChecked(e.target.checked)} />}
-                        label="Perecível"
-                      />
-
-                      <div style={{ margin: '0 10px' }}></div>
-                      <div>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                          <DatePicker size="small" label="Vencimento" />
-                        </LocalizationProvider>
-                      </div>
-                    </div>
-                  </div>
                   <Button
                     variant="contained"
-                    startIcon={<AddIcon />}
+                    startIcon={<MovingIcon />}
                     sx={{
                       backgroundColor: '#00992E',
 
@@ -272,7 +221,7 @@ export function ListDonation() {
                       setOpenCreateUserPopup(true);
                     }}
                   >
-                    Adicionar
+                    DIRECIONAR
                   </Button>
                 </div>
 
@@ -298,7 +247,7 @@ export function ListDonation() {
                   checkboxSelection
                 />
                 <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '2%' }}>
-                  <div style={{ display: 'none' }}>
+                  {/* <div style={{ display: 'none' }}>
                     <ImpressoDonation ref={componentRef} title="Teste" data={donations}/>
                   </div>
                   <Button
@@ -311,7 +260,7 @@ export function ListDonation() {
                     onClick={handlePrint}
                   >
                     Imprimir
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </div>

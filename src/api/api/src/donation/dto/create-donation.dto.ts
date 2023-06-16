@@ -6,6 +6,7 @@ export class CreateDonationDto {
   perishable: boolean;
   entryDate: Date;
   expirationDate: Date;
+  directedFor: string;
 
   constructor() {
     this.perishable = false;

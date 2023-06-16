@@ -129,16 +129,17 @@ export function ListBeneficiary() {
 
 
   const columns = [
-    { field: 'name', headerName: 'NOME', width: 180 },
-    { field: 'age', headerName: 'IDADE', width: 90, editable: true },
-    { field: 'phone', headerName: 'TELEFONE', width: 130 },
-    { field: 'email', headerName: 'EMAIL', width: 180 },
-    { field: 'address', headerName: 'ENDEREÇO', width: 250 },
-    { field: 'obs', headerName: 'OBSERVAÇÃO', width: 200 },
+    { field: 'name', headerName: 'NOME', width: 180, resizable: true },
+    { field: 'age', headerName: 'IDADE', width: 90, editable: true, resizable: true },
+    { field: 'phone', headerName: 'TELEFONE', width: 130, resizable: true },
+    { field: 'email', headerName: 'EMAIL', width: 180, resizable: true },
+    { field: 'address', headerName: 'ENDEREÇO', width: 250, resizable: true },
+    { field: 'obs', headerName: 'OBSERVAÇÃO', width: 200, resizable: true },
     {
       field: 'createdAt',
       headerName: 'DATA',
       width: 100,
+      resizable: true,
       valueGetter: (params) => {
         const date = new Date(params.value);
         return date.toLocaleDateString("pt-BR");
@@ -148,6 +149,7 @@ export function ListBeneficiary() {
       field: 'actions',
       headerName: 'AÇÕES',
       width: 130,
+      resizable: true,
       renderCell: (params) => {
         return (
           <div>

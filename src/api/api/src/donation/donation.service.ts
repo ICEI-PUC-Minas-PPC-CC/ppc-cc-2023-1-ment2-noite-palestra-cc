@@ -82,8 +82,15 @@ export class DonationService {
     id: string,
     updateDonationDto: UpdateDonationDto,
   ): Promise<{ success: boolean }> {
-    const { name, amount, description, entryDate, expirationDate, perishable } =
-      updateDonationDto;
+    const {
+      name,
+      amount,
+      description,
+      entryDate,
+      expirationDate,
+      perishable,
+      directedFor,
+    } = updateDonationDto;
 
     const updateFields: any = {};
 
@@ -106,6 +113,7 @@ export class DonationService {
     }
 
     updateFields.perishable = perishable;
+    updateFields.directedFor = directedFor;
 
     const result: UpdateResult = await this.donationModel
       .updateOne({ _id: id }, { $set: updateFields })

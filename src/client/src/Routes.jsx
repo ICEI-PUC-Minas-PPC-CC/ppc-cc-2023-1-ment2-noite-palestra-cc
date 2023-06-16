@@ -11,6 +11,7 @@ import { Voluntarios } from './pages/voluntarios';
 import { Donators } from './pages/doador';
 import { Config } from './pages/config';
 import { Basket } from './pages/basket';
+import { DirectingDonation } from './pages/DirectingDonations';
 
 export function Router() {
     return(
@@ -21,6 +22,7 @@ export function Router() {
                 <Route path='/:id/forgot-password' element={ <ForgotPassword /> }/>
                 <Route path='/users' element={ <Users />} />
                 <Route path='/donations' element={<Donations />}/>
+                <Route path='/directing-donations' element={<DirectingDonation />}/>
                 <Route path='/beneficiarios' element={<Beneficiarios />}/>
                 <Route path='/equipamentos' element={<Equipamentos />}/>
                 <Route path='/donators' element={<Donators />}/>

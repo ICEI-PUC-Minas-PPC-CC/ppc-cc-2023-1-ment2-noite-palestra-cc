@@ -4,5 +4,6 @@ export class CreateBeneficiaryDto {
   obs: string;
   phone: string;
   email?: string;
+  receive: number;
   address?: string;
 }
