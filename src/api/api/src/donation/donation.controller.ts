@@ -84,7 +84,11 @@ export class DonationController {
   }
 
   @Patch(':id/update-donation-amount')
-  updateDonationAmount(@Param('id') id: string, @Body() amountReceive: number) {
+  updateDonationAmount(
+    @Param('id') id: string,
+    @Body() body: { amountReceive: number },
+  ) {
+    const { amountReceive } = body;
     return this.donationService.deliveryDonation(id, amountReceive);
   }
 
