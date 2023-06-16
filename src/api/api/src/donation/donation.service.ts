@@ -1,5 +1,5 @@
 import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateDonationDto } from './dto/create-donation.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Donation, DonationDocument } from './schema/donation.schema';
@@ -181,5 +181,23 @@ export class DonationService {
     });
 
     return products;
+  }
+
+  async deliveryDonation(id: string, qtd: number): Promise<Donation> {
+    const donation = await this.donationModel.findById(id);
+
+    if (!donation) {
+      throw new BadRequestException('Invalid donation ID');
+    }
+
+    const updatedAmount = donation.amount - qtd;
+
+    if (updatedAmount < 0) {
+      throw new BadRequestException('Insufficient amount');
+    }
+
+    donation.amount = updatedAmount;
+
+    return donation.save();
   }
 }

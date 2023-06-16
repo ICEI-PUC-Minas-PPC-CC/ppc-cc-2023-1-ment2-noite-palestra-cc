@@ -83,6 +83,11 @@ export class DonationController {
     return this.donationService.updateDonation(id, updateDonationDtp);
   }
 
+  @Patch(':id/update-donation-amount')
+  updateDonationAmount(@Param('id') id: string, @Body() amountReceive: number) {
+    return this.donationService.deliveryDonation(id, amountReceive);
+  }
+
   @Delete(':id')
   removeDonation(@Param('id') id: string) {
     return this.donationService.removeDonation(id);

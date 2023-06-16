@@ -6,32 +6,25 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { FormControl, Grid, InputAdornment, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
-import EmailIcon from '@mui/icons-material/Email';
-import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
-import LockIcon from '@mui/icons-material/Lock';
-import HouseIcon from '@mui/icons-material/House';
-import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import Rotas from '../api';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import 'dayjs/locale/br';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import FingerprintIcon from '@mui/icons-material/Fingerprint';
-import AccessibleIcon from '@mui/icons-material/Accessible';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 
 
 
-export default function FormCreateEquipament({ onContinueClick, onCancelClick, updateGrid }) {
+export default function FormCreateDirection({ onContinueClick, onCancelClick, updateGrid }) {
     const routes = new Rotas();
 
     const [beneficiaries, setBeneficiaries] = React.useState([]);
-    const [selectedBeneficiary, setSelectedBeneficiary] = React.useState('');
+    const [listDonation, setListDonation] = React.useState([]);
+    const [selectDonationData, setSelectedDonationData] = React.useState('')
+    const [selectedBeneficiary, setSelectedBeneficiary] = React.useState([]);
     const [donation, setDonation] = React.useState([]);
     const [selectedDonation, setSelectedDonation] = React.useState('');
     const [amountReceive, setAmountReceive] = React.useState(0);
     const [deliveryDate, setDeliveryDate] = React.useState(null);
-
-
-    const [address, setAddress] = React.useState('');
 
     const getBeneficiaries = () => {
         routes.get('/beneficiary/all')
@@ -41,7 +34,15 @@ export default function FormCreateEquipament({ onContinueClick, onCancelClick, u
             });
     };
 
-    const getDonation = () => {
+    const getAllDonation = () => {
+        routes.get('/donation')
+            .then(response => setListDonation(response.data))
+            .catch(error => {
+                console.log(error);
+            });
+    };
+
+    const getDirectedDonation = () => {
         routes.get('/direct-donation/all')
             .then(response => setDonation(response.data))
             .catch(error => {
@@ -54,23 +55,28 @@ export default function FormCreateEquipament({ onContinueClick, onCancelClick, u
     }, []);
 
     React.useEffect(() => {
-        getDonation();
+        getDirectedDonation();
+    }, []);
+
+    React.useEffect(() => {
+        getAllDonation();
     }, []);
 
 
     const handleContinueClick = () => {
-        const userData = {
+        const deliveryDonation = {
             nameBeneficiary: selectedBeneficiary,
             amountReceive,
             deliveryDate,
-            donationName: donation
+            donationName: selectedDonation.name
         };
+        console.log(selectedDonation.name)
 
         routes
-            .post('/direct-donation', userData)
+            .post('/direct-donation', deliveryDonation)
             .then((response) => {
                 if (response.status === 201) {
-                    onContinueClick(userData);
+                    onContinueClick(deliveryDonation);
                     updateGrid();
                 } else {
                     console.log('Ocorreu um erro na criação do usuário');
@@ -82,10 +88,10 @@ export default function FormCreateEquipament({ onContinueClick, onCancelClick, u
             });
 
         routes
-            .post('/donation', userData.amountReceive)
+            .patch(`${selectedDonation}/update-donation-amount`, amountReceive)
             .then((response) => {
                 if (response.status === 201) {
-                    onContinueClick(userData.amountReceive);
+                    onContinueClick(deliveryDonation.amountReceive);
                     updateGrid();
                 } else {
                     console.log('Ocorreu um erro na criação do usuário');
@@ -115,6 +121,21 @@ export default function FormCreateEquipament({ onContinueClick, onCancelClick, u
         }
     };
 
+    const handleDonationChange = (e) => {
+        const selectedDonationId = e.target.value;
+    
+        const selectedDonationData = listDonation.find(
+            (donation) => donation._id === selectedDonationId
+        );
+        if (selectDonationData) {
+            setSelectedDonation(selectedDonationId);
+            setSelectedDonationData(selectedDonation);
+        } else {
+            setSelectedDonation('')
+            setSelectedDonationData([]);
+        }
+    };
+
     return (
         <div>
             <div>
@@ -133,7 +154,7 @@ export default function FormCreateEquipament({ onContinueClick, onCancelClick, u
                 >
                     <div>
                         <FormControl sx={{ width: 230, marginLeft: '5px', marginTop: '8px' }}>
-                            <InputLabel id="demo-simple-select-label">Beneficiario</InputLabel>
+                            <InputLabel id="demo-simple-select-label">Beneficiado</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
@@ -151,7 +172,7 @@ export default function FormCreateEquipament({ onContinueClick, onCancelClick, u
                             </Select>
                         </FormControl>
                         <FormControl sx={{ width: 230, marginLeft: '5px', marginTop: '8px' }}>
-                            <InputLabel id="demo-simple-select-label">Beneficiario</InputLabel>
+                            <InputLabel id="demo-simple-select-label">Doação</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
@@ -160,67 +181,34 @@ export default function FormCreateEquipament({ onContinueClick, onCancelClick, u
                                 InputProps={{
                                     startAdornment: <InputAdornment position="start"><PersonIcon fontSize="small" /></InputAdornment>,
                                 }}
-                                onChange={handleBeneficiaryChange}
+                                onChange={handleDonationChange}
                             >
                                 <MenuItem> Escolha uma opção</MenuItem>
-                                {beneficiaries.map((beneficiary) => (
-                                    <MenuItem key={beneficiary.name} value={beneficiary.name}>{beneficiary.name}</MenuItem>
+                                {listDonation.map((donation) => (
+                                    <MenuItem key={donation._id} value={donation._id}>{donation.name}</MenuItem>
                                 ))}
                             </Select>
                         </FormControl>
                     </div>
-                    <div>
-                        <FormControl sx={{ width: 230, marginLeft: '5px', marginTop: '8px' }}>
-                            <InputLabel id="demo-simple-select-label">Situação</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={lend}
-                                label="Situação"
-                                onChange={(e) => setLend(e.target.value)}
-                            >
-                                <MenuItem></MenuItem>
-                                <MenuItem value={true}>Emprestado</MenuItem>o
-                                <MenuItem value={false}>Não Emprestado</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </div>
-                    <div>
-
-                        <TextField
-                            label="Telefone"
+                    <div style={{marginTop: "2%"}}>
+                    <TextField
+                            label="Quantidade"
                             variant="outlined"
-                            value={phone}
+                            type='number'
+                            value={amountReceive}
                             InputProps={{
-                                startAdornment: <InputAdornment position="start"><PhoneAndroidIcon fontSize="small" /></InputAdornment>,
+                                startAdornment: <InputAdornment position="start"><TrendingUpIcon fontSize="small" /></InputAdornment>,
                             }}
-                            onChange={(e) => setPhone(e.target.value)}
+                            onChange={(e) => setAmountReceive(Number(e.target.value))}
                         />
-                    </div>
-                    <div>
-                        <TextField
-                            label="Endereço"
-                            variant="outlined"
-                            value={address}
-                            InputProps={{
-                                startAdornment: <InputAdornment position="start"><HouseIcon fontSize="small" /></InputAdornment>,
-                            }}
-                            onChange={(e) => setAddress(e.target.value)}
-                        />
-                    </div>
-                    <div>
                         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='br'>
-                            <DatePicker size="small" label="Data de emprestimo"
-                                value={lendedAt}
-                                onChange={(e) => setLendedAt(e)}
+                            <DatePicker size="small" label="Data de entrada"
+                                value={deliveryDate}
+                                onChange={(e) => setDeliveryDate(e)}
                             />
                         </LocalizationProvider>
-                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='br'>
-                            <DatePicker size="small" label="Data de devolução"
-                                value={createdAt}
-                                onChange={(e) => setCreatedAt(e)} />
-                        </LocalizationProvider>
                     </div>
+    
                 </Box>
             </div>
             <div style={{ marginTop: '16px', borderTop: '15%' }}>

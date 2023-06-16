@@ -24,6 +24,7 @@ import FormCreateDonation from './formCreateDonation';
 import FormEditDonation from './formEditDonation';
 import MovingIcon from '@mui/icons-material/Moving';
 import { useReactToPrint } from 'react-to-print';
+import FormCreateDirection from './formCreateDirectDonation';
 
 
 export function ListDirectingDonation() {
@@ -200,7 +201,7 @@ export function ListDirectingDonation() {
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', marginTop: '50px' }}>
-                  <TextField fullWidth id="outlined-basic" label="Pesquise o nome do usuário" variant="outlined" size="small" sx={{
+                  <TextField fullWidth id="outlined-basic" label="Pesquise o nome do beneficiario" variant="outlined" size="small" sx={{
                     marginRight: '25px'
                   }}
                     InputProps={{
@@ -273,7 +274,7 @@ export function ListDirectingDonation() {
       </ModalForm>
 
       <ModalForm title="ADICIONAR NOVA DOAÇÃO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
-        <FormCreateDonation onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getDonations()} />
+        <FormCreateDirection onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getDonations()} />
       </ModalForm>
 
       <ModalForm title="EDITAR DE DOAÇÃO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
