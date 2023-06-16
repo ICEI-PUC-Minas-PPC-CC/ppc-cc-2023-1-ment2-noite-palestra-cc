@@ -81,7 +81,7 @@ export default function FormCreateEquipament({ onContinueClick, onCancelClick, u
     const handleBeneficiaryChange = (e) => {
         const selectedBeneficiary = e.target.value;
 
-        const selectedBeneficiaryData = beneficiaries.find(
+        const selectedDonationData = beneficiaries.find(
             (beneficiary) => beneficiary.name === selectedBeneficiary
         );
 

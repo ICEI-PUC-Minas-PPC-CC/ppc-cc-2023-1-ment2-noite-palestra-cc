@@ -18,11 +18,11 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
     const routes = new Rotas();
 
     const [beneficiaries, setBeneficiaries] = React.useState([]);
-    const [listDonation, setListDonation] = React.useState([]);
-    const [selectDonationData, setSelectedDonationData] = React.useState('')
-    const [selectedBeneficiary, setSelectedBeneficiary] = React.useState([]);
     const [donation, setDonation] = React.useState([]);
-    const [selectedDonation, setSelectedDonation] = React.useState('');
+    const [donationId, setDonationId] = React.useState('')
+    const [donationName, setDonationName] = React.useState('')
+    const [selectedDonation, setSelectedDonation] = React.useState([]);
+    const [selectedBeneficiary, setSelectedBeneficiary] = React.useState([]);
     const [amountReceive, setAmountReceive] = React.useState(0);
     const [deliveryDate, setDeliveryDate] = React.useState(null);
 
@@ -34,6 +34,10 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
             });
     };
 
+    React.useEffect(() => {
+        getBeneficiaries();
+    }, []);
+
     const getAllDonation = () => {
         routes.get('/donation')
             .then(response => setListDonation(response.data))
@@ -41,6 +45,8 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
                 console.log(error);
             });
     };
+
+    
 
     const getDirectedDonation = () => {
         routes.get('/direct-donation/all')
@@ -50,17 +56,11 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
             });
     };
 
-    React.useEffect(() => {
-        getBeneficiaries();
-    }, []);
 
     React.useEffect(() => {
         getDirectedDonation();
     }, []);
 
-    React.useEffect(() => {
-        getAllDonation();
-    }, []);
 
 
     const handleContinueClick = () => {
@@ -68,9 +68,9 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
             nameBeneficiary: selectedBeneficiary,
             amountReceive,
             deliveryDate,
-            donationName: selectedDonation.name
+            donationName: selectDonationData.name
         };
-        console.log(selectedDonation.name)
+        console.log(selectDonationData.name)
 
         routes
             .post('/direct-donation', deliveryDonation)
@@ -85,22 +85,24 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
             .catch((error) => {
                 console.error(error);
                 console.log('Ocorreu um erro na criação do usuário');
-            });
-
-        routes
-            .patch(`${selectedDonation}/update-donation-amount`, amountReceive)
-            .then((response) => {
-                if (response.status === 201) {
-                    onContinueClick(deliveryDonation.amountReceive);
-                    updateGrid();
-                } else {
-                    console.log('Ocorreu um erro na criação do usuário');
-                }
             })
-            .catch((error) => {
-                console.error(error);
-                console.log('Ocorreu um erro na criação do usuário');
-            });
+            .finally(() => {
+                routes
+                    .patch(`${selectDonationData._id}/update-donation-amount`, amountReceive)
+                    .then((response) => {
+                        if (response.status === 201) {
+                            onContinueClick(deliveryDonation.amountReceive);
+                            updateGrid();
+                        } else {
+                            console.log('Ocorreu um erro na criação do usuário');
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        console.log('Ocorreu um erro na criação do usuário');
+                    });
+            })
+
     };
 
     const handleCancelClick = () => {
@@ -122,19 +124,23 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
     };
 
     const handleDonationChange = (e) => {
-        const selectedDonationId = e.target.value;
-    
-        const selectedDonationData = listDonation.find(
-            (donation) => donation._id === selectedDonationId
+        const selectedDonation = e.target.value;
+
+        const selectedBeneficiaryData = beneficiaries.find(
+            (beneficiary) => beneficiary.name === selectedBeneficiary
         );
-        if (selectDonationData) {
-            setSelectedDonation(selectedDonationId);
-            setSelectedDonationData(selectedDonation);
+
+        if (selectedBeneficiaryData) {
+            setSelectedBeneficiary(selectedBeneficiary);
+            setPhone(selectedBeneficiaryData.phone);
+            setAddress(selectedBeneficiaryData.address);
         } else {
-            setSelectedDonation('')
-            setSelectedDonationData([]);
+            setSelectedBeneficiary('');
+            setPhone('');
+            setAddress('');
         }
     };
+
 
     return (
         <div>
@@ -190,8 +196,8 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
                             </Select>
                         </FormControl>
                     </div>
-                    <div style={{marginTop: "2%"}}>
-                    <TextField
+                    <div style={{ marginTop: "2%" }}>
+                        <TextField
                             label="Quantidade"
                             variant="outlined"
                             type='number'
@@ -208,7 +214,7 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
                             />
                         </LocalizationProvider>
                     </div>
-    
+
                 </Box>
             </div>
             <div style={{ marginTop: '16px', borderTop: '15%' }}>
