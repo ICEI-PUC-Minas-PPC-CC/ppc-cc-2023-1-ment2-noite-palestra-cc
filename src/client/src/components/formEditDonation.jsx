@@ -34,6 +34,7 @@ export default function FormEditDonation({ userId, onContinueClick, onCancelClic
 
     const handleContinueClick = () => {
         const updateDonation = { name, description, amount, perishable, entryDate, expirationDate };
+        setUpdateLoading(true);
         routes
             .patch(`donation/${userId}/update-donation`, updateDonation)
             .then((response) => {

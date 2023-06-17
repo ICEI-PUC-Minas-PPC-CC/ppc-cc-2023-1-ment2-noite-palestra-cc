@@ -57,7 +57,7 @@ export default function FormCreateEquipament({ onContinueClick, onCancelClick, u
             address,
             createdAt
         };
-
+        setUpdateLoading(true);
         routes
             .post('/equipament/create', userData)
             .then((response) => {

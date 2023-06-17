@@ -32,7 +32,7 @@ export default function FormCreateDonator({ onContinueClick, onCancelClick, upda
             email,
             address
         };
-
+        setUpdateLoading(true);
         routes
             .post('/donators/create', userData)
             .then((response) => {

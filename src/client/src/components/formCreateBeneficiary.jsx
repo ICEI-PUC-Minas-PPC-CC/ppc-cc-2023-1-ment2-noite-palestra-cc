@@ -35,7 +35,7 @@ export default function FormCreateBeneficiary({ onContinueClick, onCancelClick, 
             email,
             address
         };
-
+        setUpdateLoading(true);
         routes
             .post('/beneficiary/create', userData)
             .then((response) => {

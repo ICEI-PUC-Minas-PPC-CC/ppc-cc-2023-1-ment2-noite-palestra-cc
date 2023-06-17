@@ -27,6 +27,7 @@ export default function FormEditBeneficiary({ userId, onContinueClick, onCancelC
 
     const handleContinueClick = () => {
         const updateBeneficiary = { name, age, obs, phone, email, address };
+        setUpdateLoading(true);
         routes
             .patch(`beneficiary/${userId}/update-beneficiary`, updateBeneficiary)
             .then((response) => {

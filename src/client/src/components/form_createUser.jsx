@@ -28,7 +28,7 @@ export default function FormCreateUser({ onContinueClick, onCancelClick, updateG
             password,
             confirmPassword,
         };
-
+        setUpdateLoading(true);
         routes
             .post('/users', userData)
             .then((response) => {
