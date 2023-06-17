@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { FormControl, Grid, InputAdornment, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { CircularProgress, FormControl, Grid, InputAdornment, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import Rotas from '../api';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -24,11 +24,14 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
     //Variaveis responsaveis pela doação
     const [donations, setDonations] = React.useState([]);
     const [selectedDonation, setSelectedDonation] = React.useState('');
+
     const [donationName, setDonationName] = React.useState('');
     const [donationId, setDonationId] = React.useState('');
 
     const [amountReceive, setAmountReceive] = React.useState(0);
     const [deliveryDate, setDeliveryDate] = React.useState(null);
+
+    const [updateLoading, setUpdateLoading] = React.useState(false);
 
 
     const getBeneficiaries = () => {
@@ -68,19 +71,21 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
             deliveryDate,
           };
       
-          const createDonationResponse = await routes.post('/direct-donation', DirectedDonationData);
-          if (createDonationResponse.status === 201) {
-            // onContinueClick(DirectedDonationData);
-            // updateGrid();
-          } else {
+          const createDonationResponse = await routes.post('/direct-donation/', DirectedDonationData);
+          if (createDonationResponse.status !== 201) {
             console.log('Ocorreu um erro na criação do usuário');
           }
-      
-          const donationId = createDonationResponse.data.donationId; // Altere para a propriedade correta do objeto de resposta
-      
-          const updateDonationResponse = await routes.patch(`${donationId}/update-direct-donation`);
-          onContinueClick(DirectedDonationData);
-          updateGrid();
+
+          setUpdateLoading(true);
+          routes.patch(`/donation/${donationId}/update-donation-amount`, { amountReceive })
+          .then(() => {
+            onContinueClick(DirectedDonationData);
+            updateGrid();
+          })
+          .finally(() => {
+            setUpdateLoading(false);
+          });
+          
         } catch (error) {
           console.error(error);
           console.log('Ocorreu um erro na criação do usuário');
@@ -207,14 +212,20 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
                 </Box>
             </div>
             <div style={{ marginTop: '16px', borderTop: '15%' }}>
-                <Stack direction="row" spacing={2} justifyContent="center">
-                    <Button variant="outlined" color="success" onClick={handleContinueClick}>
-                        Confirmar
-                    </Button>
-                    <Button variant="outlined" color="error" onClick={handleCancelClick}>
-                        Cancelar
-                    </Button>
-                </Stack>
+              <Stack direction="row" spacing={2} justifyContent="center">
+                <Button
+                  variant="outlined"
+                  color="success"
+                  onClick={handleContinueClick}
+                  disabled={updateLoading}
+                  startIcon={updateLoading && <CircularProgress size={20} color="success" />}
+                >
+                  {updateLoading ? '' : 'Confirmar'}
+                </Button>
+                <Button variant="outlined" color="error" onClick={handleCancelClick}>
+                  Cancelar
+                </Button>
+              </Stack>
             </div>
         </div>
     );
