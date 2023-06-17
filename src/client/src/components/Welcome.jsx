@@ -5,9 +5,26 @@ import Rotas from "../api";
 
 const Welcome = () => {
   const [counter, setCounter] = useState(0);
-  const routes = new Rotas();
+  const [counterValidade, setCounterValidade] = useState(0);
+  const [configExpiration, setConfigExpiration] = useState(0);
+  const [configStock, setConfigStock] = useState(0);
+  const [config, setConfig] = useState([])
 
-  const getUsers = () => {
+  const routes = new Rotas();
+  const getConfig = () => {
+    routes
+      .get("/config/all")
+      .then((response) => {
+        setConfig(response.data);
+        setConfigExpiration(response.data.expiration);
+        setConfigStock(response.data.stock);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
+  const getAllDonations = () => {
     routes
       .get("/donation/sum-quantities")
       .then((response) => setCounter(response.data))
@@ -15,9 +32,15 @@ const Welcome = () => {
         console.log(error);
       });
   };
-
+  
+  const getAllExpirationDonate = () => {
+    routes.get(`/expiring-products/${configExpiration}`)
+    .then((res) => setCounterValidade(res.data));
+  };
+  
   useEffect(() => {
-    getUsers();
+    getConfig();
+    getAllDonations();
   }, []);
 
   return (
@@ -38,20 +61,10 @@ const Welcome = () => {
           <div className={welcomeStyles.notify}>
             <div>
               <p>Perto da data de vencimento</p>
-              <span>1</span>
+              <span>{counterValidade.soma}</span>
             </div>
           </div>
         </div>
-        <div className={welcomeStyles.basicas}>
-          <div className={welcomeStyles.content}>
-            {/* Icon */}
-            <FaHandHolding />
-
-            <div className={welcomeStyles.text}>
-              <h4>Cestas Basicas</h4>
-              <p>2 Cestas registradas</p>
-            </div>
-          </div>
           <div className={welcomeStyles.notify}>
             <div>
               <p>Estoque mínimo</p>
@@ -60,7 +73,6 @@ const Welcome = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

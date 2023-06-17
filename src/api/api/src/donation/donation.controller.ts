@@ -32,8 +32,8 @@ export class DonationController {
     return { soma: somaQuantidades };
   }
 
-  @Post('/expiring-donations')
-  async findExpiringDonation(@Body('days') days: number) {
+  @Get('/expiring-donations/:days')
+  async findExpiringDonation(@Param('days') days: number) {
     const products = await this.donationService.findExpiringDonation(days);
     return products;
   }
@@ -43,8 +43,8 @@ export class DonationController {
     return this.donationService.findOneDonation(id);
   }
 
-  @Post('/expiring-products')
-  async findExpiringProducts(@Body('days') days: number) {
+  @Post('/expiring-products/:days')
+  async findExpiringProducts(@Param('days') days: number) {
     const products = await this.donationService.findExpiringProducts(days);
     return products;
   }
