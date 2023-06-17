@@ -67,6 +67,7 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
           const DirectedDonationData = {
             nameBeneficiary: selectedBeneficiary,
             donationName,
+            donationId,
             amountReceive,
             deliveryDate,
           };
