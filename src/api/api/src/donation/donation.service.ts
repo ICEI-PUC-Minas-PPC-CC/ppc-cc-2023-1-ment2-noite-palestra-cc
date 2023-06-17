@@ -185,7 +185,7 @@ export class DonationService {
 
   async deliveryDonation(id: string, qtd: number): Promise<Donation> {
     const donation = await this.donationModel.findById(id);
-
+    console.log('don', donation);
     if (!donation) {
       throw new BadRequestException('Invalid donation ID');
     }

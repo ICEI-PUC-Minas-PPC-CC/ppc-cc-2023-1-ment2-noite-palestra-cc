@@ -16,6 +16,9 @@ export class DirectedDonation {
   @Prop()
   donationName: string;
 
+  @Prop()
+  donationId: string;
+
   @Prop({ default: Date.now })
   deliveryDate: Date;
 }

@@ -59,7 +59,7 @@ export default function FormCreateDonation({ onContinueClick, onCancelClick, upd
             })
             .finally(() => {
                 setUpdateLoading(false);
-              });
+            });
     };
 
     const handleCancelClick = () => {

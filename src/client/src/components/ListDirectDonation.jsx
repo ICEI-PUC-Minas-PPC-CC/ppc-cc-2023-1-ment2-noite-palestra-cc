@@ -25,6 +25,8 @@ import FormEditDonation from './formEditDonation';
 import MovingIcon from '@mui/icons-material/Moving';
 import { useReactToPrint } from 'react-to-print';
 import FormCreateDirection from './formCreateDirectDonation';
+import FormDelDirectDonation from './formDelDirectDonation';
+import FormEditDirectDonation from './formEditDirectDonation';
 
 
 export function ListDirectingDonation() {
@@ -270,15 +272,15 @@ export function ListDirectingDonation() {
       </div>
 
       <ModalForm title="APAGAR DOAÇÃO" openPopup={openPopup} setOpenPopup={setOpenPopup} >
-        <FormDelDonation userId={donationId} onDeleteSuccess={handleDelete} onCancel={handleCancel} updateGrid={() => getDonations()} />
+        <FormDelDirectDonation userId={donationId} onDeleteSuccess={handleDelete} onCancel={handleCancel} updateGrid={() => getDonations()} />
       </ModalForm>
 
-      <ModalForm title="ADICIONAR NOVA DOAÇÃO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
+      <ModalForm title="DIRECIONAR NOVA DOAÇÃO" openPopup={openCreateUserPopup} setOpenPopup={setOpenCreateUserPopup} >
         <FormCreateDirection onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getDonations()} />
       </ModalForm>
 
       <ModalForm title="EDITAR DE DOAÇÃO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
-        <FormEditDonation userId={donationId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getDonations()} />
+        <FormEditDirectDonation userId={donationId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getDonations()} />
       </ModalForm>
     </>
   );

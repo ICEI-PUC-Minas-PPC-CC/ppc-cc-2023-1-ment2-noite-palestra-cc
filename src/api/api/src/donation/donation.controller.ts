@@ -89,7 +89,7 @@ export class DonationController {
     @Body() body: { amountReceive: number },
   ) {
     const { amountReceive } = body;
-    console.log(amountReceive);
+    console.log('aaaaaaaaaaaaaaaaaaa', id, amountReceive);
     return this.donationService.deliveryDonation(id, amountReceive);
   }
 

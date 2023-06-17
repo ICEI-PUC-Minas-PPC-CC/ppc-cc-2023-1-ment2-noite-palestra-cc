@@ -14,12 +14,13 @@ export class DirectDonationService {
   ) {}
 
   async createDirectDonation(createDirectDonationDto: CreateDirectDonationDto) {
-    const { nameBeneficiary, amountReceive, donationName, deliveryDate } =
+    const { nameBeneficiary, amountReceive, donationName, donationId, deliveryDate } =
       createDirectDonationDto;
     const createdDonation = new this.DirectDonation({
       nameBeneficiary,
       amountReceive,
       donationName,
+      donationId,
       deliveryDate,
     });
     return createdDonation.save();
@@ -31,8 +32,8 @@ export class DirectDonationService {
   }
 
   findOneDirectDonation(id: string) {
-    const donatorId = this.DirectDonation.findById(id);
-    return donatorId;
+    const directDonation = this.DirectDonation.findById({ _id: id });
+    return directDonation;
   }
 
   findOne(id: number) {
@@ -43,7 +44,7 @@ export class DirectDonationService {
     id: string,
     updateDirectDonationDto: UpdateDirectDonationDto,
   ): Promise<{ success: boolean }> {
-    const { nameBeneficiary, amountReceive, donationName, deliveryDate } =
+    const { nameBeneficiary, amountReceive, donationName, donationId, deliveryDate } =
       updateDirectDonationDto;
 
     const updateFields: any = {};
@@ -59,6 +60,8 @@ export class DirectDonationService {
     updateFields.amountReceive = amountReceive;
 
     updateFields.donationName = donationName;
+
+    updateFields.donationId = donationId;
 
     updateFields.deliveryDate = deliveryDate;
 
