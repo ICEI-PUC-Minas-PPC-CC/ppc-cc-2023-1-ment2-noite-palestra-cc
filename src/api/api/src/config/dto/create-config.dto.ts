@@ -1,1 +1,4 @@
-export class CreateConfigDto {}
+export class CreateConfigDto {
+  expirationDays: number;
+  stock: number;
+}

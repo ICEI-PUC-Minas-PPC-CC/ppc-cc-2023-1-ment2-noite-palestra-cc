@@ -1,26 +1,55 @@
 import { Injectable } from '@nestjs/common';
 import { CreateConfigDto } from './dto/create-config.dto';
 import { UpdateConfigDto } from './dto/update-config.dto';
+import { Config, ConfigDocument } from './schemas/config.schema';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
+import { UpdateResult } from 'mongodb';
 
 @Injectable()
 export class ConfigService {
-  create(createConfigDto: CreateConfigDto) {
-    return 'This action adds a new config';
+  constructor(
+    @InjectModel(Config.name)
+    private readonly ConfigModel: Model<ConfigDocument>,
+  ) {}
+
+  async create(createConfigDto: CreateConfigDto) {
+    const { expirationDays, stock } = createConfigDto;
+    const createdConfig = new this.ConfigModel({
+      expirationDays,
+      stock,
+    });
+    return createdConfig.save();
   }
 
-  findAll() {
-    return `This action returns all config`;
+  async findAllConfig() {
+    const allConfigs = await this.ConfigModel.find();
+    return allConfigs;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} config`;
-  }
+  async updateConfig(
+    id: string,
+    updateConfigDto: UpdateConfigDto,
+  ): Promise<{ success: boolean }> {
+    const { expirationDays, stock } = updateConfigDto;
 
-  update(id: number, updateConfigDto: UpdateConfigDto) {
-    return `This action updates a #${id} config`;
-  }
+    const updateFields: any = {};
 
-  remove(id: number) {
-    return `This action removes a #${id} config`;
+    if (expirationDays) {
+      updateFields.expirationDays = expirationDays;
+    }
+    if (stock) {
+      updateFields.stock = stock;
+    }
+
+    const result: UpdateResult = await this.ConfigModel.updateOne(
+      { _id: id },
+      { $set: updateFields },
+    ).exec();
+
+    if (result && result.modifiedCount > 0) {
+      return { success: true };
+    }
+    return { success: false };
   }
 }
