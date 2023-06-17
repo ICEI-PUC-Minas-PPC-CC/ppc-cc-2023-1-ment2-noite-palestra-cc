@@ -19,7 +19,7 @@ const Welcome = () => {
       .get("/config/all")
       .then((response) => {
         setConfig(response.data);
-        setConfigExpiration(response.data.expiration);
+        setConfigExpiration(response.data[0].expirationDays);
         setConfigStock(response.data.stock);
       })
       .catch((error) => {
@@ -38,7 +38,7 @@ const Welcome = () => {
 
   const getAllExpirationDonate = () => {
     routes
-      .get(`/expiring-products/${configExpiration}`)
+      .get(`/donation/expiring-products/${configExpiration}`)
       .then((res) => setCounterValidade(res.data))
       .finally(() => setLoading(false));
   };
@@ -74,7 +74,7 @@ const Welcome = () => {
               {loading ? (
                 <CircularProgress size={20} style={{ color: "#eb268f" }} />
               ) : (
-                <span>{counterValidade.soma}</span>
+                <span>{counterValidade.count}</span>
               )}
             </div>
           </div>
