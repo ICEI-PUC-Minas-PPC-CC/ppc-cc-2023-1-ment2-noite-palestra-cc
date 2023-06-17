@@ -61,6 +61,13 @@ export class DonationController {
     return donation;
   }
 
+  @Get('isStockBelowMinimum/:estoqueMinimo')
+  async isStockBelowMinimum(
+    @Param('estoqueMinimo') estoqueMinimo: number,
+  ): Promise<boolean> {
+    return this.donationService.isStockBelowMinimum(estoqueMinimo);
+  }
+
   @Post('/perishable')
   async findByperishable(@Body() body: { perishable: boolean }) {
     const { perishable } = body;

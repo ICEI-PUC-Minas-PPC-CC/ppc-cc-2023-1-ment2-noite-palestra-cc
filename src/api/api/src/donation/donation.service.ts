@@ -200,4 +200,14 @@ export class DonationService {
 
     return donation.save();
   }
+
+  async isStockBelowMinimum(estoqueMinimo: number): Promise<boolean> {
+    const products = await this.donationModel.find();
+    const totalAmount = products.reduce(
+      (sum, product) => sum + product.amount,
+      0,
+    );
+
+    return estoqueMinimo < totalAmount;
+  }
 }
