@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaHandHoldingHeart, FaHandHolding } from "react-icons/fa";
+import { Button, CircularProgress, Stack } from "@mui/material";
 import welcomeStyles from "../css/Welcome.module.css";
 import Rotas from "../api";
 
@@ -8,9 +9,11 @@ const Welcome = () => {
   const [counterValidade, setCounterValidade] = useState(0);
   const [configExpiration, setConfigExpiration] = useState(0);
   const [configStock, setConfigStock] = useState(0);
-  const [config, setConfig] = useState([])
+  const [config, setConfig] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const routes = new Rotas();
+
   const getConfig = () => {
     routes
       .get("/config/all")
@@ -23,7 +26,7 @@ const Welcome = () => {
         console.log(error);
       });
   };
-  
+
   const getAllDonations = () => {
     routes
       .get("/donation/sum-quantities")
@@ -32,15 +35,18 @@ const Welcome = () => {
         console.log(error);
       });
   };
-  
+
   const getAllExpirationDonate = () => {
-    routes.get(`/expiring-products/${configExpiration}`)
-    .then((res) => setCounterValidade(res.data));
+    routes
+      .get(`/expiring-products/${configExpiration}`)
+      .then((res) => setCounterValidade(res.data))
+      .finally(() => setLoading(false));
   };
-  
+
   useEffect(() => {
     getConfig();
     getAllDonations();
+    getAllExpirationDonate();
   }, []);
 
   return (
@@ -54,25 +60,33 @@ const Welcome = () => {
             <div className={welcomeStyles.text}>
               <h4>Alimentos em estoque</h4>
               <div className={welcomeStyles.counter}>
-                <span>Quantidade: {counter.soma}</span>
-                </div>
+                {loading ? (
+                  <CircularProgress size={20} style={{ color: "#eb268f" }} />
+                ) : (
+                  <span>{counter.soma}</span>
+                )}
+              </div>
             </div>
           </div>
           <div className={welcomeStyles.notify}>
             <div>
               <p>Perto da data de vencimento</p>
-              <span>{counterValidade.soma}</span>
+              {loading ? (
+                <CircularProgress size={20} style={{ color: "#eb268f" }} />
+              ) : (
+                <span>{counterValidade.soma}</span>
+              )}
             </div>
           </div>
         </div>
-          <div className={welcomeStyles.notify}>
-            <div>
-              <p>Estoque mínimo</p>
-              <span>1</span>
-            </div>
+        <div className={welcomeStyles.notify}>
+          <div>
+            <p>Estoque mínimo</p>
+            <span>1</span>
           </div>
         </div>
       </div>
+    </div>
   );
 };
 
