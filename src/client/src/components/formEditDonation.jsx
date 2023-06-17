@@ -9,7 +9,7 @@ import Select from '@mui/material/Select';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { Alert, Grid, InputAdornment, TextField, Typography } from '@mui/material';
+import { Alert, CircularProgress, Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import TakeoutDiningIcon from '@mui/icons-material/TakeoutDining';
 import DescriptionIcon from '@mui/icons-material/Description';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -29,6 +29,7 @@ export default function FormEditDonation({ userId, onContinueClick, onCancelClic
     const [perishable, setPerishable] = React.useState(false);
     const [entryDate, setEntryDate] = React.useState(null);
     const [expirationDate, setExpirationDate] = React.useState(null);
+    const [updateLoading, setUpdateLoading] = React.useState(false);
 
 
     const handleContinueClick = () => {
@@ -47,7 +48,10 @@ export default function FormEditDonation({ userId, onContinueClick, onCancelClic
             .catch((error) => {
                 console.error(error);
                 console.log('Ocorreu um erro na atualização do usuário');
-            });
+            })
+            .finally(() => {
+                setUpdateLoading(false);
+              });
     };
 
     const fetchUserData = () => {
@@ -149,14 +153,20 @@ export default function FormEditDonation({ userId, onContinueClick, onCancelClic
                 </Box>
             </div>
             <div style={{ marginTop: '16px', borderTop: '15%' }}>
-                <Stack direction="row" spacing={2} justifyContent="center">
-                    <Button variant="outlined" color="success" onClick={handleContinueClick}>
-                        Confirmar
-                    </Button>
-                    <Button variant="outlined" color="error" onClick={handleCancelClick}>
-                        Cancelar
-                    </Button>
-                </Stack>
+              <Stack direction="row" spacing={2} justifyContent="center">
+                <Button
+                  variant="outlined"
+                  color="success"
+                  onClick={handleContinueClick}
+                  disabled={updateLoading}
+                  startIcon={updateLoading && <CircularProgress size={20} color="success" />}
+                >
+                  {updateLoading ? '' : 'Confirmar'}
+                </Button>
+                <Button variant="outlined" color="error" onClick={handleCancelClick}>
+                  Cancelar
+                </Button>
+              </Stack>
             </div>
         </div>
     );
