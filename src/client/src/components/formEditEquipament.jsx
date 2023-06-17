@@ -49,7 +49,8 @@ export default function FormEditEquipament({ userId, onContinueClick, onCancelCl
             address,
             createdAt
         };
-
+        
+        setUpdateLoading(true);
         routes
             .patch(`equipament/${userId}/update-equipament`, updateEquipament)
             .then((response) => {

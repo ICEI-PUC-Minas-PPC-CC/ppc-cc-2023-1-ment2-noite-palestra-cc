@@ -42,7 +42,7 @@ export default function FormCreateDonation({ onContinueClick, onCancelClick, upd
             entryDate,
             expirationDate
         };
-
+        setUpdateLoading(true);
         routes
             .post('/donation', DonationData)
             .then((response) => {

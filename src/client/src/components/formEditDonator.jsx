@@ -26,6 +26,7 @@ export default function FormEditDonator({ userId, onContinueClick, onCancelClick
 
     const handleContinueClick = () => {
         const updateDonator = { name, obs, phone, email, address };
+        setUpdateLoading(true);
         routes
             .patch(`/donators/${userId}/update-donator`, updateDonator)
             .then((response) => {
