@@ -43,7 +43,7 @@ export class DonationController {
     return this.donationService.findOneDonation(id);
   }
 
-  @Post('/expiring-products/:days')
+  @Get('/expiring-products/:days')
   async findExpiringProducts(@Param('days') days: number) {
     const products = await this.donationService.findExpiringProducts(days);
     return products;
