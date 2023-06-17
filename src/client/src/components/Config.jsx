@@ -17,7 +17,7 @@ export function Configuration() {
             alignItems: 'center',
             height: '100vh',
         }}>
-            <div style={{ marginTop: '3%', marginTop: '5%', }}>
+            <div style={{ marginTop: '3%' }}>
                 <Box
                     sx={{
                         height: '50%',

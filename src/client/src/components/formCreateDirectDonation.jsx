@@ -8,7 +8,7 @@ import { FormControl, Grid, InputAdornment, InputLabel, MenuItem, Select, TextFi
 import PersonIcon from '@mui/icons-material/Person';
 import Rotas from '../api';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import 'dayjs/locale/br';
+import 'dayjs/locale/pt-br'
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 
@@ -17,14 +17,19 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 export default function FormCreateDirection({ onContinueClick, onCancelClick, updateGrid }) {
     const routes = new Rotas();
 
+    // Variaveis responseis pelo nome do beneficiado
     const [beneficiaries, setBeneficiaries] = React.useState([]);
-    const [donation, setDonation] = React.useState([]);
-    const [donationId, setDonationId] = React.useState('')
-    const [donationName, setDonationName] = React.useState('')
-    const [selectedDonation, setSelectedDonation] = React.useState([]);
-    const [selectedBeneficiary, setSelectedBeneficiary] = React.useState([]);
+    const [selectedBeneficiary, setSelectedBeneficiary] = React.useState('');
+
+    //Variaveis responsaveis pela doação
+    const [donations, setDonations] = React.useState([]);
+    const [selectedDonation, setSelectedDonation] = React.useState('');
+    const [donationName, setDonationName] = React.useState('');
+    const [donationId, setDonationId] = React.useState('');
+
     const [amountReceive, setAmountReceive] = React.useState(0);
     const [deliveryDate, setDeliveryDate] = React.useState(null);
+
 
     const getBeneficiaries = () => {
         routes.get('/beneficiary/all')
@@ -38,76 +43,55 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
         getBeneficiaries();
     }, []);
 
+
     const getAllDonation = () => {
         routes.get('/donation')
-            .then(response => setListDonation(response.data))
+            .then(response => setDonations(response.data))
             .catch(error => {
                 console.log(error);
             });
     };
-
-    
-
-    const getDirectedDonation = () => {
-        routes.get('/direct-donation/all')
-            .then(response => setDonation(response.data))
-            .catch(error => {
-                console.log(error);
-            });
-    };
-
 
     React.useEffect(() => {
-        getDirectedDonation();
+        getAllDonation();
     }, []);
 
 
 
-    const handleContinueClick = () => {
-        const deliveryDonation = {
+
+    const handleContinueClick = async () => {
+        try {
+          const DirectedDonationData = {
             nameBeneficiary: selectedBeneficiary,
+            donationName,
             amountReceive,
             deliveryDate,
-            donationName: selectDonationData.name
-        };
-        console.log(selectDonationData.name)
-
-        routes
-            .post('/direct-donation', deliveryDonation)
-            .then((response) => {
-                if (response.status === 201) {
-                    onContinueClick(deliveryDonation);
-                    updateGrid();
-                } else {
-                    console.log('Ocorreu um erro na criação do usuário');
-                }
-            })
-            .catch((error) => {
-                console.error(error);
-                console.log('Ocorreu um erro na criação do usuário');
-            })
-            .finally(() => {
-                routes
-                    .patch(`${selectDonationData._id}/update-donation-amount`, amountReceive)
-                    .then((response) => {
-                        if (response.status === 201) {
-                            onContinueClick(deliveryDonation.amountReceive);
-                            updateGrid();
-                        } else {
-                            console.log('Ocorreu um erro na criação do usuário');
-                        }
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                        console.log('Ocorreu um erro na criação do usuário');
-                    });
-            })
-
-    };
+          };
+      
+          const createDonationResponse = await routes.post('/direct-donation', DirectedDonationData);
+          if (createDonationResponse.status === 201) {
+            // onContinueClick(DirectedDonationData);
+            // updateGrid();
+          } else {
+            console.log('Ocorreu um erro na criação do usuário');
+          }
+      
+          const donationId = createDonationResponse.data.donationId; // Altere para a propriedade correta do objeto de resposta
+      
+          const updateDonationResponse = await routes.patch(`${donationId}/update-direct-donation`);
+          onContinueClick(DirectedDonationData);
+          updateGrid();
+        } catch (error) {
+          console.error(error);
+          console.log('Ocorreu um erro na criação do usuário');
+        }
+      };
+      
 
     const handleCancelClick = () => {
         onCancelClick();
     };
+
 
     const handleBeneficiaryChange = (e) => {
         const selectedBeneficiary = e.target.value;
@@ -123,21 +107,23 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
         }
     };
 
+    
     const handleDonationChange = (e) => {
-        const selectedDonation = e.target.value;
+        const selectedDonationId = e.target.value;
 
-        const selectedBeneficiaryData = beneficiaries.find(
-            (beneficiary) => beneficiary.name === selectedBeneficiary
+        const selectedDonationData = donations.find(
+            (donation) => donation._id === selectedDonationId
         );
 
-        if (selectedBeneficiaryData) {
-            setSelectedBeneficiary(selectedBeneficiary);
-            setPhone(selectedBeneficiaryData.phone);
-            setAddress(selectedBeneficiaryData.address);
+        if (selectedDonationData) {
+            setSelectedDonation(selectedDonationId)
+            setDonationName(selectedDonationData.name);
+            setDonationId(selectedDonationData._id);
+
         } else {
             setSelectedBeneficiary('');
-            setPhone('');
-            setAddress('');
+            setDonationName('');
+            setDonationId('');
         }
     };
 
@@ -159,6 +145,7 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
                     autoComplete="off"
                 >
                     <div>
+
                         <FormControl sx={{ width: 230, marginLeft: '5px', marginTop: '8px' }}>
                             <InputLabel id="demo-simple-select-label">Beneficiado</InputLabel>
                             <Select
@@ -166,7 +153,7 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
                                 id="demo-simple-select"
                                 value={selectedBeneficiary}
                                 label="Beneficiário"
-                                InputProps={{
+                                inputProps={{
                                     startAdornment: <InputAdornment position="start"><PersonIcon fontSize="small" /></InputAdornment>,
                                 }}
                                 onChange={handleBeneficiaryChange}
@@ -177,6 +164,7 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
                                 ))}
                             </Select>
                         </FormControl>
+
                         <FormControl sx={{ width: 230, marginLeft: '5px', marginTop: '8px' }}>
                             <InputLabel id="demo-simple-select-label">Doação</InputLabel>
                             <Select
@@ -184,30 +172,31 @@ export default function FormCreateDirection({ onContinueClick, onCancelClick, up
                                 id="demo-simple-select"
                                 value={selectedDonation}
                                 label="Beneficiário"
-                                InputProps={{
+                                inputProps={{
                                     startAdornment: <InputAdornment position="start"><PersonIcon fontSize="small" /></InputAdornment>,
                                 }}
                                 onChange={handleDonationChange}
                             >
                                 <MenuItem> Escolha uma opção</MenuItem>
-                                {listDonation.map((donation) => (
+                                {donations.map((donation) => (
                                     <MenuItem key={donation._id} value={donation._id}>{donation.name}</MenuItem>
                                 ))}
                             </Select>
                         </FormControl>
                     </div>
+
                     <div style={{ marginTop: "2%" }}>
                         <TextField
                             label="Quantidade"
                             variant="outlined"
                             type='number'
                             value={amountReceive}
-                            InputProps={{
+                            inputProps={{
                                 startAdornment: <InputAdornment position="start"><TrendingUpIcon fontSize="small" /></InputAdornment>,
                             }}
                             onChange={(e) => setAmountReceive(Number(e.target.value))}
                         />
-                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='br'>
+                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='pt-br'>
                             <DatePicker size="small" label="Data de entrada"
                                 value={deliveryDate}
                                 onChange={(e) => setDeliveryDate(e)}
