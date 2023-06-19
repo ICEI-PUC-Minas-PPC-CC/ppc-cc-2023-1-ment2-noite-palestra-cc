@@ -6,7 +6,7 @@ import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt
 import Rotas from '../api';
 import { ArrowDropDownIcon } from '@mui/x-date-pickers';
 import { Fab } from '@mui/material';
-
+import ReportProblemOutlinedIcon from '@mui/icons-material/ReportProblemOutlined';
 import '../css/vertical-load-more.css';
 import { green } from '@mui/material/colors';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -78,17 +78,20 @@ export default function TimeLine({ days }) {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <VerticalTimeline>
+      <VerticalTimeline lineColor={ '#E9E9E9' }>
+        
         {listaVazia.map(donation => (
           <VerticalTimelineElement 
           date={dayjs(donation.expirationDate).format('DD/MM/YYYY')}
           className= 'vertical-timeline-element--work'
-          contentStyle= {{ background: '#0584BE', color: '#fff' }}
-          contentArrowStyle= {{ borderRight: '7px solid  #000' }}
-          iconStyle= {{ background: '#eb2690', color: '#000' }}
+          contentStyle= {{ background: '#0584BE', color: '#CECECE' }}
+          contentArrowStyle= {{ borderRight: '7px solid  #F4F4F4' }}
+          icon={ <ReportProblemOutlinedIcon /> }
+          iconStyle= {{ background: '#eb2690', color: '#fff' }}
           >
-            <h3 className="vertical-timeline-element-title">{donation.name}</h3>
+            <h3 className="vertical-timeline-element-title">Nome: {donation.name}</h3>
             <h4 className="vertical-timeline-element-title">Quantidade: {donation.amount}</h4>
+            <h4 className="vertical-timeline-element-title">Vencimento: {donation.expirationDate}</h4>
           </VerticalTimelineElement>))
         }
         

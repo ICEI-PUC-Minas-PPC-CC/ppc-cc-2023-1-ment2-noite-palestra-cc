@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TextField, Typography, Box, Button, InputAdornment, Stack, CircularProgress } from '@mui/material';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import Rotas from "../api";
@@ -14,10 +14,10 @@ export function Configuration() {
         const updateDonation = { expirationDays, stock };
         setUpdateLoading(true);
         routes
-            .patch(`config/648d162134b0f5ccf99f3a1b/`, updateDonation)
+            .patch(`/config/648d162134b0f5ccf99f3a1b/`, updateDonation)
             .then((response) => {
                 if (response.status === 200) {
-                    onCancelClick();
+                    console.log("Config salva")
                 } else {
                     console.log('Ocorreu um erro na atualização do usuário');
                 }
@@ -30,6 +30,17 @@ export function Configuration() {
                 setUpdateLoading(false);
             });
     };
+
+    const fetchUserData = () => {
+        routes.get(`/equipament/all`).then((response) => {
+            setExpirationDays(response.data.expirationDays);
+            setStock(response.data.stock);
+        });
+    };
+
+    useEffect(() => {
+        fetchUserData();
+    }, []);
 
     return (
         <div
@@ -51,13 +62,13 @@ export function Configuration() {
             >
                 <div style={{ height: 600, width: '100%', overflow: 'auto' }}>
                     <div>
-                        <div style={{ height: 280, width: '100%' }}>
+                        <div style={{ height: 100, width: '100%' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                                 <Typography variant="h5" component="span" sx={{ mx: 1 }}>
                                     Configurações do sistema
                                 </Typography>
                             </div>
-                            <div style={{padding: '5%'}}> 
+                            <div>
                                 <TextField
                                     label="Vencimento"
                                     variant="outlined"
@@ -66,7 +77,7 @@ export function Configuration() {
                                     InputProps={{
                                         startAdornment: <InputAdornment position="start"><TrendingUpIcon fontSize="small" /></InputAdornment>,
                                     }}
-                                    sx={{padding: '2%'}}
+                                    sx={{ paddingRight: '2%' }}
                                     onChange={(e) => setExpirationDays(Number(e.target.value))}
                                 />
                                 <TextField
