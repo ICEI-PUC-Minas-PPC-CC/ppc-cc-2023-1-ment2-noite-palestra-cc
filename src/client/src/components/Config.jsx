@@ -1,86 +1,102 @@
-import { useState } from "react";
-import { TextField, Typography, Box, Button, InputAdornment } from '@mui/material';
+import { useRef, useState } from "react";
+import { TextField, Typography, Box, Button, InputAdornment, Stack, CircularProgress } from '@mui/material';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import Rotas from "../api";
 
 export function Configuration() {
-    const [expirationAlert, setExpirationAlert] = useState('');
-    const [stockAlert, setStockAlert] = useState('');
+    const [expirationDays, setExpirationDays] = useState(0);
+    const [stock, setStock] = useState(0);
+    const [updateLoading, setUpdateLoading] = useState(false);
 
-    const handleSave = () => {
-        console.log("Alerta de vencimento:", expirationAlert);
-        console.log("Alerta de estoque mínimo:", stockAlert);
+    const routes = new Rotas();
+
+    const handleContinueClick = () => {
+        const updateDonation = { expirationDays, stock };
+        setUpdateLoading(true);
+        routes
+            .patch(`config/648d162134b0f5ccf99f3a1b/`, updateDonation)
+            .then((response) => {
+                if (response.status === 200) {
+                    onCancelClick();
+                } else {
+                    console.log('Ocorreu um erro na atualização do usuário');
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+                console.log('Ocorreu um erro na atualização do usuário');
+            })
+            .finally(() => {
+                setUpdateLoading(false);
+            });
     };
 
     return (
-        <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-        }}>
-            <div style={{ marginTop: '3%' }}>
-                <Box
-                    sx={{
-                        height: '50%',
-                        width: '50%',
-                        padding: '16px',
-                        border: '1px solid #D9D9D9',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        maxWidth: '80%',
-                        margin: '0 auto',
-                        boxSizing: 'border-box',
-                        borderRadius: '5px',
-                    }}
-                >
-
-                    <div style={{ marginBottom: '16px' }}>
-                        <Typography variant="h5" component="span">
-                            Configurações do sistema
-                        </Typography>
+        <div
+            style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100vh",
+            }}
+        >
+            <Box
+                sx={{
+                    width: "80%",
+                    maxWidth: 600,
+                    padding: '16px',
+                    border: '1px solid #D9D9D9',
+                    borderRadius: '5px',
+                }}
+            >
+                <div style={{ height: 600, width: '100%', overflow: 'auto' }}>
+                    <div>
+                        <div style={{ height: 280, width: '100%' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                                <Typography variant="h5" component="span" sx={{ mx: 1 }}>
+                                    Configurações do sistema
+                                </Typography>
+                            </div>
+                            <div style={{padding: '5%'}}> 
+                                <TextField
+                                    label="Vencimento"
+                                    variant="outlined"
+                                    type='number'
+                                    value={expirationDays}
+                                    InputProps={{
+                                        startAdornment: <InputAdornment position="start"><TrendingUpIcon fontSize="small" /></InputAdornment>,
+                                    }}
+                                    sx={{padding: '2%'}}
+                                    onChange={(e) => setExpirationDays(Number(e.target.value))}
+                                />
+                                <TextField
+                                    label="Estoque mínimo"
+                                    variant="outlined"
+                                    type='number'
+                                    value={stock}
+                                    InputProps={{
+                                        startAdornment: <InputAdornment position="start"><TrendingUpIcon fontSize="small" /></InputAdornment>,
+                                    }}
+                                    onChange={(e) => setStock(Number(e.target.value))}
+                                />
+                            </div>
+                            <div style={{ marginTop: '16px', borderTop: '15%' }}>
+                                <Stack direction="row" spacing={2} justifyContent="center">
+                                    <Button
+                                        variant="outlined"
+                                        color="success"
+                                        onClick={handleContinueClick}
+                                        disabled={updateLoading}
+                                        startIcon={updateLoading && <CircularProgress size={20} color="success" />}
+                                    >
+                                        {updateLoading ? '' : 'Confirmar'}
+                                    </Button>
+                                </Stack>
+                            </div>
+                        </div>
                     </div>
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        flexDirection: 'column',
-                    }}>
-                        <TextField
-                            label="Alerta de vencimento"
-                            variant="outlined"
-                            value={expirationAlert}
-                            onChange={(e) => setExpirationAlert(e.target.value)}
-                            InputProps={{
-                                startAdornment: <InputAdornment position="start"></InputAdornment>,
-                            }}
-                            style={{ marginBottom: '16px' }}
-                        />
-                        <TextField
-                            label="Alerta de estoque mínimo"
-                            variant="outlined"
-                            value={stockAlert}
-                            onChange={(e) => setStockAlert(e.target.value)}
-                            InputProps={{
-                                startAdornment: <InputAdornment position="start"></InputAdornment>,
-                            }}
-                            style={{ marginBottom: '16px' }}
-                        />
-                    </div>
-
-                    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
-                        <Button
-                            variant="contained"
-                            sx={{
-                                backgroundColor: '#00992E',
-                            }}
-                            onClick={handleSave}
-                        >
-                            Salvar
-                        </Button>
-                    </div>
-                </Box>
-            </div>
+                </div>
+            </Box>
         </div>
-
     );
 }

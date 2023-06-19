@@ -83,9 +83,9 @@ export default function TimeLine({ days }) {
           <VerticalTimelineElement 
           date={dayjs(donation.expirationDate).format('DD/MM/YYYY')}
           className= 'vertical-timeline-element--work'
-          contentStyle= {{ background: 'rgb(33, 150, 243)', color: '#000' }}
-          contentArrowStyle= {{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-          iconStyle= {{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+          contentStyle= {{ background: '#0584BE', color: '#fff' }}
+          contentArrowStyle= {{ borderRight: '7px solid  #000' }}
+          iconStyle= {{ background: '#eb2690', color: '#000' }}
           >
             <h3 className="vertical-timeline-element-title">{donation.name}</h3>
             <h4 className="vertical-timeline-element-title">Quantidade: {donation.amount}</h4>

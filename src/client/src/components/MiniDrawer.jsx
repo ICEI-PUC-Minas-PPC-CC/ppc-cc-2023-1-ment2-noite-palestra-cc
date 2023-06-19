@@ -19,7 +19,7 @@ import { Header } from './Header';
 import { Footer } from './footer';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
-import SignpostIcon from '@mui/icons-material/Signpost';
+import SignpostOutlinedIcon from '@mui/icons-material/SignpostOutlined';
 import { Link } from 'react-router-dom';
 import { FiHome, MdSettingsAccessibility, IoSettingsOutline, BsChevronBarLeft, MdOutlineGroupAdd, BiDonateHeart, MdEmojiPeople, TbWheelchair } from 'react-icons/all';
 
@@ -210,9 +210,9 @@ export default function MiniDrawer(props) {
                   }}
                 >
                   <PinkListItemIcon sx={{ fontSize: 24 }}>
-                    <SignpostIcon />
+                    <SignpostOutlinedIcon />
                   </PinkListItemIcon>
-                  <ListItemText primary="Direcionamento de doações" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
+                  <ListItemText primary="Direcionamento" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
                 </ListItemButton>
               </Link>
             </ListItem>

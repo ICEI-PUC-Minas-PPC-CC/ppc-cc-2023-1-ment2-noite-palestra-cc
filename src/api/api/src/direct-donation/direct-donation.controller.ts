@@ -35,6 +35,7 @@ export class DirectDonationController {
 
   @Get('/search-direct-donation')
   async findByLetter(@Query('letter') letter: string) {
+    console.log(letter);
     return this.directDonationService.searcDirectDonation(letter);
   }
 

@@ -14,8 +14,13 @@ export class DirectDonationService {
   ) {}
 
   async createDirectDonation(createDirectDonationDto: CreateDirectDonationDto) {
-    const { nameBeneficiary, amountReceive, donationName, donationId, deliveryDate } =
-      createDirectDonationDto;
+    const {
+      nameBeneficiary,
+      amountReceive,
+      donationName,
+      donationId,
+      deliveryDate,
+    } = createDirectDonationDto;
     const createdDonation = new this.DirectDonation({
       nameBeneficiary,
       amountReceive,
@@ -44,8 +49,13 @@ export class DirectDonationService {
     id: string,
     updateDirectDonationDto: UpdateDirectDonationDto,
   ): Promise<{ success: boolean }> {
-    const { nameBeneficiary, amountReceive, donationName, donationId, deliveryDate } =
-      updateDirectDonationDto;
+    const {
+      nameBeneficiary,
+      amountReceive,
+      donationName,
+      donationId,
+      deliveryDate,
+    } = updateDirectDonationDto;
 
     const updateFields: any = {};
 
@@ -79,7 +89,7 @@ export class DirectDonationService {
   async searcDirectDonation(letter: string): Promise<DirectDonation[]> {
     console.log(letter);
     const regex = new RegExp(`^${letter}`, 'i');
-    return this.DirectDonation.find({ name: regex }).exec();
+    return this.DirectDonation.find({ nameBeneficiary: regex }).exec();
   }
 
   async removeDirectDonation(id: string) {

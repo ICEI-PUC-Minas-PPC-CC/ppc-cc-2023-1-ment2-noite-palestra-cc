@@ -27,6 +27,7 @@ import { useReactToPrint } from 'react-to-print';
 import FormCreateDirection from './formCreateDirectDonation';
 import FormDelDirectDonation from './formDelDirectDonation';
 import FormEditDirectDonation from './formEditDirectDonation';
+import ImpressoDirDonation from './impressoDirectedDonation'
 
 
 export function ListDirectingDonation() {
@@ -114,7 +115,7 @@ export function ListDirectingDonation() {
     if (!isTextFieldEmpty) {
       timerId = setTimeout(() => {
         routes
-          .get(`/search-direct-donation?letter=${searchValue}`)
+          .get(`/direct-donation/search-direct-donation?letter=${searchValue}`)
           .then((response) => {
             setDonation(response.data);
           })
@@ -136,6 +137,14 @@ export function ListDirectingDonation() {
     return () => clearTimeout(timerId);
   }, [searchValue, isTextFieldEmpty]);
 
+
+
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: 'teste',
+    onAfterPrint: () => alert("Impresso gerado!")
+  });
 
   const columns = [
     { field: 'nameBeneficiary', headerName: 'BENEFICIADO', width: 200 },
@@ -250,8 +259,8 @@ export function ListDirectingDonation() {
                   checkboxSelection
                 />
                 <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '2%' }}>
-                  {/* <div style={{ display: 'none' }}>
-                    <ImpressoDonation ref={componentRef} title="Teste" data={donations}/>
+                  <div style={{ display: 'none' }}>
+                    <ImpressoDirDonation ref={componentRef} title="Teste" data={donations}/>
                   </div>
                   <Button
                     variant="contained"
@@ -263,7 +272,7 @@ export function ListDirectingDonation() {
                     onClick={handlePrint}
                   >
                     Imprimir
-                  </Button> */}
+                  </Button>
                 </div>
               </div>
             </div>
