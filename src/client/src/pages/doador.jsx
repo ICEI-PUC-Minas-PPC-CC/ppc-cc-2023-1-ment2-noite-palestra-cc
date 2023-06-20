@@ -1,15 +1,15 @@
+import { ListDonators } from "../components/ListDonators";
 import MiniDrawer from "../components/MiniDrawer";
 
 
 
 
-export function Voluntarios() {
+export function Donators() {
     return (
         <div>
             <MiniDrawer>
-                <h1>Voluntários</h1>
+                <ListDonators />
             </MiniDrawer>
-                
         </div>
     );
 }

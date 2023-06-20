@@ -66,7 +66,7 @@ export default function FormDelUser({ userId, onDeleteSuccess, onCancel, updateG
                 <Typography variant="p" component="span" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     Você está prestes a realizar uma ação irreversível.
                 </Typography>
-                <Typography variant="p" component="span" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '8%' }}>
+                <Typography variant="p" component="span" sx={{ fontWeight: 'bold', display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '8%' }}>
                     Tem certeza que deseja continuar?
                 </Typography>
             </Box>

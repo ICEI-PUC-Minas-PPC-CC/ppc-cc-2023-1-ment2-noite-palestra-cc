@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { Grid, InputAdornment, TextField, Typography } from '@mui/material';
+import { CircularProgress, Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
@@ -18,6 +18,7 @@ export default function FormCreateUser({ onContinueClick, onCancelClick, updateG
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [confirmPassword, setConfirmPassword] = React.useState('');
+    const [updateLoading, setUpdateLoading] = React.useState(false);
 
     const handleContinueClick = () => {
         const userData = {
@@ -27,7 +28,7 @@ export default function FormCreateUser({ onContinueClick, onCancelClick, updateG
             password,
             confirmPassword,
         };
-
+        setUpdateLoading(true);
         routes
             .post('/users', userData)
             .then((response) => {
@@ -41,7 +42,10 @@ export default function FormCreateUser({ onContinueClick, onCancelClick, updateG
             .catch((error) => {
                 console.error(error);
                 console.log('Ocorreu um erro na criação do usuário');
-            });
+            })
+            .finally(() => {
+                setUpdateLoading(false);
+              });
     };
 
     const handleCancelClick = () => {
@@ -120,14 +124,20 @@ export default function FormCreateUser({ onContinueClick, onCancelClick, updateG
                 </Box>
             </div>
             <div style={{ marginTop: '16px', borderTop: '15%' }}>
-                <Stack direction="row" spacing={2} justifyContent="center">
-                    <Button variant="outlined" color="success" onClick={handleContinueClick}>
-                        Confirmar
-                    </Button>
-                    <Button variant="outlined" color="error" onClick={handleCancelClick}>
-                        Cancelar
-                    </Button>
-                </Stack>
+              <Stack direction="row" spacing={2} justifyContent="center">
+                <Button
+                  variant="outlined"
+                  color="success"
+                  onClick={handleContinueClick}
+                  disabled={updateLoading}
+                  startIcon={updateLoading && <CircularProgress size={20} color="success" />}
+                >
+                  {updateLoading ? '' : 'Confirmar'}
+                </Button>
+                <Button variant="outlined" color="error" onClick={handleCancelClick}>
+                  Cancelar
+                </Button>
+              </Stack>
             </div>
         </div>
     );

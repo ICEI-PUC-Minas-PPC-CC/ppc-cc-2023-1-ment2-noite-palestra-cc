@@ -32,7 +32,7 @@ export class EquipamentService {
     id: string,
     updateEquipamentDto: UpdateEquipamentDto,
   ): Promise<{ success: boolean }> {
-    const { name, lend, lendedAt, lendedTo, phone, address } =
+    const { name, lend, lendedAt, beneficiary, phone, address } =
       updateEquipamentDto;
 
     const updateFields: any = {};
@@ -40,21 +40,18 @@ export class EquipamentService {
     if (name) {
       updateFields.name = name;
     }
-    if (lend) {
-      updateFields.lend = lend;
-    }
+
+    updateFields.lend = lend;
+
     if (lendedAt) {
       updateFields.lendedAt = lendedAt;
     }
-    if (lendedTo) {
-      updateFields.lendedTo = lendedTo;
-    }
-    if (phone) {
-      updateFields.phone = phone;
-    }
-    if (address) {
-      updateFields.address = address;
-    }
+
+    updateFields.beneficiary = beneficiary;
+
+    updateFields.phone = phone;
+
+    updateFields.address = address;
 
     const result: UpdateResult = await this.equipamentModel
       .updateOne({ _id: id }, { $set: updateFields })

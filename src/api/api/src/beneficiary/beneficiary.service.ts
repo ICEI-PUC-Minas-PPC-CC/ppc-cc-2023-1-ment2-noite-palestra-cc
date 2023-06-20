@@ -32,7 +32,8 @@ export class BeneficiaryService {
     id: string,
     updateBeneficiaryDto: UpdateBeneficiaryDto,
   ): Promise<{ success: boolean }> {
-    const { name, age, cpf, phone, email, address } = updateBeneficiaryDto;
+    const { name, age, obs, phone, email, address, receive } =
+      updateBeneficiaryDto;
 
     const updateFields: any = {};
 
@@ -42,8 +43,8 @@ export class BeneficiaryService {
     if (age) {
       updateFields.age = age;
     }
-    if (cpf) {
-      updateFields.cpf = cpf;
+    if (obs) {
+      updateFields.obs = obs;
     }
     if (phone) {
       updateFields.phone = phone;
@@ -54,6 +55,8 @@ export class BeneficiaryService {
     if (address) {
       updateFields.address = address;
     }
+
+    updateFields.receive = receive;
 
     const result: UpdateResult = await this.beneficiaryModel
       .updateOne({ _id: id }, { $set: updateFields })

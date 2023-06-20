@@ -4,7 +4,7 @@ import { CreateDonatorDto } from './create-donator.dto';
 export class UpdateDonatorDto extends PartialType(CreateDonatorDto) {
   id: string;
   name: string;
-  cpf: string;
+  obs: string;
   phone: string;
   email?: string;
   address?: string;

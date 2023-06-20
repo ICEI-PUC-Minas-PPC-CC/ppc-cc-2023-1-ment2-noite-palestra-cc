@@ -49,7 +49,7 @@ export class EquipamentController {
     return this.equipamentService.searchEquipamentCode(code);
   }
 
-  @Delete(':id/remove-equipament')
+  @Delete(':id')
   removeEquipament(@Param('id') id: string) {
     return this.equipamentService.removeEquipament(id);
   }

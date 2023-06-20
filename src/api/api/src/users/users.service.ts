@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import * as bcrypt from 'bcrypt';
 import { Model } from 'mongoose';
@@ -18,6 +18,17 @@ export class UsersService {
 
   async createUser(createUserDto: CreateUserDto) {
     const { name, email, username, password } = createUserDto;
+
+    const existingUserByUsername = await this.userModel.findOne({ username });
+    if (existingUserByUsername) {
+      throw new UnauthorizedException('O nome de usuário já está sendo usado.');
+    }
+
+    const existingUserByEmail = await this.userModel.findOne({ email });
+    if (existingUserByEmail) {
+      throw new UnauthorizedException('O e-mail já está sendo usado.');
+    }
+
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
     const createdUser = new this.userModel({

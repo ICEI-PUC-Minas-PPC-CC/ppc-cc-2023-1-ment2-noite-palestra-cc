@@ -17,7 +17,9 @@ import ListItemText from '@mui/material/ListItemText';
 import { LogoDefault } from './LogoDefault';
 import { Header } from './Header';
 import { Footer } from './footer';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
+import SignpostOutlinedIcon from '@mui/icons-material/SignpostOutlined';
 import { Link } from 'react-router-dom';
 import { FiHome, MdSettingsAccessibility, IoSettingsOutline, BsChevronBarLeft, MdOutlineGroupAdd, BiDonateHeart, MdEmojiPeople, TbWheelchair } from 'react-icons/all';
 
@@ -178,12 +180,12 @@ export default function MiniDrawer(props) {
                   <PinkListItemIcon sx={{ fontSize: 24 }}>
                     <MdSettingsAccessibility />
                   </PinkListItemIcon>
-                  <ListItemText primary="Beneficiários" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
+                  <ListItemText primary="Beneficiados" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
                 </ListItemButton>
               </Link>
             </ListItem>
             <ListItem sx={{ display: 'block' }}>
-              <Link to="/doacoes" style={{ textDecoration: 'none' }}>
+              <Link to="/donations" style={{ textDecoration: 'none' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -199,7 +201,23 @@ export default function MiniDrawer(props) {
               </Link>
             </ListItem>
             <ListItem sx={{ display: 'block' }}>
-              <Link to="/doador" style={{ textDecoration: 'none' }}>
+              <Link to="/directing-donations" style={{ textDecoration: 'none' }}>
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                >
+                  <PinkListItemIcon sx={{ fontSize: 24 }}>
+                    <SignpostOutlinedIcon />
+                  </PinkListItemIcon>
+                  <ListItemText primary="Direcionamento" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+            <ListItem sx={{ display: 'block' }}>
+              <Link to="/donators" style={{ textDecoration: 'none' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -210,7 +228,7 @@ export default function MiniDrawer(props) {
                   <PinkListItemIcon sx={{ fontSize: 24 }}>
                     <MdEmojiPeople />
                   </PinkListItemIcon>
-                  <ListItemText primary="Doador" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
+                  <ListItemText primary="Doadores" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
                 </ListItemButton>
               </Link>
             </ListItem>
@@ -230,8 +248,9 @@ export default function MiniDrawer(props) {
                 </ListItemButton>
               </Link>
             </ListItem>
+            <Divider />
             <ListItem sx={{ display: 'block' }}>
-              <Link to="/voluntarios" style={{ textDecoration: 'none' }}>
+              <Link to="/users" style={{ textDecoration: 'none' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -240,15 +259,14 @@ export default function MiniDrawer(props) {
                   }}
                 >
                   <PinkListItemIcon sx={{ fontSize: 24 }}>
-                    <MdOutlineGroupAdd />
+                    <AssignmentIndIcon />
                   </PinkListItemIcon>
-                  <ListItemText primary="Voluntários" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
+                  <ListItemText primary="Usuários" sx={{ color: '#eb2690', m1: open ? 0 : -24, display: open ? 'initial' : 'none'}} />
                 </ListItemButton>
               </Link>
             </ListItem>
-            <Divider />
             <ListItem sx={{ display: 'block' }}>
-              <Link to="/users" style={{ textDecoration: 'none' }}>
+              <Link to="/config" style={{ textDecoration: 'none' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,

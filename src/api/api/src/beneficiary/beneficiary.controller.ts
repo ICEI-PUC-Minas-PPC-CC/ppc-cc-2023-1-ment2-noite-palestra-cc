@@ -44,7 +44,7 @@ export class BeneficiaryController {
     return this.beneficiaryService.searchBeneficiary(letter);
   }
 
-  @Delete(':id/remove-beneficiary')
+  @Delete(':id')
   removeBeneficiary(@Param('id') id: string) {
     return this.beneficiaryService.removeBeneficiary(id);
   }
