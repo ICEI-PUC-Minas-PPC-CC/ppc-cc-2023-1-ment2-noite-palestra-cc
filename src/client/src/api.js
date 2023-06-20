@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'https://api-gaapo-i2ddno6wla-uw.a.run.app/'
+    baseURL: 'http://localhost:8080'
 }) 
 
 export default class Rotas {

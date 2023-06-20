@@ -118,7 +118,6 @@ export function ListUsers() {
 
 
   const columns = [
-    { field: '_id', headerName: 'ID', width: 250 },
     { field: 'name', headerName: 'NOME', width: 250 },
     { field: 'username', headerName: 'USER', width: 180 },
     { field: 'email', headerName: 'EMAIL', width: 300 },
@@ -139,10 +138,10 @@ export function ListUsers() {
         return (
           <div>
             <IconButton aria-label="edit" size="small" onClick={() => updateUser(params.row._id)}>
-              <EditIcon />
+              <EditIcon sx={{color: '#ffb14b'}} />
             </IconButton>
             <IconButton onClick={() => deleteUser(params.row._id)} aria-label="delete" size="small">
-              <DeleteIcon />
+              <DeleteIcon sx={{color:'#f83515'}} />
             </IconButton>
           </div>
         );
@@ -155,7 +154,7 @@ export function ListUsers() {
 
   return (
     <>
-      <div style={{ marginTop: '3%' }}>
+      <div style={{ marginTop: '5%' }}>
         <Box
           sx={{
             height: '100%',
@@ -233,7 +232,7 @@ export function ListUsers() {
         <FormCreateUser onContinueClick={handleContinueClick} onCancelClick={handleCancelClick} updateGrid={() => getUsers()} />
       </ModalForm>
 
-      <ModalForm title="EDIÇÃO DO USUÁRIO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
+      <ModalForm title="EDITAR USUÁRIO" openPopup={openUpdateUserPopup} setOpenPopup={setOpenUpdateUserPopup}>
         <FormEditUser userId={userId} onContinueClick={handleUpdateContinueClick} onCancelClick={handleUpdateCancelClick} updateGrid={() => getUsers()}/>
       </ModalForm>
 

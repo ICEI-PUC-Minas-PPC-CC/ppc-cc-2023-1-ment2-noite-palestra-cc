@@ -3,6 +3,7 @@ import { Footer } from "../components/footer";
 import { useState } from "react";
 import { useNavigate  } from 'react-router-dom'
 import { FormVerifyEmail } from "../components/formVerifyEmail";
+import { HeaderDefault } from "../components/HeaderDefault";
 
 
 export function VerifyEmail() {
@@ -38,7 +39,7 @@ export function VerifyEmail() {
 
 return (
     <div>
-        <Header />
+        <HeaderDefault />
         <FormVerifyEmail
             email={email}
             setEmail={setEmail}
