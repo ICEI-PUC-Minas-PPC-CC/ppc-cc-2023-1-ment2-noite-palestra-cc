@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaHandHoldingHeart, FaHandHolding } from "react-icons/fa";
+import VolunteerActivismOutlinedIcon from '@mui/icons-material/VolunteerActivismOutlined';
 import { Button, CircularProgress, Stack } from "@mui/material";
 import welcomeStyles from "../css/Welcome.module.css";
 import Rotas from "../api";
@@ -87,7 +87,7 @@ useEffect(() => {
       <div className={welcomeStyles.welcomeNotifications}>
         <div className={welcomeStyles.alimentos}>
           <div className={welcomeStyles.content}>
-            <FaHandHoldingHeart />
+            <VolunteerActivismOutlinedIcon sx={{color: "#eb268f"}} />
 
             <div className={welcomeStyles.text}>
               <h4>Alimentos em estoque</h4>
