@@ -13,7 +13,7 @@ import HouseIcon from '@mui/icons-material/House';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import Rotas from '../api';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import 'dayjs/locale/br';
+import 'dayjs/locale/pt-br'
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import AccessibleIcon from '@mui/icons-material/Accessible';
@@ -85,13 +85,13 @@ export default function FormCreateEquipament({ onContinueClick, onCancelClick, u
         const selectedBeneficiary = e.target.value;
 
         const selectedDonationData = beneficiaries.find(
-            (beneficiary) => beneficiary.name === selectedBeneficiary
+            (beneficiary) => beneficiary._id === selectedBeneficiary
         );
 
-        if (selectedBeneficiaryData) {
-            setSelectedBeneficiary(selectedBeneficiary);
-            setPhone(selectedBeneficiaryData.phone);
-            setAddress(selectedBeneficiaryData.address);
+        if (selectedDonationData) {
+            setSelectedBeneficiary(selectedBeneficiary.name);
+            setPhone(selectedBeneficiary.phone);
+            setAddress(selectedBeneficiary.address);
         } else {
             setSelectedBeneficiary('');
             setPhone('');
@@ -152,53 +152,13 @@ export default function FormCreateEquipament({ onContinueClick, onCancelClick, u
                         </FormControl>
                     </div>
                     <div>
-                        <FormControl sx={{ width: 230, marginLeft: '5px', marginTop: '8px' }}>
-                            <InputLabel id="demo-simple-select-label">Beneficiario</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={selectedBeneficiary}
-                                label="Beneficiário"
-                                InputProps={{
-                                    startAdornment: <InputAdornment position="start"><PersonIcon fontSize="small" /></InputAdornment>,
-                                }}
-                                onChange={handleBeneficiaryChange}
-                            >
-                                <MenuItem> Escolha uma opção</MenuItem>
-                                {beneficiaries.map((beneficiary) => (
-                                    <MenuItem key={beneficiary.name} value={beneficiary.name}>{beneficiary.name}</MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
-                        <TextField
-                            label="Telefone"
-                            variant="outlined"
-                            value={phone}
-                            InputProps={{
-                                startAdornment: <InputAdornment position="start"><PhoneAndroidIcon fontSize="small" /></InputAdornment>,
-                            }}
-                            onChange={(e) => setPhone(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <TextField
-                            label="Endereço"
-                            variant="outlined"
-                            value={address}
-                            InputProps={{
-                                startAdornment: <InputAdornment position="start"><HouseIcon fontSize="small" /></InputAdornment>,
-                            }}
-                            onChange={(e) => setAddress(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='br'>
+                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='pt-br'>
                             <DatePicker size="small" label="Data de emprestimo"
                                 value={lendedAt}
                                 onChange={(e) => setLendedAt(e)}
                             />
                         </LocalizationProvider>
-                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='br'>
+                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='pt-br'>
                             <DatePicker size="small" label="Data de devolução"
                                 value={createdAt}
                                 onChange={(e) => setCreatedAt(e)} />

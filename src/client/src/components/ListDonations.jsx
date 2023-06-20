@@ -26,6 +26,7 @@ import ImpressoDonation from './ImpressoDonation';
 import { useReactToPrint } from 'react-to-print';
 import FormCreateBeneficiary from './formCreateBeneficiary';
 import FormCreateEquipament from './formCreateEquipament';
+import 'dayjs/locale/pt-br'
 
 
 

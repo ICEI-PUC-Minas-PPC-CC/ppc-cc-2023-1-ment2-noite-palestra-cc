@@ -13,23 +13,45 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import 'dayjs/locale/br';
 import dayjs from 'dayjs';
 
-export default function TimeLine({ days }) {
+export default function TimeLine() {
   const routes = new Rotas();
   const [donations, setDonations] = React.useState([]);
+  const [expiration, setExpiration] = React.useState(undefined)
 
-  const getAllDonations = () => {
-    routes.get(`/donation/expiring-donations/15`)
-      .then((response) => {
-        setDonations(response.data)
-      })
-  }
+  React.useEffect(() => {
+    getConfig();
+  }, []);
+
+  
+  React.useEffect(() => {
+    if (expiration !== undefined){
+      getAllDonations()
+    }
+  }, [expiration]);
+
+  const getConfig = async () => {
+    try {
+      const response = await routes.get('/config/648d162134b0f5ccf99f3a1b/find');
+      setExpiration(response.data.expirationDays);
+    } catch (error) {
+      console.log('Erro ao obter configuração:', error);
+    }
+  };
+
+  const getAllDonations = async () => {
+    try {
+      const response = await routes.get(`/donation/expiring-donations/${expiration}`);
+      setDonations(response.data);
+    } catch (error) {
+      console.log('Erro ao obter doações:', error);
+    }
+  };
 
   const [indice, setIndice] = React.useState(0);
   const [listaVazia, setListaVazia] = React.useState([]);
 
-  React.useEffect(() => {
-    loadMore();
-  }, []);
+
+
 
   // const loadMore = () => {
   //   console.log('Indice: ', indice)
@@ -37,6 +59,7 @@ export default function TimeLine({ days }) {
   //   setListaVazia([...listaVazia, ...donations.slice(indice, indice+2)]);
   //   setIndice(indice+2);
   // };
+
 
   const loadMore = () => {
     console.log('Indice: ', indice);
@@ -68,11 +91,6 @@ export default function TimeLine({ days }) {
   );
 
 
-
-  React.useEffect(() => {
-    getAllDonations();
-  })
-
   //intersectionObserverProps={ Object }
   //Custom props pass to useInView component (default: { rootMargin: '0px 0px 40px 0px' }). See
 
@@ -82,6 +100,7 @@ export default function TimeLine({ days }) {
         
         {listaVazia.map(donation => (
           <VerticalTimelineElement 
+          key={donation._id}
           date={dayjs(donation.expirationDate).format('DD/MM/YYYY')}
           className= 'vertical-timeline-element--work'
           contentStyle= {{ background: '#0584BE', color: '#CECECE' }}
@@ -91,7 +110,7 @@ export default function TimeLine({ days }) {
           >
             <h3 className="vertical-timeline-element-title">Nome: {donation.name}</h3>
             <h4 className="vertical-timeline-element-title">Quantidade: {donation.amount}</h4>
-            <h4 className="vertical-timeline-element-title">Vencimento: {donation.expirationDate}</h4>
+            <h4 className="vertical-timeline-element-title">Vencimento: {dayjs(donation.expirationDate).format('DD/MM/YYYY')}</h4>
           </VerticalTimelineElement>))
         }
         

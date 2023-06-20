@@ -12,6 +12,11 @@ export class ConfigController {
     return this.configService.create(createConfigDto);
   }
 
+  @Get(':id/find')
+  findOneConfig(@Param('id') id: string) {
+    return this.configService.findOneConfig(id);
+  }
+
   @Get('/all')
   findAllConfig() {
     return this.configService.findAllConfig();

@@ -22,6 +22,11 @@ export class ConfigService {
     return createdConfig.save();
   }
 
+  async findOneConfig(id: string) {
+    const config = await this.ConfigModel.findById(id);
+    return config;
+  }
+
   async findAllConfig() {
     const allConfigs = await this.ConfigModel.find();
     return allConfigs;

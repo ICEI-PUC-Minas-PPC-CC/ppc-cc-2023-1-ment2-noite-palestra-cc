@@ -45,7 +45,9 @@ export class DonationController {
 
   @Get('/expiring-products/:days')
   async findExpiringProducts(@Param('days') days: number) {
+    console.log(days);
     const products = await this.donationService.findExpiringProducts(days);
+    console.log(products);
     return products;
   }
 

@@ -154,9 +154,6 @@ export function ListEquipament() {
         return <div>{displayValue}</div>;
       },
     },
-    { field: 'beneficiary', headerName: 'Beneficiado', width: 180, resizable: true },
-    { field: 'phone', headerName: 'Telefone', width: 100, resizable: true  },
-    { field: 'address', headerName: 'Endereço', width: 210, resizable: true  },
     {
       field: 'lendedAt',
       resizable: true,

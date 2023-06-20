@@ -16,7 +16,7 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers';
-import 'dayjs/locale/br';
+import 'dayjs/locale/pt-br'
 import Rotas from '../api';
 
 
@@ -139,13 +139,13 @@ export default function FormEditDonation({ userId, onContinueClick, onCancelClic
                         </FormControl>
                     </div>
                     <div>
-                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='br'>
+                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='pt-br'>
                             <DatePicker size="small" label="Data de entrada"
                                 value={entryDate}
                                 onChange={(e) => setEntryDate(e)}
                             />
                         </LocalizationProvider>
-                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='br'>
+                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='pt-br'>
                             <DatePicker size="small" label="Data de vencimento"
                                 value={expirationDate}
                                 onChange={(e) => setExpirationDate(e)} />

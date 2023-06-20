@@ -5,56 +5,88 @@ import welcomeStyles from "../css/Welcome.module.css";
 import Rotas from "../api";
 
 const Welcome = () => {
+  const routes = new Rotas();
   const [counter, setCounter] = useState(0);
-  const [counterValidade, setCounterValidade] = useState(0);
-  const [configExpiration, setConfigExpiration] = useState(0);
-  const [configStock, setConfigStock] = useState(0);
-  const [config, setConfig] = useState([]);
+  const [counterValidade, setCounterValidade] = useState(undefined);
+  const [configExpiration, setConfigExpiration] = useState(undefined);
+  const [stock, setStock] = useState(undefined)
   const [loading, setLoading] = useState(true);
 
-  const routes = new Rotas();
+useEffect(() => {
+  getAllDonations()
+  getConfig()
+}, [])
+
+useEffect(() => {
+  if (configExpiration !== undefined) {
+    getAllExpirationDonate()
+  }
+  
+}, [configExpiration])
+
 
   const getConfig = () => {
-    routes
-      .get("/config/all")
-      .then((response) => {
-        setConfig(response.data);
-        setConfigExpiration(response.data[0].expirationDays);
-        setConfigStock(response.data.stock);
+      routes.get('/config/648d162134b0f5ccf99f3a1b/find')
+        .then((response) => {
+          setConfigExpiration(response.data.expirationDays);
+          console.log('Config Expiration:', response.data.expirationDays); 
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  };
+
+
+  
+  const getAllDonations = () => {
+    return new Promise((resolve, reject) => {
+      routes.get("/donation/sum-quantities")
+        .then((response) => {
+          setCounter(response.data);
+          resolve(); 
+        })
+        .catch((error) => {
+          console.log(error);
+          reject(error); 
+        });
+    });
+  };
+  
+  const getAllExpirationDonate = () => {
+      routes.get(`/donation/expiring-products/${configExpiration}`)
+        .then((res) => {
+          console.log('API Response:', res.data);
+          setCounterValidade(res.data);
+        })
+        .catch((error) => {
+          console.log(error); 
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+  };
+
+    
+  const getStockStatus = () => {
+    routes.get(`/donation/expiring-products/${configExpiration}`)
+      .then((res) => {
+        console.log('API Response:', res.data);
+        setStock(res.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error); 
+      })
+      .finally(() => {
+        setLoading(false);
       });
-  };
-
-  const getAllDonations = () => {
-    routes
-      .get("/donation/sum-quantities")
-      .then((response) => setCounter(response.data))
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const getAllExpirationDonate = () => {
-    routes
-      .get(`/donation/expiring-products/${configExpiration}`)
-      .then((res) => setCounterValidade(res.data))
-      .finally(() => setLoading(false));
-  };
-
-  useEffect(() => {
-    getConfig();
-    getAllDonations();
-    getAllExpirationDonate();
-  }, []);
-
+};
+  
+    
   return (
     <div className={welcomeStyles.welcome}>
       <div className={welcomeStyles.welcomeNotifications}>
-        <div className={welcomeStyles.almentos}>
+        <div className={welcomeStyles.alimentos}>
           <div className={welcomeStyles.content}>
-            {/* Icon */}
             <FaHandHoldingHeart />
 
             <div className={welcomeStyles.text}>

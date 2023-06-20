@@ -18,7 +18,7 @@ import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers';
-import 'dayjs/locale/br';
+import 'dayjs/locale/pt-br'
 import Rotas from '../api';
 
 
@@ -228,13 +228,13 @@ if(beneficiaries.length > 0){
                         />
                     </div>
                     <div>
-                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='br'>
+                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='pt-br'>
                             <DatePicker size="small" label="Data de emprestimo"
                                 value={lendedAt}
                                 onChange={(e) => setLendedAt(e)}
                             />
                         </LocalizationProvider>
-                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='br'>
+                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='pt-br'>
                             <DatePicker size="small" label="Data de devolução"
                                 value={createdAt}
                                 onChange={(e) => setCreatedAt(e)} />

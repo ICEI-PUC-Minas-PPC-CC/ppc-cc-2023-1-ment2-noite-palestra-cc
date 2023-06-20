@@ -32,7 +32,7 @@ export function Configuration() {
     };
 
     const fetchUserData = () => {
-        routes.get(`/equipament/all`).then((response) => {
+        routes.get(`/config/648d162134b0f5ccf99f3a1b/find`).then((response) => {
             setExpirationDays(response.data.expirationDays);
             setStock(response.data.stock);
         });
