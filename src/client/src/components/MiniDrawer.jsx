@@ -21,7 +21,12 @@ import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import SignpostOutlinedIcon from '@mui/icons-material/SignpostOutlined';
 import { Link } from 'react-router-dom';
-import { FiHome, MdSettingsAccessibility, IoSettingsOutline, BsChevronBarLeft, MdOutlineGroupAdd, BiDonateHeart, MdEmojiPeople, TbWheelchair } from 'react-icons/all';
+import { FiHome } from 'react-icons/fi';
+import { MdSettingsAccessibility, MdOutlineGroupAdd, MdEmojiPeople } from 'react-icons/md';
+import { IoSettingsOutline } from 'react-icons/io5';
+import { BsChevronBarLeft } from 'react-icons/bs';
+import { BiDonateHeart } from 'react-icons/bi';
+import { TbWheelchair } from 'react-icons/tb';
 
 
 const drawerWidth = 240;
