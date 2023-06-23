@@ -246,21 +246,6 @@ export function ListDonation() {
                     value={searchValue}
                     onChange={handleSearchTextChange}
                   />
-                  <div style={{ margin: '0 10px', display: 'flex', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <FormControlLabel
-                        control={<Checkbox checked={isPerishableChecked} onChange={(e) => setIsPerishableChecked(e.target.checked)} />}
-                        label="Perecível"
-                      />
-
-                      <div style={{ margin: '0 10px' }}></div>
-                      <div>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                          <DatePicker size="small" label="Vencimento" />
-                        </LocalizationProvider>
-                      </div>
-                    </div>
-                  </div>
                   <Button
                     variant="contained"
                     startIcon={<AddIcon />}
