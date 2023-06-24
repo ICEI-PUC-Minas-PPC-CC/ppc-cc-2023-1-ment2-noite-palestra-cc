@@ -29,12 +29,11 @@ O cronograma preliminar se dividirá em:
 |   19/03/2023   | Rerências Bibliogramas                                   |    19/03/2023    |
 |   21/03/2023   | Entrega Primeira Etapa                                   |    21/03/2023    |
 |`Segunda Etapa - ETAPA 2`                                                                     |
-|   22/03/2023   | Detalhamento Preliminar                                  |    07/04/2023    |
+|   22/03/2023   | Detalhamento Preliminar                                  |    04/04/2023    |
 |`Artefatos da Sprint 1 - ETAPA 3`                                                             |
-|   07/04/2023   | Definição da Tecnologia - Estudos                        |    07/04/2023    |
-|   07/04/2023   | Desenvolvimento em React - Front End     |    25/04/2023    |
+|   05/04/2023   | Definição da Tecnologia - Estudos                        |    07/04/2023    |
+|   05/04/2023   | Desenvolvimento em React - Front End     |    25/04/2023    |
 |   10/04/2023   | Postagem de Código fonte no Github                       |    25/04/2023    |
-|   14/04/2023   | Apresentação das telas para o GAAPO realizada no detalhamento preliminar                                                                                                                                                         |    14/04/2023    |
 |`Artefatos da Sprint 2 - ETAPA 4`                                                             |
 |   25/04/2023   | Back- End / Banco de Dados                               |    19/05/2023    |
 |   25/06/2023   | Postagem de Código fonte no Github                       |    19/06/2023    |
@@ -43,12 +42,12 @@ O cronograma preliminar se dividirá em:
 |   26/06/2023   | Postagem de Código fonte no Github                       |    01/06/2023    |
 |   02/06/2023   | Implementação GAAPO                                      |    02/06/2023    |
 |   02/06/2023   | Ajustes da Aplicação                                     |    06/06/2023    |
-|   02/06/2023   | Postagem de Código fonte no Github                       |    06/06/2023    |
-|   07/06/2023   | Feedback - GAAPO (Aplicação)                             |    13/06/2023    |
+|   05/06/2023   | Postagem de Código fonte no Github                       |    24/06/2023    |
+|   26/06/2023   | Feedback - GAAPO (Aplicação)                             |    26/06/2023    |
 |`Apresentação do Projeto - ETAPA 5`                                                           |
-|   14/06/2023   | Definição de Título                                      |    14/06/2023    |
-|   14/06/2023   | Identidade Visual                                        |    19/06/2023    |
-|   20/06/2023   | Pitch de Apresentação                                    |    27/06/2023    |
+|   26/06/2023   | Definição de Título                                      |    27/06/2023    |
+|   26/06/2023   | Identidade Visual                                        |    27/06/2023    |
+|   26/06/2023   | Pitch de Apresentação                                    |    27/06/2023    |
 |`Relatórios - ETAPA 6`                                                                        |
-|   28/06/2023   | Preenchimento dos formulários referentes a prática extensionista no sistema GDE                                                                                                                                                 |    01/07/2023    |
-|   02/07/2023   | Atualização/entrega do porftólio                         |    07/07/2023    |
+|   27/06/2023   | Preenchimento dos formulários referentes a prática extensionista no sistema GDE                                                                                                                                                 |    27/06/2023    |
+|   20/06/2023   | Atualização/entrega do porftólio                         |    27/06/2023    |
