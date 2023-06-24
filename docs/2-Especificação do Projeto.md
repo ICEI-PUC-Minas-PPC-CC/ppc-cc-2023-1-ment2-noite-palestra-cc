@@ -4,7 +4,7 @@
 
 ## Introdução
 
-Esse documento tem o objetivo de especificar requisitos, que contemplação da aplicação do solução adequada para o desenvolvimento do aplicativo a partir perspectiva do  usuário apresentando a definição do problema a parte de histórias do futuro usuário, requisitos funcionais da proposta, requisitos não funcionais e  o levantamento de dados a respeito da discussão.
+Esse documento tem o objetivo de especificar requisitos, que contemplação da aplicação do solução adequada para o desenvolvimento da aplicação a partir perspectiva do  usuário apresentando a definição do problema a parte de histórias do futuro usuário, requisitos funcionais da proposta, requisitos não funcionais e  o levantamento de dados a respeito da discussão.
 <br>
 
 _UM BREVE HISTÓRICO_
@@ -58,17 +58,16 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
 |RF-01| O sistema deverá permitir login com os campos: nome, senha e atualização de senha caso tenha esquecido. Para restrição de acesso de usuários; | ALTA |
-|RF-02| O sistema terá uma tela inicial contendo visão geral dos alimentos e das cestas, além de alertas do vencimento dos alimentos e comentários dos usuários;  | ALTA |
-|RF-03| O sistema deverá conter o menu navegável, com os respectivos ícones: Início, Estoque e Configurações;  | MÉDIA |
-|RF-04| Na tela de Estoque do sistema, deverá conter demonstrativo dos alimentos, quantitativo total e eventos de entregas e saída de alimentos; | MÉDIA |
+|RF-02| O sistema terá uma tela inicial contendo visão geral dos alimentos e das cestas e alertas do vencimento dos alimentos;  | ALTA |
+|RF-03| O sistema deverá conter o menu navegável, com os respectivos ícones  | MÉDIA |
+|RF-04| Na tela de Estoque do sistema, deverá conter demonstrativo dos alimentos e quantitativo total; | MÉDIA |
 |RF-05| Na tela de doações de alimentos, o sistema irá conter o CRUD (criar, exibir, atualizar e apagar elementos), além de exportar relatórios; | MÉDIA |
 |RF-06| Na tela Remover, será responsável essa tela permitir 'o gerenciamento de alimentos' recebidos como doação. Sobre cada alimento doado, deve-se armazenar: nome, validade, quantidade, sessão e id (gerado automaticamente pelo sistema); | MÉDIA |
 |RF-07| O sistema será possível a visualização de relatórios em 2º Nível; | MÉDIA |
-|RF-08| O sistema terá uma tela Montar Cesta afim de demonstrar quantificativos e vosualização básica sobre as cestas básicas. Além de exportar relatórios, permitir qual produto deve conter na cesta e permitir que o usuário a monte; | ALTA |
-|RF-09| O sistema terá a tela Definir Receita, com o intuito que o usuário selecione quais itens serão correspondidos aquela cesta em determinado período de tempo. Somando a definição de estoque mínimo de cesta. O sistema definirá alarmes para quantidade mínima de cestas não alcançadas dentro de um mês; | MÉDIA |
+|RF-09| O sistema terá a tela definir Receita, com o intuito que o usuário selecione quais itens serão correspondidos aquela cesta em determinado período de tempo. Somando a definição de estoque mínimo de cesta. O sistema definirá alarmes para quantidade mínima de cestas não alcançadas dentro de um mês; | MÉDIA |
 |RF-10| O sistema terá a tela CESTAS afim de demonstrar quantitativos e visualização básica sobre as cestas básicas. Além de exportar relatórios , permitir qual produto deve conter na cesta e permitir que o usuário a monte; | MÉDIA |
 |RF-11| Na tela de configurações, terá como intuito que o usuário seleciona a restrição do cadastro de novo usuário, diagnosticar se ele vai ser administrador ou usuário; | MÉDIA |
-|RF-12| O desenvolvimento do sistema sera acompnhado via spints utilizando o github     | ALTA |
+|RF-12| O desenvolvimento do sistema sera acompnhado via spints utilizando o github | ALTA |
 
 ### Requisitos não Funcionais
 
@@ -77,12 +76,10 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 |RNF-01| O sistema ultilizará liguagem TypeScript  com os frameworks NodeJs, AdonisJs e ReactJs   | ALTA |
 |RNF-02| O sistema se comunicara com o banco de dados non-SQL MongoDB para armazenar os dados    | ALTA |
 |RNF-03| O sistema deverá ter conexao com internet     | ALTA |
-|RNF-04| O sistema devera ser responsivo    | ALTA |
-|RNF-05| O sistema devera ser coberto por testes automatizados utilizando o framework jest       | ALTA |
+|RNF-04| O sistema devera ser responsivo| ALTA |
+|RNF-05| O sistema devera ser coberto por testes automatizados utilizando o framework jest| ALTA |
 |RNF-06| O sistema deve processar requisições do usuário em no máximo 3 segundos    | BAIXA |
-|RNF-07| O sistema sera hospedado em uma instancia [Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/) ou na plataforma [Fly.io](https://fly.io/docs/) _ambas com opções gratuitas_  | ALTA |
-|RNF-08| O sistema sera acompanhado via arquivos de LOG mensalmente  | MÉDIA |
-|RNF-09| O sistema deverá conter entrada de doações de dinheiro    | BAIXA |
+|RNF-07| O sistema sera hospedado em uma instancia | ALTA |
+|RNF-08| O sistema sera acompanhado via arquivos para exportação| MÉDIA |
 |RNF-10| O sistemas sera feito utilizando o paradigma POO  | MÉDIA |
 |RNF-11| O sistemas deverá atender as normas legais sobre LGPD    | ALTA |
-|RNF-12| O sistemas deverá ser integrado via banco de dados com o powerapps | ALTA |
