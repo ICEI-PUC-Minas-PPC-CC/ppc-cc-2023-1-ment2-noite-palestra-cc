@@ -62,12 +62,10 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 |RF-03| O sistema deverá conter o menu navegável, com os respectivos ícones  | MÉDIA |
 |RF-04| Na tela de Estoque do sistema, deverá conter demonstrativo dos alimentos e quantitativo total; | MÉDIA |
 |RF-05| Na tela de doações de alimentos, o sistema irá conter o CRUD (criar, exibir, atualizar e apagar elementos), além de exportar relatórios; | MÉDIA |
-|RF-06| Na tela Remover, será responsável essa tela permitir 'o gerenciamento de alimentos' recebidos como doação. Sobre cada alimento doado, deve-se armazenar: nome, validade, quantidade, sessão e id (gerado automaticamente pelo sistema); | MÉDIA |
-|RF-07| O sistema será possível a visualização de relatórios em 2º Nível; | MÉDIA |
-|RF-09| O sistema terá a tela definir Receita, com o intuito que o usuário selecione quais itens serão correspondidos aquela cesta em determinado período de tempo. Somando a definição de estoque mínimo de cesta. O sistema definirá alarmes para quantidade mínima de cestas não alcançadas dentro de um mês; | MÉDIA |
-|RF-10| O sistema terá a tela CESTAS afim de demonstrar quantitativos e visualização básica sobre as cestas básicas. Além de exportar relatórios , permitir qual produto deve conter na cesta e permitir que o usuário a monte; | MÉDIA |
-|RF-11| Na tela de configurações, terá como intuito que o usuário seleciona a restrição do cadastro de novo usuário, diagnosticar se ele vai ser administrador ou usuário; | MÉDIA |
-|RF-12| O desenvolvimento do sistema sera acompnhado via spints utilizando o github | ALTA |
+|RF-06| O sistema será possível a visualização de relatórios em 2º Nível; | MÉDIA |
+|RF-07| O sistema terá a tela definir Receita, com o intuito que o usuário selecione quais itens serão correspondidos aquela cesta em determinado período de tempo. Somando a definição de estoque mínimo de cesta. O sistema definirá alarmes para quantidade mínima de cestas não alcançadas dentro de um mês; | MÉDIA |
+|RF-08| O sistema terá a tela CESTAS afim de demonstrar quantitativos e visualização básica sobre as cestas básicas. Além de exportar relatórios , permitir qual produto deve conter na cesta e permitir que o usuário a monte; | MÉDIA |
+|RF-09| Na tela de configurações, terá como intuito que o usuário selecione ou realize cadastro de novo usuário; | MÉDIA |
 
 ### Requisitos não Funcionais
 
@@ -81,5 +79,6 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 |RNF-06| O sistema deve processar requisições do usuário em no máximo 3 segundos    | BAIXA |
 |RNF-07| O sistema sera hospedado em uma instancia | ALTA |
 |RNF-08| O sistema sera acompanhado via arquivos para exportação| MÉDIA |
-|RNF-10| O sistemas sera feito utilizando o paradigma POO  | MÉDIA |
-|RNF-11| O sistemas deverá atender as normas legais sobre LGPD    | ALTA |
+|RNF-09| O sistemas sera feito utilizando o paradigma POO  | MÉDIA |
+|RNF-10| O sistemas deverá atender as normas legais sobre LGPD    | ALTA |
+|RNF-11| O desenvolvimento do sistema sera acompnhado via spints utilizando o github | ALTA |
