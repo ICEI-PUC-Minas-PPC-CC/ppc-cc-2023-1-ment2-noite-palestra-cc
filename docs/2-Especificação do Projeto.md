@@ -56,16 +56,16 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 ### Requisitos Funcionais
 
 |ID    | Descrição do Requisito  | Prioridade |
-|------|-----------------------------------------|----|
-|RF-01| O sistema deverá permitir login com os campos: nome, senha e atualização de senha caso tenha esquecido. Para restrição de acesso de usuários; | ALTA |
-|RF-02| O sistema terá uma tela inicial contendo visão geral dos alimentos e das cestas e alertas do vencimento dos alimentos;  | ALTA |
-|RF-03| O sistema deverá conter o menu navegável, com os respectivos ícones  | MÉDIA |
-|RF-04| Na tela de Estoque do sistema, deverá conter demonstrativo dos alimentos e quantitativo total; | MÉDIA |
-|RF-05| Na tela de doações de alimentos, o sistema irá conter o CRUD (criar, exibir, atualizar e apagar elementos), além de exportar relatórios; | MÉDIA |
-|RF-06| O sistema será possível a visualização de relatórios em 2º Nível; | MÉDIA |
-|RF-07| O sistema terá a tela definir Receita, com o intuito que o usuário selecione quais itens serão correspondidos aquela cesta em determinado período de tempo. Somando a definição de estoque mínimo de cesta. O sistema definirá alarmes para quantidade mínima de cestas não alcançadas dentro de um mês; | MÉDIA |
-|RF-08| O sistema terá a tela CESTAS afim de demonstrar quantitativos e visualização básica sobre as cestas básicas. Além de exportar relatórios , permitir qual produto deve conter na cesta e permitir que o usuário a monte; | MÉDIA |
-|RF-09| Na tela de configurações, terá como intuito que o usuário selecione ou realize cadastro de novo usuário; | MÉDIA |
+|-------|-----------------------------------------|----|
+| RF-01 | O sistema deverá permitir login com os campos: nome, senha e atualização de senha caso tenha esquecido. Para restrição de acesso de usuários; | ALTA |
+| RF-02 | O sistema terá uma tela inicial contendo visão geral dos alimentos e das cestas e alertas do vencimento dos alimentos;  | ALTA |
+| RF-03 | O sistema deverá conter o menu navegável, com os respectivos ícones  | MÉDIA |
+| RF-04 | Na tela de Estoque do sistema, deverá conter demonstrativo dos alimentos e quantitativo total; | MÉDIA |
+| RF-05 | Na tela de doações de alimentos, o sistema irá conter o CRUD (criar, exibir, atualizar e apagar elementos), além de exportar relatórios; | MÉDIA |
+| RF-06 | O sistema será possível a visualização de relatórios em 2º Nível; | MÉDIA |
+| RF-07 | O sistema terá a tela definir Receita, com o intuito que o usuário selecione quais itens serão correspondidos aquela cesta em determinado período de tempo. Somando a definição de estoque mínimo de cesta. O sistema definirá alarmes para quantidade mínima de cestas não alcançadas dentro de um mês; | MÉDIA |
+| RF-08 | O sistema terá a tela CESTAS afim de demonstrar quantitativos e visualização básica sobre as cestas básicas. Além de exportar relatórios , permitir qual produto deve conter na cesta e permitir que o usuário a monte; | MÉDIA |
+| RF-09 | Na tela de configurações, terá como intuito que o usuário selecione ou realize cadastro de novo usuário; | MÉDIA |
 
 ### Requisitos não Funcionais
 
