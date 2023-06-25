@@ -220,18 +220,18 @@ _BACK-END_
 ### 5.1 Estatísticas 
 O repositório utilizado para o desenvolvimento é o GitHub, assim foi possível ainda acrescentar neste relatório, informações estatísticas sobre a movimentação do mesmo a fim de monitoramento, assim pode se observar as seguintes as contribuições realizadas no main, excluindo merge commits e contas de bot. (Vide figura abaixo).
 
-<img src="docs/img/IMAGEM 4.png"/>
+<img src="https://github.com/ICEI-PUC-Minas-PPC-CC/ppc-cc-2023-1-ment2-noite-palestra-cc/blob/main/docs/img/IMAGEM 4.png"/>
 
 Fluxo de trabalho dos Autores:
-<img src="img/IMAGEM 3.1.png"/>
-<img src="docs/img/IMAGEM 3.2.png"/>
-<img src="docs/img/IMAGEM 3.3.png"/>
+<img src="https://github.com/ICEI-PUC-Minas-PPC-CC/ppc-cc-2023-1-ment2-noite-palestra-cc/blob/main/docs/img/IMAGEM 3,1.png"/>
+<img src="https://github.com/ICEI-PUC-Minas-PPC-CC/ppc-cc-2023-1-ment2-noite-palestra-cc/blob/main/docs/img/IMAGEM 3.2.png"/>
+<img src="https://github.com/ICEI-PUC-Minas-PPC-CC/ppc-cc-2023-1-ment2-noite-palestra-cc/blob/main/docs/img/IMAGEM 3.3.png"/>
  
 A frequência de modificação do código ao longo do tempo 
-<img src="docs/img/imagem II.png"/>
+<img src="https://github.com/ICEI-PUC-Minas-PPC-CC/ppc-cc-2023-1-ment2-noite-palestra-cc/blob/main/docs/img/imagem II.png"/>
 
 E a frequência de visitação do repositório ao longo do tempo 
-<img src="imagem i.png"/> 
+<img src="https://github.com/ICEI-PUC-Minas-PPC-CC/ppc-cc-2023-1-ment2-noite-palestra-cc/blob/main/docs/img/imagem i.png"/> 
 
 ## 6.	Implementação 
 Até a conclusão deste relatório o sistema ainda não foi implementado, visto que a entrega e apresentação para a GAAPO foi marcada para Segunda-Feira ou Terça-Feira da semana do dia 25/06/2023
