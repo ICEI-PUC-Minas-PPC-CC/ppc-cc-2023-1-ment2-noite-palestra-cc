@@ -6,7 +6,7 @@ Nesta seção, deverão ser apresentados os itens a seguir:
 
 ## Título do Projeto
 
-Nome e marca do projeto
+App Gestão GAAPO
 
 ## Identidade Visual (Marca, Design)
 
@@ -19,8 +19,6 @@ O grupo deve ter o cuidado em utilizar figuras, imagens e cores dentro do contex
 
 ## Pitch de apresentação
 
-Para o pitch de apresentação, o grupo deverá gravar um vídeo de apresentação do projeto.
-
-No vídeo, TODOS os alunos deverão falar e o vídeo deve conter, obrigatoriamente: objetivos, público-alvo, metodologia de desenvolvimento, descrição da execução, percepções gerais do grupo (surpresas vs. frustrações) e conclusões.
-
-Resumam, em até 7 minutos, tudo o que foi desenvolvido ao longo prática extensionista realizada.
+[Link do vídeo de apresentação do pitch](https://www.youtube.com/watch?v=FYWEqthp9tM&t=68s)
+<img src="https://github.com/ICEI-PUC-Minas-PPC-CC/ppc-cc-2023-1-ment2-noite-palestra-cc/blob/main/docs/img/IMG-20230628-WA0045.jpg">
+<img src="https://github.com/ICEI-PUC-Minas-PPC-CC/ppc-cc-2023-1-ment2-noite-palestra-cc/blob/main/docs/img/IMG-20230628-WA0046.jpg">
